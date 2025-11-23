@@ -1,16 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Axis Bootstrap Template</title>
+  <title>Actio - Home</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,14 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Axis
@@ -44,7 +47,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Axis</h1>
+        <h1 class="sitename">Actio</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -71,7 +74,8 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Contatti</a></li>
+          <li><a href="#contact">Accedi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -117,7 +121,7 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="assets/img/about/about-square-10.webp" alt="Business Success" class="img-fluid">
+              <img src="img/about/about-square-10.webp" alt="Business Success" class="img-fluid">
               <div class="floating-card" data-aos="zoom-in" data-aos-delay="600">
                 <div class="card-icon">
                   <i class="bi bi-graph-up-arrow"></i>
@@ -180,7 +184,7 @@
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="image-wrapper">
-              <img src="assets/img/about/about-square-12.webp" alt="About us" class="img-fluid">
+              <img src="img/about/about-square-12.webp" alt="About us" class="img-fluid">
               <div class="floating-card" data-aos="zoom-in" data-aos-delay="500">
                 <div class="card-content">
                   <div class="icon">
@@ -319,7 +323,7 @@
           </div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="image-wrapper">
-              <img src="assets/img/about/about-8.webp" alt="Professional team collaboration" class="img-fluid">
+              <img src="img/about/about-8.webp" alt="Professional team collaboration" class="img-fluid">
             </div>
           </div>
         </div>
@@ -410,10 +414,10 @@
                 <div class="row g-4">
                   <div class="col-md-6">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-1.webp" alt="Enterprise Digital Platform" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-1.webp" alt="Enterprise Digital Platform" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-1.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-1.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -450,10 +454,10 @@
                 <div class="row g-4">
                   <div class="col-md-6 order-md-2">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-3.webp" alt="SaaS Product Suite" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-3.webp" alt="SaaS Product Suite" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-3.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-3.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -490,10 +494,10 @@
                 <div class="row g-4">
                   <div class="col-md-6">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-5.webp" alt="Brand Transformation" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-5.webp" alt="Brand Transformation" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-5.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-5.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -530,10 +534,10 @@
                 <div class="row g-4">
                   <div class="col-md-6 order-md-2">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-6.webp" alt="Digital Transformation" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-6.webp" alt="Digital Transformation" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-6.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-6.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -570,10 +574,10 @@
                 <div class="row g-4">
                   <div class="col-md-6">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-2.webp" alt="E-commerce Experience" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-2.webp" alt="E-commerce Experience" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-2.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-2.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -610,10 +614,10 @@
                 <div class="row g-4">
                   <div class="col-md-6 order-md-2">
                     <div class="project-visual">
-                      <img src="assets/img/portfolio/portfolio-4.webp" alt="Mobile Application" class="img-fluid" loading="lazy">
+                      <img src="img/portfolio/portfolio-4.webp" alt="Mobile Application" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="assets/img/portfolio/portfolio-4.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="img/portfolio/portfolio-4.webp" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="#" class="project-link" aria-label="View project details">
@@ -686,7 +690,7 @@
           <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
               <div class="member-img">
-                <img src="assets/img/person/person-f-8.webp" class="img-fluid" alt="Sarah Johnson" loading="lazy">
+                <img src="img/person/person-f-8.webp" class="img-fluid" alt="Sarah Johnson" loading="lazy">
               </div>
               <div class="member-info">
                 <h4>Sarah Johnson</h4>
@@ -704,7 +708,7 @@
           <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
             <div class="team-member">
               <div class="member-img">
-                <img src="assets/img/person/person-m-12.webp" class="img-fluid" alt="Michael Chen" loading="lazy">
+                <img src="img/person/person-m-12.webp" class="img-fluid" alt="Michael Chen" loading="lazy">
               </div>
               <div class="member-info">
                 <h4>Michael Chen</h4>
@@ -722,7 +726,7 @@
           <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
               <div class="member-img">
-                <img src="assets/img/person/person-f-3.webp" class="img-fluid" alt="Emily Rodriguez" loading="lazy">
+                <img src="img/person/person-f-3.webp" class="img-fluid" alt="Emily Rodriguez" loading="lazy">
               </div>
               <div class="member-info">
                 <h4>Emily Rodriguez</h4>
@@ -740,7 +744,7 @@
           <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="350">
             <div class="team-member">
               <div class="member-img">
-                <img src="assets/img/person/person-m-7.webp" class="img-fluid" alt="David Thompson" loading="lazy">
+                <img src="img/person/person-m-7.webp" class="img-fluid" alt="David Thompson" loading="lazy">
               </div>
               <div class="member-info">
                 <h4>David Thompson</h4>
@@ -804,7 +808,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="200">
                 <div class="testimonial-header">
-                  <img src="assets/img/person/person-f-12.webp" alt="Client" class="img-fluid" loading="lazy">
+                  <img src="img/person/person-f-12.webp" alt="Client" class="img-fluid" loading="lazy">
                   <div class="rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -830,7 +834,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="300">
                 <div class="testimonial-header">
-                  <img src="assets/img/person/person-m-8.webp" alt="Client" class="img-fluid" loading="lazy">
+                  <img src="img/person/person-m-8.webp" alt="Client" class="img-fluid" loading="lazy">
                   <div class="rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -856,7 +860,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="400">
                 <div class="testimonial-header">
-                  <img src="assets/img/person/person-f-6.webp" alt="Client" class="img-fluid" loading="lazy">
+                  <img src="img/person/person-f-6.webp" alt="Client" class="img-fluid" loading="lazy">
                   <div class="rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -882,7 +886,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="500">
                 <div class="testimonial-header">
-                  <img src="assets/img/person/person-m-12.webp" alt="Client" class="img-fluid" loading="lazy">
+                  <img src="img/person/person-m-12.webp" alt="Client" class="img-fluid" loading="lazy">
                   <div class="rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -908,7 +912,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="600">
                 <div class="testimonial-header">
-                  <img src="assets/img/person/person-f-10.webp" alt="Client" class="img-fluid" loading="lazy">
+                  <img src="img/person/person-f-10.webp" alt="Client" class="img-fluid" loading="lazy">
                   <div class="rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -1065,7 +1069,7 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Axis</span>
+            <span class="sitename">Actio</span>
           </a>
           <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           <div class="social-links d-flex mt-4">
@@ -1111,7 +1115,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Axis</strong> <span>All Rights Reserved</span></p>
+      <p>Â© <span>Copyright</span> <strong class="px-1 sitename">Axis</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
@@ -1130,17 +1134,17 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
