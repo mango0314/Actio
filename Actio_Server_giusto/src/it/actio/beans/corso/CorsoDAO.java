@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import it.actio.beans.persona.Corso;
+import it.actio.beans.persona.Persona;
 import it.actio.utils.DBManager;
 
 
@@ -111,6 +113,27 @@ public class CorsoDAO {
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Corso corso = recordToCorso(rs);
+				res.add(corso);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
+	
+	public Vector<Corso> getAll_seguiti(int idPersona) {
+		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso join iscrizione where idPersona = ? order by id";
+
+		Vector<Corso> res = new Vector<Persona>();
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idPersona);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Corso corso = recordToCorso(rs);

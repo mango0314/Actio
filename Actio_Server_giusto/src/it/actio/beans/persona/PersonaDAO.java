@@ -127,6 +127,10 @@ public class PersonaDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+
+	
+	
 
 	public Vector<Persona> getAllbyCognome(String cognome) {
 		String query = "SELECT * FROM PERSONA where cognome = ? order by id";

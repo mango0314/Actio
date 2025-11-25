@@ -60,19 +60,18 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.jsp" class="logo d-flex align-items-center" >
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Actio</h1>
+        <img src="img/logo_completo_actio.png" alt="logo" >
+        <!-- <h1 class="sitename">Actio</h1> -->
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#services">Servizi</a></li>
+          <li><a href="#about">Chi siamo</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -91,7 +90,7 @@
             </ul>
           </li>
           <li><a href="#contact">Contatti</a></li>
-          <li><a href="#contact">Accedi</a></li>
+          <li><a href=Index_privato>Accedi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -110,9 +109,10 @@
           <div class="col-lg-6">
             <div class="hero-content">
               <h1 data-aos="fade-up" data-aos-delay="200">Tutti i tuoi corsi, un solo click</h1>
-              <p data-aos="fade-up" data-aos-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+              <p data-aos="fade-up" data-aos-delay="300">Gestisci corsi, iscrizioni e allenamenti in un’unica piattaforma.
+					Per palestre, scuole sportive e appassionati di fitness.</p>
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-                <a href="#about" class="btn-primary">Get Started Today</a>
+                <a href=Registrazione class="btn-primary">Inizia ora</a>
                 <a href="#https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn-secondary glightbox">
                   <i class="bi bi-play-circle"></i>
                   Watch Demo
@@ -121,15 +121,15 @@
               <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
                 <div class="stat-item">
                   <div class="stat-number">500+</div>
-                  <div class="stat-label">Successful Projects</div>
+                  <div class="stat-label">Corsi disponibili</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number">98%</div>
-                  <div class="stat-label">Client Satisfaction</div>
+                  <div class="stat-label">Grado di soddisfazione</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number">10+</div>
-                  <div class="stat-label">Years Experience</div>
+                  <div class="stat-label">Anni di esperienza</div>
                 </div>
               </div>
             </div>
@@ -137,17 +137,8 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="img/about/about-square-10.webp" alt="Business Success" class="img-fluid">
-              <div class="floating-card" data-aos="zoom-in" data-aos-delay="600">
-                <div class="card-icon">
-                  <i class="bi bi-graph-up-arrow"></i>
-                </div>
-                <div class="card-content">
-                  <h5>Revenue Growth</h5>
-                  <div class="growth-percentage">+45%</div>
-                </div>
+              <img src="img/immagine_attivtà_home1.avif" alt="Business Success" class="img-fluid">
               </div>
-            </div>
           </div>
         </div>
 
@@ -156,13 +147,78 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
+    
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Servizi</span>
+        <h2>Cosa offriamo</h2>
+        <p>Actio offre dei servizi rivolti sia agli utenti che alle attività sportive che vogliono vivere lo sport in maniera smart.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-6 gx-5 justify-content-center">
+
+          <div class="col-lg-4 col-md-6 mx-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item">
+              <div class="service-icon">
+                <i class="bi bi-person"></i>
+              </div>
+              <h3>Utente</h3>
+              <p>
+				<ul>
+				      <li><strong>Profilo personale</strong>: accedi ai tuoi dati e alle iscrizioni in qualsiasi momento.</li>
+				      <li><strong>Catalogo corsi</strong>: scopri nuove attività e prenota in modo semplice e veloce.</li>
+				      <li><strong>Gestione iscrizioni</strong>: controlla i tuoi corsi e le prossime sessioni.</li>
+				      <li><strong>Esperienza digitale</strong>: tutto a portata di click, senza code o burocrazia.</li>
+				    </ul>
+			</p>
+              <a href="service-details.html" class="service-link">
+                Accedi <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item">
+              <div class="service-icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <h3>Attività sportiva</h3>
+              <p>
+				<ul>
+				      <li><strong>Gestione corsi</strong>: crea, modifica e pianifica i tuoi corsi in modo intuitivo.</li>
+				      <li><strong>Iscrizioni online</strong>: gestisci le iscrizioni e le scadenze</li>
+				      <li><strong>Gestione istruttori</strong>: assegna corsi, monitora disponibilità e performance.</li>
+				      <li><strong>Comunicazione diretta</strong>: invia notifiche e aggiornamenti ai tuoi iscritti.</li>
+				    </ul>
+			</p>
+              <a href="service-details.html" class="service-link">
+                Accedi <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div><!-- End Service Item -->
+
+          
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+    
     <section id="about" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">About</span>
-        <h2>About Us</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
+        <h2>Chi siamo</h2>
+        <p>
+			La nostra missione è semplificare la vita di chi organizza corsi e di chi li frequenta, 
+	creando un ecosistema unico dove palestre, scuole sportive, istruttori e appassionati si incontrano.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -170,12 +226,15 @@
         <div class="row align-items-center">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
             <div class="content">
-              <h2>Crafting Excellence Through Innovation and Dedication</h2>
-              <p class="lead">We are passionate professionals committed to delivering exceptional results that exceed expectations and drive meaningful transformation.</p>
+              <h2>Lo Sport come non c'è mai stato</h2>
+              <p class="lead">Actio è una piattaforma digitale innovativa, progettata per trasformare il modo in cui il mondo dello sport vive la tecnologia.</p>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p> Nasce dall’idea di rendere l’esperienza sportiva più semplice, organizzata e accessibile, creando un punto di incontro tra persone e attività sportive.
+Il nostro obiettivo è fornire un ambiente digitale intuitivo e sicuro, dove ogni interazione sia fluida e immediata. Actio non è solo un software: è un ecosistema che mette al centro la connessione, la trasparenza e la efficienza, valori fondamentali per chi vuole vivere lo sport senza barriere.
+Crediamo che la tecnologia debba essere al servizio delle persone, non il contrario.</p>
 
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Per questo Actio è pensata per essere semplice da usare, scalabile e adatta a ogni realtà sportiva, dalle piccole associazioni alle grandi strutture. La nostra piattaforma è il risultato di ricerca, passione e attenzione ai dettagli, con un design moderno e funzionalità che rispondono alle esigenze reali del settore.
+Actio è il futuro dello sport digitale: un luogo dove innovazione e movimento si incontrano per creare esperienze migliori, ogni giorno.</p>
 
               <div class="stats-row">
                 <div class="stat-item">
@@ -191,27 +250,13 @@
                   <div class="stat-label">Happy Clients</div>
                 </div>
               </div>
-
-              <div class="cta-section">
-                <a href="#" team="" class="btn-outline">Meet Our Team</a>
-              </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="image-wrapper">
-              <img src="img/about/about-square-12.webp" alt="About us" class="img-fluid">
-              <div class="floating-card" data-aos="zoom-in" data-aos-delay="500">
-                <div class="card-content">
-                  <div class="icon">
-                    <i class="bi bi-award"></i>
-                  </div>
-                  <div class="text">
-                    <h4>Award Winning</h4>
-                    <p>Recognized for excellence in our industry</p>
-                  </div>
-                </div>
-              </div>
+              <img src="img/immagine_team_home.jpeg" alt="About us" class="img-fluid">
+              
             </div>
           </div>
         </div>
@@ -219,188 +264,7 @@
       </div>
 
     </section><!-- /About Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Services</span>
-        <h2>What We Do Offer</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-graph-up-arrow"></i>
-              </div>
-              <h3>Strategic Consulting</h3>
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-palette"></i>
-              </div>
-              <h3>Brand Development</h3>
-              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-code-slash"></i>
-              </div>
-              <h3>Digital Solutions</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris vitae congue nulla. Proin eget tortor risus vestibulum.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-megaphone"></i>
-              </div>
-              <h3>Marketing Strategy</h3>
-              <p>Vivamus magna justo lacinia eget consectetur sed convallis at tellus. Cras ultricies ligula sed magna dictum porta.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-people"></i>
-              </div>
-              <h3>Team Building</h3>
-              <p>Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-bar-chart"></i>
-              </div>
-              <h3>Data Analytics</h3>
-              <p>Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh.</p>
-              <a href="service-details.html" class="service-link">
-                Learn More <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Why Us Section -->
-    <section id="why-us" class="why-us section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Why Us</span>
-        <h2>Why Choose Us</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="content">
-              <h2>Why Partner With Us</h2>
-              <p>We deliver exceptional results through proven expertise, cutting-edge innovation, and unwavering commitment to your success. Our comprehensive approach ensures sustainable growth and competitive advantage.</p>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="image-wrapper">
-              <img src="img/about/about-8.webp" alt="Professional team collaboration" class="img-fluid">
-            </div>
-          </div>
-        </div>
-
-        <div class="features-grid" data-aos="fade-up" data-aos-delay="400">
-          <div class="row g-5">
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="feature-item">
-                <div class="icon-wrapper">
-                  <i class="bi bi-lightbulb"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Innovation Leadership</h3>
-                  <p>We stay ahead of industry trends, implementing cutting-edge technologies and methodologies that drive transformational results for your business growth.</p>
-                </div>
-              </div>
-            </div><!-- End Feature Item -->
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="feature-item">
-                <div class="icon-wrapper">
-                  <i class="bi bi-award"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Proven Expertise</h3>
-                  <p>Our team brings decades of combined experience across multiple industries, ensuring strategic insights and tactical execution that delivers measurable outcomes.</p>
-                </div>
-              </div>
-            </div><!-- End Feature Item -->
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="feature-item">
-                <div class="icon-wrapper">
-                  <i class="bi bi-headset"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>24/7 Dedicated Support</h3>
-                  <p>Round-the-clock availability with personalized attention from dedicated account managers who understand your unique challenges and objectives.</p>
-                </div>
-              </div>
-            </div><!-- End Feature Item -->
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="feature-item">
-                <div class="icon-wrapper">
-                  <i class="bi bi-graph-up-arrow"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Cost Efficiency</h3>
-                  <p>Streamlined processes and intelligent resource allocation reduce overhead while maximizing ROI, delivering premium results within your budget parameters.</p>
-                </div>
-              </div>
-            </div><!-- End Feature Item -->
-
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Why Us Section -->
+   
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -669,307 +533,17 @@
 
         </div>
 
-        <div class="portfolio-conclusion" data-aos="fade-up" data-aos-delay="400">
-          <div class="conclusion-content">
-            <h4>Ready to elevate your business?</h4>
-            <p>Let's discuss how we can transform your digital presence and drive meaningful results for your organization.</p>
-            <div class="conclusion-actions">
-              <a href="#contact" class="primary-action">
-                Start Conversation
-                <i class="bi bi-arrow-right"></i>
-              </a>
-              <a href="#portfolio" class="secondary-action">
-                View All Projects
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </section><!-- /Portfolio Section -->
-
-    <!-- Team Section -->
-    <section id="team" class="team section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Team</span>
-        <h2>Meet Our Team</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="img/person/person-f-8.webp" class="img-fluid" alt="Sarah Johnson" loading="lazy">
-              </div>
-              <div class="member-info">
-                <h4>Sarah Johnson</h4>
-                <span>Chief Executive Officer</span>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas vestibulum tortor quam.</p>
-                <div class="social">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-instagram"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="img/person/person-m-12.webp" class="img-fluid" alt="Michael Chen" loading="lazy">
-              </div>
-              <div class="member-info">
-                <h4>Michael Chen</h4>
-                <span>Chief Technology Officer</span>
-                <p>Mauris blandit aliquet elit eget tincidunt nibh pulvinar rutrum tellus ac blandit elit eget tincidunt mauris.</p>
-                <div class="social">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="img/person/person-f-3.webp" class="img-fluid" alt="Emily Rodriguez" loading="lazy">
-              </div>
-              <div class="member-info">
-                <h4>Emily Rodriguez</h4>
-                <span>Creative Director</span>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec velit neque auctor.</p>
-                <div class="social">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-dribbble"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="350">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="img/person/person-m-7.webp" class="img-fluid" alt="David Thompson" loading="lazy">
-              </div>
-              <div class="member-info">
-                <h4>David Thompson</h4>
-                <span>Head of Operations</span>
-                <p>Curabitur arcu erat accumsan id imperdiet et porttitor at sem nulla facilisi mauris sit amet massa vitae tortor.</p>
-                <div class="social">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-facebook"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Team Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Testimonials</span>
-        <h2>What They Say</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="testimonial-slider swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 4000
-              },
-              "slidesPerView": 1,
-              "spaceBetween": 30,
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              },
-              "breakpoints": {
-                "768": {
-                  "slidesPerView": 2
-                },
-                "1200": {
-                  "slidesPerView": 3
-                }
-              }
-            }
-          </script>
-
-          <div class="swiper-wrapper">
-
-            <!-- Testimonial Slide 1 -->
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="200">
-                <div class="testimonial-header">
-                  <img src="img/person/person-f-12.webp" alt="Client" class="img-fluid" loading="lazy">
-                  <div class="rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-                <div class="testimonial-body">
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit sed eiusmod tempor.</p>
-                </div>
-                <div class="testimonial-footer">
-                  <h5>Jessica Martinez</h5>
-                  <span>UX Designer</span>
-                  <div class="quote-icon">
-                    <i class="bi bi-chat-quote-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Slide -->
-
-            <!-- Testimonial Slide 2 -->
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="300">
-                <div class="testimonial-header">
-                  <img src="img/person/person-m-8.webp" alt="Client" class="img-fluid" loading="lazy">
-                  <div class="rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-                <div class="testimonial-body">
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa.</p>
-                </div>
-                <div class="testimonial-footer">
-                  <h5>David Rodriguez</h5>
-                  <span>Software Engineer</span>
-                  <div class="quote-icon">
-                    <i class="bi bi-chat-quote-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Slide -->
-
-            <!-- Testimonial Slide 3 -->
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="400">
-                <div class="testimonial-header">
-                  <img src="img/person/person-f-6.webp" alt="Client" class="img-fluid" loading="lazy">
-                  <div class="rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-                <div class="testimonial-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud.</p>
-                </div>
-                <div class="testimonial-footer">
-                  <h5>Amanda Wilson</h5>
-                  <span>Creative Director</span>
-                  <div class="quote-icon">
-                    <i class="bi bi-chat-quote-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Slide -->
-
-            <!-- Testimonial Slide 4 -->
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="500">
-                <div class="testimonial-header">
-                  <img src="img/person/person-m-12.webp" alt="Client" class="img-fluid" loading="lazy">
-                  <div class="rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-                <div class="testimonial-body">
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
-                </div>
-                <div class="testimonial-footer">
-                  <h5>Ryan Thompson</h5>
-                  <span>Business Analyst</span>
-                  <div class="quote-icon">
-                    <i class="bi bi-chat-quote-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Slide -->
-
-            <!-- Testimonial Slide 5 -->
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="600">
-                <div class="testimonial-header">
-                  <img src="img/person/person-f-10.webp" alt="Client" class="img-fluid" loading="lazy">
-                  <div class="rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-                <div class="testimonial-body">
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-                </div>
-                <div class="testimonial-footer">
-                  <h5>Rachel Chen</h5>
-                  <span>Project Manager</span>
-                  <div class="quote-icon">
-                    <i class="bi bi-chat-quote-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Slide -->
-
-          </div>
-
-          <div class="swiper-navigation">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section light-background">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Contact</span>
-        <h2>Let's Connect</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
+        <span class="subtitle">Contatti</span>
+        <h2>Compila il form</h2>
+        <p>E' possibile contattarci attraverso i recapiti o il form sotto riportati. Vi risponderemo il prima possibile.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -981,8 +555,7 @@
                 <i class="bi bi-chat-dots"></i>
               </div>
               <div class="info-content">
-                <h4>Let's Connect</h4>
-                <p>We're here to discuss your vision and explore how we can bring it to life together.</p>
+                <h4>Recapiti</h4>
               </div>
             </div>
 
@@ -993,8 +566,8 @@
                   <i class="bi bi-envelope-open"></i>
                 </div>
                 <div class="detail-content">
-                  <span class="detail-label">Email us</span>
-                  <span class="detail-value">contact@example.com</span>
+                  <span class="detail-label">Email</span>
+                  <span class="detail-value">andrea.marengo.2003@gmail.com</span>
                 </div>
               </div>
 
@@ -1003,8 +576,8 @@
                   <i class="bi bi-telephone-outbound"></i>
                 </div>
                 <div class="detail-content">
-                  <span class="detail-label">Call us</span>
-                  <span class="detail-value">+1 (555) 432-8976</span>
+                  <span class="detail-label">Telefono</span>
+                  <span class="detail-value">+39 3333333</span>
                 </div>
               </div>
 
@@ -1013,8 +586,8 @@
                   <i class="bi bi-geo-alt-fill"></i>
                 </div>
                 <div class="detail-content">
-                  <span class="detail-label">Visit us</span>
-                  <span class="detail-value">547 Madison Avenue<br>New York, NY 10022</span>
+                  <span class="detail-label">Viene a trovarci</span>
+                  <span class="detail-value">Via Graziella Feo di Vito<br>Reggio Calabria, RC 10022</span>
                 </div>
               </div>
 
@@ -1025,7 +598,7 @@
           <div class="col-lg-7">
             <div class="form-wrapper">
               <div class="form-header">
-                <h3>Send us a message</h3>
+                <h3>Form</h3>
               </div>
 
               <form action="forms/contact.php" method="post" class="php-email-form">
@@ -1033,36 +606,36 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Full Name</label>
+                      <label>Nome</label>
                       <input type="text" name="name" required="">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Email Address</label>
+                      <label>Email </label>
                       <input type="email" name="email" required="">
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label>Subject</label>
+                  <label>Oggetto</label>
                   <input type="text" name="subject" required="">
                 </div>
 
                 <div class="form-group">
-                  <label for="projectMessage">Message</label>
+                  <label for="projectMessage">Messaggio</label>
                   <textarea name="message" id="projectMessage" rows="5" required=""></textarea>
                 </div>
 
                 <div class="my-3">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message">Il tuo messaggio è stato inviato. Grazie!</div>
                 </div>
 
                 <button type="submit" class="submit-btn">
-                  <span>Send Message</span>
+                  <span>Invia</span>
                   <i class="bi bi-arrow-right"></i>
                 </button>
 
@@ -1119,19 +692,19 @@
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
+          <h4>Contattaci</h4>
+          <p>Via Graziella Feo di vito</p>
+          <p>Reggio Calabria, RC 84508</p>
+          <p>Italia</p>
           <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+          <p><strong>Email:</strong> <span>andrea.marengo.2003@gmail.com</span></p>
         </div>
 
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>Â© <span>Copyright</span> <strong class="px-1 sitename">Axis</strong> <span>All Rights Reserved</span></p>
+      <p>@2025 <span>Copyright</span> <strong class="px-1 sitename">Actio</strong> <span>Tutti i diritti riservati</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->

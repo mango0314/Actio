@@ -3,6 +3,7 @@
   <display-name>Actio_Client</display-name>
   <welcome-file-list>
     <welcome-file>Index</welcome-file>
+    <welcome-file>/axis2-web/index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -13,5 +14,42 @@
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
     <url-pattern>/Index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Index_privato</display-name>
+    <servlet-name>Index_privato</servlet-name>
+    <servlet-class>it.actio.servlet.privato.Index_privato</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Index_privato</servlet-name>
+    <url-pattern>/Index_privato</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-name>AxisServlet</servlet-name>
+    <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/servlet/AxisServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Apache-Axis Admin Servlet Web Admin</display-name>
+    <servlet-name>AxisAdminServlet</servlet-name>
+    <servlet-class>org.apache.axis2.transport.http.AxisAdminServlet</servlet-class>
+    <load-on-startup>100</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AxisAdminServlet</servlet-name>
+    <url-pattern>/axis2-admin/*</url-pattern>
   </servlet-mapping>
 </web-app>
