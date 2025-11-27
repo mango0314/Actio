@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -36,10 +37,10 @@ public class TenutoDAO {
 
 
 
-	public Vector<Integer> getAllPersone() {
+	public List<Integer> getAllPersone() {
 		String query = "SELECT idPersona FROM tenuto";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -56,10 +57,10 @@ public class TenutoDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi() {
+	public List<Integer> getAllCorsi() {
 		String query = "SELECT idCorso FROM tenuto";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -76,10 +77,10 @@ public class TenutoDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi_byidPersona(int idPersona) {
+	public List<Integer> getAllCorsi_byidPersona(int idPersona) {
 		String query = "SELECT idCorso FROM tenuto where idPersona = ?";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -105,10 +106,10 @@ public class TenutoDAO {
 		return tenuto;
 	}
 
-	public Vector<Tenuto> getAll() {
+	public List<Tenuto> getAll() {
 		String query = "SELECT * FROM tenuto order by idPersona";
 
-		Vector<Tenuto> res = new Vector<Tenuto>();
+		List<Tenuto> res = new ArrayList<Tenuto>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

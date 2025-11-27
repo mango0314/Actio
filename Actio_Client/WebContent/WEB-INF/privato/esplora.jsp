@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import=" it.actio.services.UserServiceStub.Corso" %>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -7,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Actio - Home</title>
+  <title>Actio - Esplora</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -60,7 +62,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.jsp" class="logo d-flex align-items-center" >
+      <a href="Index_privato" class="logo d-flex align-items-center" >
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="img/logo_actio.png" alt="logo" >
         <!-- <h1 class="sitename">Actio</h1> -->
@@ -68,29 +70,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#services">Servizi</a></li>
-          <li><a href="#about">Chi siamo</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contatti</a></li>
-          <li><a href=Index_privato>Accedi</a></li>
+          <li><a href="Index_privato" class="active">Home</a></li>
+          <li><form class="d-flex" role="search" action="Esplora" method="GET">
+        <input class="form-control me-2" type="search" id = "parole_chiave" name="parole_chiave" placeholder="Scrivi qualcosa..." aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Cerca</button>
+      </form></li>
+          <li><a href=Login>Accedi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -100,107 +85,52 @@
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content">
-              <h1 data-aos="fade-up" data-aos-delay="200">Tutti i tuoi corsi, un solo click</h1>
-              <p data-aos="fade-up" data-aos-delay="300">Gestisci corsi, iscrizioni e allenamenti in un’unica piattaforma.
-					Per palestre, scuole sportive e appassionati di fitness.</p>
-              <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-                <a href=Registrazione class="btn-primary">Inizia ora</a>
-                <a href="#https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn-secondary glightbox">
-                  <i class="bi bi-play-circle"></i>
-                  Watch Demo
-                </a>
-              </div>
-              <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
-                <div class="stat-item">
-                  <div class="stat-number">500+</div>
-                  <div class="stat-label">Corsi disponibili</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">98%</div>
-                  <div class="stat-label">Grado di soddisfazione</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">10+</div>
-                  <div class="stat-label">Anni di esperienza</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="img/immagine_attivtà_home1.avif" alt="Business Success" class="img-fluid">
-              </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
+    <% Corso[] corsi_conPostiRimasti = (Corso[]) request.getAttribute("corsi_conPostiRimasti"); %>
     
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="corsi" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Servizi</span>
-        <h2>Cosa offriamo</h2>
-        <p>Actio offre dei servizi rivolti sia agli utenti che alle attività sportive che vogliono vivere lo sport in maniera smart.</p>
+        <span class="subtitle">Corsi</span>
+        <h2>Corsi disponibili</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-6 gx-5 justify-content-center">
+        
+        <% if (corsi_conPostiRimasti != null && corsi_conPostiRimasti.length != 0){
+       		for(Corso c : corsi_conPostiRimasti){
+        	%>
+        
 
           <div class="col-lg-4 col-md-6 mx-5" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item">
               <div class="service-icon">
                 <i class="bi bi-person"></i>
               </div>
-              <h3>Utente</h3>
+              <h3><%= c.getNome() %></h3>
               <p>
-				<ul>
-				      <li><strong>Profilo personale</strong>: accedi ai tuoi dati e alle iscrizioni in qualsiasi momento.</li>
-				      <li><strong>Catalogo corsi</strong>: scopri nuove attività e prenota in modo semplice e veloce.</li>
-				      <li><strong>Gestione iscrizioni</strong>: controlla i tuoi corsi e le prossime sessioni.</li>
-				      <li><strong>Esperienza digitale</strong>: tutto a portata di click, senza code o burocrazia.</li>
-				    </ul>
+				<%= c.getDescrizione() %>
 			</p>
               <a href="service-details.html" class="service-link">
                 Accedi <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <h3>Attività sportiva</h3>
-              <p>
-				<ul>
-				      <li><strong>Gestione corsi</strong>: crea, modifica e pianifica i tuoi corsi in modo intuitivo.</li>
-				      <li><strong>Iscrizioni online</strong>: gestisci le iscrizioni e le scadenze</li>
-				      <li><strong>Gestione istruttori</strong>: assegna corsi, monitora disponibilità e performance.</li>
-				      <li><strong>Comunicazione diretta</strong>: invia notifiche e aggiornamenti ai tuoi iscritti.</li>
-				    </ul>
-			</p>
-              <a href="service-details.html" class="service-link">
-                Accedi <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
+          
+          <% 	}
+        	} else {
+        	%>
+        	
+        	<div class="col-12">
+      			<div class="alert alert-info text-center">
+        		Nessun corso trovato.
+      		</div>
+    		</div>
+    		
+    		<% } %>
 
           
 

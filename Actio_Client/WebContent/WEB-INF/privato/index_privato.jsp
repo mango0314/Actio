@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import=" it.actio.services.UserServiceStub.Corso" %>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -62,33 +64,15 @@
 
       <a href="index.jsp" class="logo d-flex align-items-center" >
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="img/logo_completo_actio.png" alt="logo" >
+        <img src="img/logo_actio.png" alt="logo" >
         <!-- <h1 class="sitename">Actio</h1> -->
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#services">Servizi</a></li>
           <li><a href="#corsi">Corsi</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
+          <li><a href="Esplora">Esplora</a></li>
           <li><a href="#contact">Contatti</a></li>
           <li><a href=Login>Accedi</a></li>
         </ul>
@@ -100,10 +84,10 @@
 
   <main class="main">
 
-    <% Vector<Corso> corsi_seguiti = (Vector<Corso>) request.getAttribute("corsiSeguiti"); %>
+    <% Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); %>
     
     <!-- Services Section -->
-    <section id="corsi" class="corsi section">
+    <section id="corsi" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -115,7 +99,8 @@
 
         <div class="row gy-6 gx-5 justify-content-center">
         
-        <% for(Corso c : corsi_seguiti){}
+        <% if (corsi_seguiti != null && corsi_seguiti.length != 0){
+       		for(Corso c : corsi_seguiti){
         	%>
         
 
@@ -124,35 +109,19 @@
               <div class="service-icon">
                 <i class="bi bi-person"></i>
               </div>
-              <h3><%= nome_corso %></h3>
+              <h3><%= c.getNome() %></h3>
               <p>
-				<%= descrizione %>
+				<%= c.getDescrizione() %>
 			</p>
               <a href="service-details.html" class="service-link">
                 Accedi <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <h3>Attività sportiva</h3>
-              <p>
-				<ul>
-				      <li><strong>Gestione corsi</strong>: crea, modifica e pianifica i tuoi corsi in modo intuitivo.</li>
-				      <li><strong>Iscrizioni online</strong>: gestisci le iscrizioni e le scadenze</li>
-				      <li><strong>Gestione istruttori</strong>: assegna corsi, monitora disponibilità e performance.</li>
-				      <li><strong>Comunicazione diretta</strong>: invia notifiche e aggiornamenti ai tuoi iscritti.</li>
-				    </ul>
-			</p>
-              <a href="service-details.html" class="service-link">
-                Accedi <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
+          
+          <% 	}
+        	}
+        	%>
 
           
 

@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
-import it.actio.beans.persona.Corso;
-import it.actio.beans.persona.Persona;
+import it.actio.beans.corso.Corso;
 import it.actio.utils.DBManager;
 
 
@@ -28,6 +28,30 @@ public class CorsoDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				res = recordToCorso(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
+	
+	public List<Corso> getPosti_Rimasti() {
+		String query = "SELECT c.id, c.nome, c.descrizione, c.capienza, COUNT(i.idPersona) AS iscritti,"
+				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
+				+ "LEFT JOIN Iscrizione i ON c.id = i.idCorso "
+				+ "GROUP BY c.id, c.capienza;";
+
+		 List<Corso> res = new ArrayList<>();
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				Corso corso = recordToCorso(rs);
+				res.add(corso);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,10 +80,10 @@ public class CorsoDAO {
 		return res;
 	}
 
-	public Vector<String> getNomi() {
+	public List<String> getNomi() {
 		String query = "SELECT nome FROM CORSO";
 
-		Vector<String> res = new Vector<String>();
+		List<String> res = new ArrayList<String>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -105,10 +129,10 @@ public class CorsoDAO {
 		return corso;
 	}
 
-	public Vector<Corso> getAll() {
+	public List<Corso> getAll() {
 		String query = "SELECT * FROM CORSO order by id";
 
-		Vector<Corso> res = new Vector<Corso>();
+		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -125,10 +149,10 @@ public class CorsoDAO {
 		return res;
 	}
 	
-	public Vector<Corso> getAll_seguiti(int idPersona) {
+	public List<Corso> getAll_seguiti(int idPersona) {
 		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso join iscrizione where idPersona = ? order by id";
 
-		Vector<Corso> res = new Vector<Persona>();
+		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -146,10 +170,10 @@ public class CorsoDAO {
 		return res;
 	}
 
-	public Vector<Corso> getAll_compl(int tipo) {
+	public List<Corso> getAll_compl(int tipo) {
 		String query = "SELECT * FROM ATTIVITA where tipo = ? order by id";
 
-		Vector<Corso> res = new Vector<Corso>();
+		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -166,6 +190,75 @@ public class CorsoDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+
+	    public List<Corso> cercaCorsiConPostiRimasti(String keyword) {
+	        List<Corso> risultati = new ArrayList<>();
+
+	        if (keyword == null || keyword.trim().isEmpty()) {
+	            return risultati; // ritorna lista vuota se keyword nulla o vuota
+	        }
+
+	        String[] keywords = keyword.trim().split("\\s+");
+
+	        StringBuilder queryBuilder = new StringBuilder();
+	        queryBuilder.append(
+	            "SELECT c.id, c.nome, c.descrizione, c.capienza, a.nome AS attivita, " +
+	            "COUNT(i.idPersona) AS iscritti, " +
+	            "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
+	            "FROM Corso c " +
+	            "LEFT JOIN Fornito f ON c.id = f.idCorso " +
+	            "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
+	            "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
+	            "WHERE "
+	        );
+
+	        // Costruzione dinamica della WHERE con AND per ogni parola
+	        for (int i = 0; i < keywords.length; i++) {
+	            if (i > 0) {
+	                queryBuilder.append(" AND ");
+	            }
+	            queryBuilder.append("(c.nome LIKE ? OR a.nome LIKE ?)");
+	        }
+
+	        queryBuilder.append(" GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome");
+
+	        String query = queryBuilder.toString();
+
+	        Connection conn = null;
+	        PreparedStatement ps = null;
+	        ResultSet rs = null;
+
+	        try {
+	            conn = DBManager.startConnection();
+	            ps = conn.prepareStatement(query);
+
+	            int paramIndex = 1;
+	            for (String kw : keywords) {
+	                String pattern = "%" + kw + "%";
+	                ps.setString(paramIndex++, pattern);
+	                ps.setString(paramIndex++, pattern);
+	            }
+
+	            rs = ps.executeQuery();
+
+	            while (rs.next()) {
+	                risultati.add(recordToCorso(rs));
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            // Meglio loggare o rilanciare eccezioni personalizzate
+	        } finally {
+	            DBManager.closeConnection();
+	        }
+
+	        return risultati;
+	    }
+	
+
+	
+	
+
 
 	public boolean salva(Corso corso) {
 		String query = "INSERT INTO CORSO VALUES ( ?, ?, ?, ?)";

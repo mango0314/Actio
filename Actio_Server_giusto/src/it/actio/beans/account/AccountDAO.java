@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -142,10 +143,10 @@ public class AccountDAO {
 		return sq;
 	}
 
-	public Vector<String> getUsername() {
+	public List<String> getUsername() {
 		String query = "SELECT username FROM ACCOUNT";
 
-		Vector<String> res = new Vector<String>();
+		List<String> res = new ArrayList<String>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -175,10 +176,10 @@ public class AccountDAO {
 		return account;
 	}
 
-	public Vector<Account> getAll() {
+	public List<Account> getAll() {
 		String query = "SELECT * FROM ACCOUNT order by id";
 
-		Vector<Account> res = new Vector<Account>();
+		List<Account> res = new ArrayList<Account>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

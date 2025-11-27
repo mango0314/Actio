@@ -26,6 +26,16 @@
     <url-pattern>/Index_privato</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>Esplora</display-name>
+    <servlet-name>Esplora</servlet-name>
+    <servlet-class>it.actio.servlet.privato.Esplora</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Esplora</servlet-name>
+    <url-pattern>/Esplora</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>
     <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>

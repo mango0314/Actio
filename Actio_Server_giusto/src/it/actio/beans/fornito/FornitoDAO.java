@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -36,10 +37,10 @@ public class FornitoDAO {
 
 
 
-	public Vector<Integer> getAllAttivita() {
+	public List<Integer> getAllAttivita() {
 		String query = "SELECT idPersona FROM iscrizione";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -56,10 +57,10 @@ public class FornitoDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi() {
+	public List<Integer> getAllCorsi() {
 		String query = "SELECT idCorso FROM iscrizione";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -76,10 +77,10 @@ public class FornitoDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi_byidAttivita(int idAttivita) {
+	public List<Integer> getAllCorsi_byidAttivita(int idAttivita) {
 		String query = "SELECT idCorso FROM fornito where idAttivita = ?";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -105,10 +106,10 @@ public class FornitoDAO {
 		return fornito;
 	}
 
-	public Vector<Fornito> getAll() {
+	public List<Fornito> getAll() {
 		String query = "SELECT * FROM fornito order by idAttivita";
 
-		Vector<Fornito> res = new Vector<Fornito>();
+		List<Fornito> res = new ArrayList<Fornito>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

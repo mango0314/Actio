@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -54,10 +55,10 @@ public class AttivitaDAO {
 		return res;
 	}
 
-	public Vector<String> getNomi() {
+	public List<String> getNomi() {
 		String query = "SELECT nome FROM ATTIVITA";
 
-		Vector<String> res = new Vector<String>();
+		List<String> res = new ArrayList<String>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -104,10 +105,10 @@ public class AttivitaDAO {
 		return attivita;
 	}
 
-	public Vector<Attivita> getAll() {
+	public List<Attivita> getAll() {
 		String query = "SELECT * FROM ATTIVITA order by id";
 
-		Vector<Attivita> res = new Vector<Attivita>();
+		List<Attivita> res = new ArrayList<Attivita>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -124,10 +125,10 @@ public class AttivitaDAO {
 		return res;
 	}
 
-	public Vector<Attivita> getAllbytipo(int tipo) {
+	public List<Attivita> getAllbytipo(int tipo) {
 		String query = "SELECT * FROM ATTIVITA where tipo = ? order by id";
 
-		Vector<Attivita> res = new Vector<Attivita>();
+		List<Attivita> res = new ArrayList<Attivita>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -145,10 +146,10 @@ public class AttivitaDAO {
 		return res;
 	}
 	
-	public Vector<Attivita> getAllbycitta(String citta) {
+	public List<Attivita> getAllbycitta(String citta) {
 		String query = "SELECT * FROM ATTIVITA where citta = ? order by id";
 
-		Vector<Attivita> res = new Vector<Attivita>();
+		List<Attivita> res = new ArrayList<Attivita>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

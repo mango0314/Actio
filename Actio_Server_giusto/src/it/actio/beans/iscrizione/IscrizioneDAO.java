@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -36,10 +37,10 @@ public class IscrizioneDAO {
 
 
 
-	public Vector<Integer> getAllPersone() {
+	public List<Integer> getAllPersone() {
 		String query = "SELECT idPersona FROM iscrizione";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -56,10 +57,10 @@ public class IscrizioneDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi() {
+	public List<Integer> getAllCorsi() {
 		String query = "SELECT idCorso FROM iscrizione";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -76,10 +77,10 @@ public class IscrizioneDAO {
 		return res;
 	}
 	
-	public Vector<Integer> getAllCorsi_byidPersona(int idPersona) {
+	public List<Integer> getAllCorsi_byidPersona(int idPersona) {
 		String query = "SELECT idCorso FROM iscrizione where idPersona = ?";
 
-		Vector<Integer> res = new Vector<Integer>();
+		List<Integer> res = new ArrayList<Integer>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -108,10 +109,10 @@ public class IscrizioneDAO {
 		return iscrizione;
 	}
 
-	public Vector<Iscrizione> getAll() {
+	public List<Iscrizione> getAll() {
 		String query = "SELECT * FROM iscrizione order by idPersona";
 
-		Vector<Iscrizione> res = new Vector<Iscrizione>();
+		List<Iscrizione> res = new ArrayList<Iscrizione>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -128,10 +129,10 @@ public class IscrizioneDAO {
 		return res;
 	}
 
-	public Vector<Iscrizione> getAll_bystato(int stato) {
+	public List<Iscrizione> getAll_bystato(int stato) {
 		String query = "SELECT * FROM iscrizione where stato = ? order by idPersona";
 
-		Vector<Iscrizione> res = new Vector<Iscrizione>();
+		List<Iscrizione> res = new ArrayList<Iscrizione>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

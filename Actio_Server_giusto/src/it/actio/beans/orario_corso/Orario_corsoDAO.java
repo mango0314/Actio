@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.actio.utils.DBManager;
 
@@ -85,10 +86,10 @@ public class Orario_corsoDAO {
 		return orario_corso;
 	}
 
-	public Vector<Orario_corso> getAll() {
+	public List<Orario_corso> getAll() {
 		String query = "SELECT * FROM ORARIO_CORSO order by id";
 
-		Vector<Orario_corso> res = new Vector<Orario_corso>();
+		List<Orario_corso> res = new ArrayList<Orario_corso>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -105,10 +106,10 @@ public class Orario_corsoDAO {
 		return res;
 	}
 
-	public Vector<Orario_corso> getAllbyidCorso(int idCorso) {
+	public List<Orario_corso> getAllbyidCorso(int idCorso) {
 		String query = "SELECT * FROM ORARIO_CORSO where idCorso = ? order by id";
 
-		Vector<Orario_corso> res = new Vector<Orario_corso>();
+		List<Orario_corso> res = new ArrayList<Orario_corso>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {

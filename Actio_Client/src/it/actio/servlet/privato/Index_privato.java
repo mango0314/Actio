@@ -1,10 +1,15 @@
 package it.actio.servlet.privato;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import it.actio.services.UserServiceStub;
+import it.actio.services.UserServiceStub.Corso;
 
 /**
  * Servlet implementation class Index_privato
@@ -25,10 +30,18 @@ public class Index_privato extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubù
+		int idPersona = 1;
 		
+		UserServiceStub stub = new UserServiceStub();
+		UserServiceStub.GetCorsiSeguiti req = new UserServiceStub.GetCorsiSeguiti();
+		req.setIdPersona(idPersona);
 		
+		UserServiceStub.GetCorsiSeguitiResponse resp = stub.getCorsiSeguiti(req);
 		
+		Corso[] corsi_seguiti = resp.get_return();
 		
+		request.setAttribute("corsiSeguiti", corsi_seguiti);
+				
 		request.getRequestDispatcher("WEB-INF/privato/index_privato.jsp").forward(request, response);
 	}
 
