@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.axis2.AxisFault;
 
 import it.actio.services.UserServiceStub;
-import it.actio.services.UserServiceStub.Corso;
+
+import it.actio.services.UserServiceStub.CorsoConAttivitaDTO;;
 
 /**
  * Servlet implementation class Index_privato
@@ -55,7 +56,7 @@ public class Esplora extends HttpServlet {
 		
 		UserServiceStub.CercaCorsi_conPostiRimastiResponse resp = stub.cercaCorsi_conPostiRimasti(req);
 		
-		Corso[] corsiCercati_conPostiRimasti = resp.get_return();
+		CorsoConAttivitaDTO[] corsiCercati_conPostiRimasti = resp.get_return();
 		
 		request.setAttribute("corsi_conPostiRimasti", corsiCercati_conPostiRimasti);
 		request.getRequestDispatcher("WEB-INF/privato/esplora.jsp").forward(request, response);
@@ -68,7 +69,7 @@ public class Esplora extends HttpServlet {
 		
 		UserServiceStub.GetCorsi_conPostiRimastiResponse resp = stub.getCorsi_conPostiRimasti(req);
 		
-		Corso[] corsi_conPostiRimasti = resp.get_return();
+		CorsoConAttivitaDTO[] corsi_conPostiRimasti = resp.get_return();
 		
 		request.setAttribute("corsi_conPostiRimasti", corsi_conPostiRimasti);
 		request.getRequestDispatcher("WEB-INF/privato/esplora.jsp").forward(request, response);

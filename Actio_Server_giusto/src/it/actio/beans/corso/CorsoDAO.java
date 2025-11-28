@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.actio.beans.corso.Corso;
+import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.utils.DBManager;
 
 
@@ -36,13 +37,15 @@ public class CorsoDAO {
 		return res;
 	}
 	
-	public List<Corso> getPosti_Rimasti() {
-		String query = "SELECT c.id, c.nome, c.descrizione, c.capienza, COUNT(i.idPersona) AS iscritti,"
+	public List<CorsoConAttivitaDTO> getPosti_Rimasti() {
+		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
 				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
+				+ "LEFT JOIN Fornito f on c.id = f.idCorso "
+				+ "LEFT JOIN Attivita a on f.idAttivita = a.id "
 				+ "LEFT JOIN Iscrizione i ON c.id = i.idCorso "
-				+ "GROUP BY c.id, c.capienza;";
+				+ "GROUP BY c.id, nome_corso, c.descrizione, c.capienza, nome_attivita;";
 
-		 List<Corso> res = new ArrayList<>();
+		 List<CorsoConAttivitaDTO > res = new ArrayList<>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
@@ -50,8 +53,14 @@ public class CorsoDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				Corso corso = recordToCorso(rs);
-				res.add(corso);
+				CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+                dto.setId(rs.getInt("id"));
+                dto.setNomeCorso(rs.getString("nome_corso"));
+                dto.setDescrizione(rs.getString("descrizione"));
+                dto.setCapienza(rs.getInt("capienza"));
+                dto.setNomeAttivita(rs.getString("nome_attivita"));
+                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+                res.add(dto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -191,8 +200,8 @@ public class CorsoDAO {
 		return res;
 	}
 
-	    public List<Corso> cercaCorsiConPostiRimasti(String keyword) {
-	        List<Corso> risultati = new ArrayList<>();
+	    public List<CorsoConAttivitaDTO> cercaCorsiConPostiRimasti(String keyword) {
+	        List<CorsoConAttivitaDTO> risultati = new ArrayList<>();
 
 	        if (keyword == null || keyword.trim().isEmpty()) {
 	            return risultati; // ritorna lista vuota se keyword nulla o vuota
@@ -202,7 +211,7 @@ public class CorsoDAO {
 
 	        StringBuilder queryBuilder = new StringBuilder();
 	        queryBuilder.append(
-	            "SELECT c.id, c.nome, c.descrizione, c.capienza, a.nome AS attivita, " +
+	            "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
 	            "COUNT(i.idPersona) AS iscritti, " +
 	            "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
 	            "FROM Corso c " +
@@ -242,7 +251,14 @@ public class CorsoDAO {
 	            rs = ps.executeQuery();
 
 	            while (rs.next()) {
-	                risultati.add(recordToCorso(rs));
+	            	CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+	                dto.setId(rs.getInt("id"));
+	                dto.setNomeCorso(rs.getString("nome_corso"));
+	                dto.setDescrizione(rs.getString("descrizione"));
+	                dto.setCapienza(rs.getInt("capienza"));
+	                dto.setNomeAttivita(rs.getString("nome_attivita"));
+	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+	                risultati.add(dto);
 	            }
 
 	        } catch (SQLException e) {
