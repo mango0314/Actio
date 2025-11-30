@@ -36,6 +36,16 @@
     <url-pattern>/Esplora</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>DettaglioCorso</display-name>
+    <servlet-name>DettaglioCorso</servlet-name>
+    <servlet-class>it.actio.servlet.privato.DettaglioCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DettaglioCorso</servlet-name>
+    <url-pattern>/DettaglioCorso</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>
     <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>

@@ -45,6 +45,22 @@
 
         
            /**
+            * auto generated Axis2 call back method for getCorso_conAttivita method
+            * override this method for handling normal response from getCorso_conAttivita operation
+            */
+           public void receiveResultgetCorso_conAttivita(
+                    it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getCorso_conAttivita operation
+           */
+            public void receiveErrorgetCorso_conAttivita(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getCorsi_conPostiRimasti method
             * override this method for handling normal response from getCorsi_conPostiRimasti operation
             */
@@ -90,6 +106,22 @@
            * override this method for handling error response from cercaCorsi_conPostiRimasti operation
            */
             public void receiveErrorcercaCorsi_conPostiRimasti(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getOrari method
+            * override this method for handling normal response from getOrari operation
+            */
+           public void receiveResultgetOrari(
+                    it.actio.services.UserServiceStub.GetOrariResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getOrari operation
+           */
+            public void receiveErrorgetOrari(java.lang.Exception e) {
             }
                 
 

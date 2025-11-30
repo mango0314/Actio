@@ -53,6 +53,8 @@ public class Orario_corsoDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	
 
 
 	public int getUltimoId() {

@@ -37,13 +37,44 @@ public class CorsoDAO {
 		return res;
 	}
 	
+	public CorsoConAttivitaDTO getCorso_conAttivita(int idCorso) {
+		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
+				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
+				+ "LEFT JOIN Fornito f on c.id = f.idCorso "
+				+ "LEFT JOIN Attivita a on f.idAttivita = a.id "
+				+ "LEFT JOIN Iscrizione i ON c.id = i.idCorso "
+				+ "WHERE c.id = ? "
+				+ "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome;";
+
+		 CorsoConAttivitaDTO res = new CorsoConAttivitaDTO();
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idCorso);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+                res.setId(rs.getInt("id"));
+                res.setNomeCorso(rs.getString("nome_corso"));
+                res.setDescrizione(rs.getString("descrizione"));
+                res.setCapienza(rs.getInt("capienza"));
+                res.setNomeAttivita(rs.getString("nome_attivita"));
+                res.setPostiRimasti(rs.getInt("posti_rimasti"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
+	
 	public List<CorsoConAttivitaDTO> getPosti_Rimasti() {
 		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
 				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
 				+ "LEFT JOIN Fornito f on c.id = f.idCorso "
 				+ "LEFT JOIN Attivita a on f.idAttivita = a.id "
 				+ "LEFT JOIN Iscrizione i ON c.id = i.idCorso "
-				+ "GROUP BY c.id, nome_corso, c.descrizione, c.capienza, nome_attivita;";
+				+ "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome;";
 
 		 List<CorsoConAttivitaDTO > res = new ArrayList<>();
 		PreparedStatement ps;
@@ -52,7 +83,7 @@ public class CorsoDAO {
 			ps = conn.prepareStatement(query);
 			
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
                 dto.setId(rs.getInt("id"));
                 dto.setNomeCorso(rs.getString("nome_corso"));

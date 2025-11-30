@@ -1,3 +1,4 @@
+<%@page import="it.actio.services.UserServiceStub.CorsoConAttivitaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import=" it.actio.services.UserServiceStub.Corso" %>
@@ -84,7 +85,7 @@
 
   <main class="main">
 
-    <% Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); %>
+    <% CorsoConAttivitaDTO corso_conAttivita_e_PostiRimasti = (CorsoConAttivitaDTO) request.getAttribute("corso_conAttivita_e_PostiRimasti"); %>
     
     <section id="hero" class="hero section light-background">
 
@@ -93,11 +94,10 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="hero-content">
-              <h1 data-aos="fade-up" data-aos-delay="200">Tutti i tuoi corsi, un solo click</h1>
-              <p data-aos="fade-up" data-aos-delay="300">Gestisci corsi, iscrizioni e allenamenti in un’unica piattaforma.
-					Per palestre, scuole sportive e appassionati di fitness.</p>
+              <h1 data-aos="fade-up" data-aos-delay="200"><%= corso_conAttivita_e_PostiRimasti.getNomeCorso() %></h1>
+              <p data-aos="fade-up" data-aos-delay="300"><%= corso_conAttivita_e_PostiRimasti.getDescrizione() %></p>
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-                <a href=Registrazione class="btn-primary">Inizia ora</a>
+                <a href=#orari class="btn-primary">Orari <i class="bi bi-arrow-down"></i></a>
                 <a href="#https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn-secondary glightbox">
                   <i class="bi bi-play-circle"></i>
                   Watch Demo
@@ -105,24 +105,21 @@
               </div>
               <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
                 <div class="stat-item">
-                  <div class="stat-number">500+</div>
-                  <div class="stat-label">Corsi disponibili</div>
+                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getNomeAttivita() %></div>
+                  <div class="stat-label">Attività</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">98%</div>
-                  <div class="stat-label">Grado di soddisfazione</div>
+                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getPostiRimasti() %></div>
+                  <div class="stat-label">Posti rimasti</div>
                 </div>
-                <div class="stat-item">
-                  <div class="stat-number">10+</div>
-                  <div class="stat-label">Anni di esperienza</div>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="img/immagine_attivtà_home1.avif" alt="Business Success" class="img-fluid">
+              <img src="img/img_fitness.png" alt="img pilates" class="img-fluid">
               </div>
           </div>
         </div>
@@ -131,103 +128,56 @@
 
     </section><!-- /Hero Section -->
     
-    <!-- Services Section -->
-    <section id="corsi" class="services section">
+       <section id="orari" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Corsi</span>
-        <h2>Corsi seguiti</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-6 gx-5 justify-content-center">
-        
-        <% if (corsi_seguiti != null && corsi_seguiti.length != 0){
-       		for(Corso c : corsi_seguiti){
-        	%>
-        
-
-          <div class="col-lg-4 col-md-6 mx-5" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="bi bi-person"></i>
-              </div>
-              <h3><%= c.getNome() %></h3>
-              <p>
-				<%= c.getDescrizione() %>
-			</p>
-              <a href="service-details.html" class="service-link">
-                Accedi <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div><!-- End Service Item -->
-          
-          <% 	}
-        	}
-        	%>
-
-          
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-    
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">About</span>
-        <h2>Chi siamo</h2>
+        <span class="subtitle">Orari</span>
+        <h2> Tabella orari </h2>
         <p>
 			La nostra missione è semplificare la vita di chi organizza corsi e di chi li frequenta, 
 	creando un ecosistema unico dove palestre, scuole sportive, istruttori e appassionati si incontrano.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
 
-        <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="content">
-              <h2>Lo Sport come non c'è mai stato</h2>
-              <p class="lead">Actio è una piattaforma digitale innovativa, progettata per trasformare il modo in cui il mondo dello sport vive la tecnologia.</p>
-
-              <p> Nasce dall’idea di rendere l’esperienza sportiva più semplice, organizzata e accessibile, creando un punto di incontro tra persone e attività sportive.
-Il nostro obiettivo è fornire un ambiente digitale intuitivo e sicuro, dove ogni interazione sia fluida e immediata. Actio non è solo un software: è un ecosistema che mette al centro la connessione, la trasparenza e la efficienza, valori fondamentali per chi vuole vivere lo sport senza barriere.
-Crediamo che la tecnologia debba essere al servizio delle persone, non il contrario.</p>
-
-              <p>Per questo Actio è pensata per essere semplice da usare, scalabile e adatta a ogni realtà sportiva, dalle piccole associazioni alle grandi strutture. La nostra piattaforma è il risultato di ricerca, passione e attenzione ai dettagli, con un design moderno e funzionalità che rispondono alle esigenze reali del settore.
-Actio è il futuro dello sport digitale: un luogo dove innovazione e movimento si incontrano per creare esperienze migliori, ogni giorno.</p>
-
-              <div class="stats-row">
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"></div>
-                  <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="850" data-purecounter-duration="1"></div>
-                  <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="240" data-purecounter-duration="1"></div>
-                  <div class="stat-label">Happy Clients</div>
-                </div>
-              </div>
+            <div class="content d-flex justify-content-center">
+                <table class="table table-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Ora inizio</th>
+                            <th scope="col">Ora fine</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td>19:00</td>
+                            <td>20:30</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Meercoledì</th>
+                            <td>17:00</td>
+                            <td>18:30</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Venerdì</th>
+                            <td>18:00</td>
+                            <td>10:30</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-          </div>
 
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="image-wrapper">
-              <img src="img/immagine_team_home.jpeg" alt="About us" class="img-fluid">
-              
-            </div>
-          </div>
         </div>
+    </div>
+</div>
 
-      </div>
+          
 
     </section><!-- /About Section -->
    

@@ -101,6 +101,7 @@
         
         <% if (corsi_seguiti != null && corsi_seguiti.length != 0){
        		for(Corso c : corsi_seguiti){
+       			String DettaglioCorso = "DettaglioCorso?idCorso=" + c.getId();
         	%>
         
 
@@ -113,8 +114,8 @@
               <p>
 				<%= c.getDescrizione() %>
 			</p>
-              <a href="service-details.html" class="service-link">
-                Accedi <i class="bi bi-arrow-right"></i>
+              <a href=<%= DettaglioCorso %> class="service-link">
+                Seleziona <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div><!-- End Service Item -->
