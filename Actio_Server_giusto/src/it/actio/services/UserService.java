@@ -8,6 +8,8 @@ import it.actio.beans.corso.CorsoDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.OrarioCorsoDTO;
 
+import java.sql.Time;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +54,12 @@ public class UserService {
             dto.setIdCorso(oc.getIdCorso());
             dto.setGiornoSettimana(oc.getGiorno_settimana());
             dto.setGiornoSettimanaLabel(mapGiorno(oc.getGiorno_settimana()));
-            dto.setOrarioInizio(oc.getOrarioInizio());
-            dto.setOrarioFine(oc.getOrarioFine());
+            dto.setOrarioInizio(formatTime(oc.getOrarioInizio()));
+            dto.setOrarioFine(formatTime(oc.getOrarioFine()));
             dtoList.add(dto);
         }
     	
-    	return list.toArray(new OrarioCorsoDTO[0]);
+    	return dtoList.toArray(new OrarioCorsoDTO[0]);
     }
     
     private String mapGiorno(int giorno) {
@@ -72,6 +74,11 @@ public class UserService {
             default: return "Sconosciuto";
         }
     }
+    
+    private String formatTime(Time t) {
+        return t != null ? t.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")) : null;
+    }
+
 
 
 

@@ -1557,7 +1557,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "cercaCorsi_conPostiRimasti",
-                "ns4");
+                "ns3");
 
             
 
@@ -1687,7 +1687,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2231,7 +2231,7 @@
                         */
 
                         
-                                    protected org.apache.axis2.databinding.types.Time localOrarioFine ;
+                                    protected java.lang.String localOrarioFine ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -2247,9 +2247,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return org.apache.axis2.databinding.types.Time
+                           * @return java.lang.String
                            */
-                           public  org.apache.axis2.databinding.types.Time getOrarioFine(){
+                           public  java.lang.String getOrarioFine(){
                                return localOrarioFine;
                            }
 
@@ -2259,7 +2259,7 @@
                                * Auto generated setter method
                                * @param param OrarioFine
                                */
-                               public void setOrarioFine(org.apache.axis2.databinding.types.Time param){
+                               public void setOrarioFine(java.lang.String param){
                             localOrarioFineTracker = true;
                                    
                                             this.localOrarioFine=param;
@@ -2273,7 +2273,7 @@
                         */
 
                         
-                                    protected org.apache.axis2.databinding.types.Time localOrarioInizio ;
+                                    protected java.lang.String localOrarioInizio ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -2289,9 +2289,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return org.apache.axis2.databinding.types.Time
+                           * @return java.lang.String
                            */
-                           public  org.apache.axis2.databinding.types.Time getOrarioInizio(){
+                           public  java.lang.String getOrarioInizio(){
                                return localOrarioInizio;
                            }
 
@@ -2301,7 +2301,7 @@
                                * Auto generated setter method
                                * @param param OrarioInizio
                                */
-                               public void setOrarioInizio(org.apache.axis2.databinding.types.Time param){
+                               public void setOrarioInizio(java.lang.String param){
                             localOrarioInizioTracker = true;
                                    
                                             this.localOrarioInizio=param;
@@ -2438,7 +2438,7 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localOrarioFine));
+                                                   xmlWriter.writeCharacters(localOrarioFine);
                                             
                                           }
                                     
@@ -2456,7 +2456,7 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localOrarioInizio));
+                                                   xmlWriter.writeCharacters(localOrarioInizio);
                                             
                                           }
                                     
@@ -2876,7 +2876,7 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setOrarioFine(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToTime(content));
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {
                                            
@@ -2904,7 +2904,7 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setOrarioInizio(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToTime(content));
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {
                                            
@@ -2950,7 +2950,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorsiSeguitiResponse",
-                "ns4");
+                "ns3");
 
             
 
@@ -3126,7 +3126,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -3494,7 +3494,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorsi_conPostiRimastiResponse",
-                "ns4");
+                "ns3");
 
             
 
@@ -3670,7 +3670,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -4038,7 +4038,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "cercaCorsi_conPostiRimastiResponse",
-                "ns4");
+                "ns3");
 
             
 
@@ -4214,7 +4214,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -4582,7 +4582,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getOrari",
-                "ns4");
+                "ns3");
 
             
 
@@ -4695,7 +4695,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -5913,7 +5913,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorso_conAttivitaResponse",
-                "ns4");
+                "ns3");
 
             
 
@@ -6037,7 +6037,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -6351,7 +6351,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getOrariResponse",
-                "ns4");
+                "ns3");
 
             
 
@@ -6527,7 +6527,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -6895,7 +6895,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorso_conAttivita",
-                "ns4");
+                "ns3");
 
             
 
@@ -7008,7 +7008,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -7322,7 +7322,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorsiSeguiti",
-                "ns4");
+                "ns3");
 
             
 
@@ -7435,7 +7435,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -7749,7 +7749,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://services.actio.it",
                 "getCorsi_conPostiRimasti",
-                "ns4");
+                "ns3");
 
             
 
@@ -7819,7 +7819,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://services.actio.it")){
-                return "ns4";
+                return "ns3";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -8101,7 +8101,7 @@
         /* This type was generated from the piece of schema that had
                 name = Corso
                 Namespace URI = http://corso.beans.actio.it/xsd
-                Namespace Prefix = ns3
+                Namespace Prefix = ns2
                 */
             
 
@@ -8467,7 +8467,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://corso.beans.actio.it/xsd")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }

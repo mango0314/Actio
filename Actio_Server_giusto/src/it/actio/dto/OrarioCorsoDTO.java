@@ -1,6 +1,5 @@
 package it.actio.dto;
 
-import java.sql.Time;
 
 public class OrarioCorsoDTO {
 
@@ -8,8 +7,8 @@ public class OrarioCorsoDTO {
     private int idCorso;
     private int giornoSettimana;
     private String giornoSettimanaLabel; 
-    private Time orarioInizio;
-    private Time orarioFine;
+    private String orarioInizio;
+    private String orarioFine;
 
     public int getId() {
         return id;
@@ -39,17 +38,18 @@ public class OrarioCorsoDTO {
         this.giornoSettimanaLabel = giornoSettimanaLabel;
     }
 
-    public Time getOrarioInizio() {
-        return orarioInizio;
-    }
-    public void setOrarioInizio(Time orarioInizio) {
-        this.orarioInizio = orarioInizio;
-    }
-
-    public Time getOrarioFine() {
-        return orarioFine;
-    }
-    public void setOrarioFine(Time orarioFine) {
-        this.orarioFine = orarioFine;
-    }
+  
+    
+	public void setOrarioInizio(String orarioInizio) {
+		this.orarioInizio = orarioInizio;
+	}
+	public void setOrarioFine(String orarioFine) {
+		this.orarioFine = orarioFine;
+	}
+	public String getOrarioInizio() {
+		return orarioInizio;
+	}
+	public String getOrarioFine() {
+		return orarioFine;
+	}
 }
