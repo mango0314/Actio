@@ -5,6 +5,10 @@
     <welcome-file>Index</welcome-file>
     <welcome-file>/axis2-web/index.jsp</welcome-file>
   </welcome-file-list>
+  <welcome-file-list>
+    <welcome-file>Index_privato</welcome-file>
+    <welcome-file>/axis2-web/index.jsp</welcome-file>
+  </welcome-file-list>
   <servlet>
     <description></description>
     <display-name>Index</display-name>
@@ -23,7 +27,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Index_privato</servlet-name>
-    <url-pattern>/Index_privato</url-pattern>
+    <url-pattern>/privato/Index_privato</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -33,7 +37,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Esplora</servlet-name>
-    <url-pattern>/Esplora</url-pattern>
+    <url-pattern>/privato/Esplora</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -43,7 +47,27 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DettaglioCorso</servlet-name>
-    <url-pattern>/DettaglioCorso</url-pattern>
+    <url-pattern>/privato/DettaglioCorso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RichiediLogin</display-name>
+    <servlet-name>RichiediLogin</servlet-name>
+    <servlet-class>it.actio.servlet.RichiediLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiediLogin</servlet-name>
+    <url-pattern>/RichiediLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>it.actio.servlet.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>Apache-Axis Servlet</display-name>

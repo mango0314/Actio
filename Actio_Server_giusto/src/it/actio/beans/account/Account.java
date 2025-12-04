@@ -2,17 +2,12 @@ package it.actio.beans.account;
 
 public class Account {
 	private int id;
-	private String username;
+	private String email;
 	private String password;
 	private int ruolo;
 	private Integer idAttivita;
 	private Integer idPersona;
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -39,7 +34,7 @@ public class Account {
 	}
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", ruolo=" + ruolo
+		return "Account [id=" + id + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo
 				+ ", idCorso=" + idAttivita + ", idPersona=" + idPersona + "]";
 	}
 	public int getId() {
@@ -47,6 +42,12 @@ public class Account {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

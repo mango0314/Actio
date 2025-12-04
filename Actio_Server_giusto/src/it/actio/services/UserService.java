@@ -1,5 +1,7 @@
 package it.actio.services;
 
+import it.actio.beans.account.Account;
+import it.actio.beans.account.AccountDAO;
 import it.actio.beans.corso.Corso;
 import it.actio.beans.orario_corso.Orario_corso;
 import it.actio.beans.orario_corso.Orario_corsoDAO;
@@ -12,11 +14,13 @@ import java.sql.Time;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class UserService {
     
     CorsoDAO corsoDAO = new CorsoDAO();
     Orario_corsoDAO orario_corsoDAO = new Orario_corsoDAO();
+    AccountDAO accountDAO = new AccountDAO();
     
    
     
@@ -77,6 +81,37 @@ public class UserService {
     
     private String formatTime(Time t) {
         return t != null ? t.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")) : null;
+    }
+    
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+    	    "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    	);
+    
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile(
+    	    "^(?=.*[A-Z])(?=.*[@$!%*?&#().,;:+\\-_=]).{8,}$"
+    	);
+
+
+    
+    public boolean ValidaCredenziali(String email, String password){
+    	
+    	boolean valide = false;
+    	
+    	if (!EMAIL_PATTERN.matcher(email).matches() ||
+    	        !PASSWORD_PATTERN.matcher(password).matches()) {
+    	        return valide;
+    	    }
+    	else{
+    		valide = true;
+    		return valide;
+    	}
+
+
+    	
+    }
+    
+    public Account getAccount(String email, String password){
+    	return accountDAO.getAccount(email, password);
     }
 
 

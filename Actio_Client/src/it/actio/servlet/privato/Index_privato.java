@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.actio.services.UserServiceStub;
 import it.actio.services.UserServiceStub.Corso;
@@ -30,6 +31,14 @@ public class Index_privato extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubù
+		
+			HttpSession session = request.getSession(false); 
+		
+		if (session.getAttribute("autenticato") == null) {
+			response.sendRedirect("/RichiediLogin?errore=1"); 
+			
+			return;
+		} 
 		int idPersona = 1;
 		
 		UserServiceStub stub = new UserServiceStub();
@@ -42,7 +51,7 @@ public class Index_privato extends HttpServlet {
 		
 		request.setAttribute("corsiSeguiti", corsi_seguiti);
 				
-		request.getRequestDispatcher("WEB-INF/privato/index_privato.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
 	}
 
 }

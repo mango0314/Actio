@@ -35,6 +35,27 @@ public class AccountDAO {
 		return res;
 	}
 	
+	public Account getAccount(String email, String password) {
+		String query = "SELECT * FROM ACCOUNT WHERE email =? and BINARY password = ?";
+
+		Account res = null;
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				res = recordToAccount(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
+	
 	public int getId(String username) {
 		String query = "SELECT id FROM ACCOUNT WHERE username =?";
 
@@ -165,7 +186,8 @@ public class AccountDAO {
 
 	private Account recordToAccount(ResultSet rs) throws SQLException {
 		Account account = new Account();
-		account.setUsername(rs.getString("username"));
+		account.setId(rs.getInt("id"));
+		account.setEmail(rs.getString("email"));
 		account.setPassword(rs.getString("password"));
 		account.setRuolo(rs.getInt("ruolo"));
 		if (rs.getObject("idPersona") != null)

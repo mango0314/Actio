@@ -7,12 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.axis2.AxisFault;
 
 import it.actio.services.UserServiceStub;
 
-import it.actio.services.UserServiceStub.CorsoConAttivitaDTO;;
+import it.actio.services.UserServiceStub.CorsoConAttivitaDTO;
 
 /**
  * Servlet implementation class Index_privato
@@ -46,6 +47,14 @@ public class Esplora extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubù
 		
+		HttpSession session = request.getSession(false); 
+		
+		if (session.getAttribute("autenticato") == null) {
+			response.sendRedirect("/RichiediLogin?errore=1"); 
+			
+			return;
+		} 
+		
 		String keywords = request.getParameter("parole_chiave");
 		
 		if( keywords != null && !keywords.trim().isEmpty()){
@@ -59,7 +68,7 @@ public class Esplora extends HttpServlet {
 		CorsoConAttivitaDTO[] corsiCercati_conPostiRimasti = resp.get_return();
 		
 		request.setAttribute("corsi_conPostiRimasti", corsiCercati_conPostiRimasti);
-		request.getRequestDispatcher("WEB-INF/privato/esplora.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
 		return;
 		}
 		else{
@@ -72,7 +81,7 @@ public class Esplora extends HttpServlet {
 		CorsoConAttivitaDTO[] corsi_conPostiRimasti = resp.get_return();
 		
 		request.setAttribute("corsi_conPostiRimasti", corsi_conPostiRimasti);
-		request.getRequestDispatcher("WEB-INF/privato/esplora.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
 		}
 	}
 
