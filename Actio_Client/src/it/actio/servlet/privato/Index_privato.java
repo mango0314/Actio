@@ -1,7 +1,6 @@
 package it.actio.servlet.privato;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.actio.services.UserServiceStub;
+import it.actio.services.UserServiceStub.Account;
 import it.actio.services.UserServiceStub.Corso;
 
 /**
@@ -32,6 +32,11 @@ public class Index_privato extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubù
 		
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+		response.setHeader("Pragma", "no-cache"); 
+		response.setDateHeader("Expires", 0);
+
+		
 			HttpSession session = request.getSession(false); 
 		
 		if (session.getAttribute("autenticato") == null) {
@@ -39,7 +44,9 @@ public class Index_privato extends HttpServlet {
 			
 			return;
 		} 
-		int idPersona = 1;
+		
+		Account account = (Account) session.getAttribute("account");
+		int idPersona = account.getIdPersona();
 		
 		UserServiceStub stub = new UserServiceStub();
 		UserServiceStub.GetCorsiSeguiti req = new UserServiceStub.GetCorsiSeguiti();

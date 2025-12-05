@@ -93,22 +93,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for getAccount method
-            * override this method for handling normal response from getAccount operation
-            */
-           public void receiveResultgetAccount(
-                    it.actio.services.UserServiceStub.GetAccountResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getAccount operation
-           */
-            public void receiveErrorgetAccount(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for cercaCorsi_conPostiRimasti method
             * override this method for handling normal response from cercaCorsi_conPostiRimasti operation
             */
@@ -122,6 +106,22 @@
            * override this method for handling error response from cercaCorsi_conPostiRimasti operation
            */
             public void receiveErrorcercaCorsi_conPostiRimasti(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getAccount method
+            * override this method for handling normal response from getAccount operation
+            */
+           public void receiveResultgetAccount(
+                    it.actio.services.UserServiceStub.GetAccountResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getAccount operation
+           */
+            public void receiveErrorgetAccount(java.lang.Exception e) {
             }
                 
            /**

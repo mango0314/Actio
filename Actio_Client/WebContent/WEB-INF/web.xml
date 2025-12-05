@@ -70,6 +70,16 @@
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>it.actio.servlet.privato.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/privato/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>
     <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>

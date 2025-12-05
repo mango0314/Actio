@@ -47,6 +47,11 @@ public class Esplora extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubù
 		
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+		response.setHeader("Pragma", "no-cache"); 
+		response.setDateHeader("Expires", 0);
+
+		
 		HttpSession session = request.getSession(false); 
 		
 		if (session.getAttribute("autenticato") == null) {
@@ -60,28 +65,28 @@ public class Esplora extends HttpServlet {
 		if( keywords != null && !keywords.trim().isEmpty()){
 		
 	
-		UserServiceStub.CercaCorsi_conPostiRimasti req = new UserServiceStub.CercaCorsi_conPostiRimasti();
-		req.setKeywords(keywords);
-		
-		UserServiceStub.CercaCorsi_conPostiRimastiResponse resp = stub.cercaCorsi_conPostiRimasti(req);
-		
-		CorsoConAttivitaDTO[] corsiCercati_conPostiRimasti = resp.get_return();
-		
-		request.setAttribute("corsi_conPostiRimasti", corsiCercati_conPostiRimasti);
-		request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
-		return;
+			UserServiceStub.CercaCorsi_conPostiRimasti req = new UserServiceStub.CercaCorsi_conPostiRimasti();
+			req.setKeywords(keywords);
+			
+			UserServiceStub.CercaCorsi_conPostiRimastiResponse resp = stub.cercaCorsi_conPostiRimasti(req);
+			
+			CorsoConAttivitaDTO[] corsiCercati_conPostiRimasti = resp.get_return();
+			
+			request.setAttribute("corsi_conPostiRimasti", corsiCercati_conPostiRimasti);
+			request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
+			return;
 		}
 		else{
 		
-		UserServiceStub.GetCorsi_conPostiRimasti req = new UserServiceStub.GetCorsi_conPostiRimasti();
-		
-		
-		UserServiceStub.GetCorsi_conPostiRimastiResponse resp = stub.getCorsi_conPostiRimasti(req);
-		
-		CorsoConAttivitaDTO[] corsi_conPostiRimasti = resp.get_return();
-		
-		request.setAttribute("corsi_conPostiRimasti", corsi_conPostiRimasti);
-		request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
+			UserServiceStub.GetCorsi_conPostiRimasti req = new UserServiceStub.GetCorsi_conPostiRimasti();
+			
+			
+			UserServiceStub.GetCorsi_conPostiRimastiResponse resp = stub.getCorsi_conPostiRimasti(req);
+			
+			CorsoConAttivitaDTO[] corsi_conPostiRimasti = resp.get_return();
+			
+			request.setAttribute("corsi_conPostiRimasti", corsi_conPostiRimasti);
+			request.getRequestDispatcher("/WEB-INF/privato/esplora.jsp").forward(request, response);
 		}
 	}
 
