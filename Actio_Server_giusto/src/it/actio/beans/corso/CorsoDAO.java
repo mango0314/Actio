@@ -68,37 +68,52 @@ public class CorsoDAO {
 		return res;
 	}
 	
-	public List<CorsoConAttivitaDTO> getPosti_Rimasti() {
-		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
-				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
-				+ "LEFT JOIN Fornito f on c.id = f.idCorso "
-				+ "LEFT JOIN Attivita a on f.idAttivita = a.id "
-				+ "LEFT JOIN Iscrizione i ON c.id = i.idCorso "
-				+ "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome;";
+	public List<CorsoConAttivitaDTO> getPosti_Rimasti(int idPersona) {
 
-		 List<CorsoConAttivitaDTO > res = new ArrayList<>();
-		PreparedStatement ps;
-		conn = DBManager.startConnection();
-		try {
-			ps = conn.prepareStatement(query);
-			
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
-                dto.setId(rs.getInt("id"));
-                dto.setNomeCorso(rs.getString("nome_corso"));
-                dto.setDescrizione(rs.getString("descrizione"));
-                dto.setCapienza(rs.getInt("capienza"));
-                dto.setNomeAttivita(rs.getString("nome_attivita"));
-                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
-                res.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		DBManager.closeConnection();
-		return res;
+	    String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, " +
+	                   "a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti, " +
+	                   "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
+	                   "FROM Corso c " +
+	                   "LEFT JOIN Fornito f ON c.id = f.idCorso " +
+	                   "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
+	                   "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
+	                   "WHERE NOT EXISTS ( " +
+	                   "    SELECT 1 FROM Iscrizione ix " +
+	                   "    WHERE ix.idCorso = c.id " +
+	                   "      AND ix.idPersona = ? " +
+	                   "      AND ix.stato = 2 " +
+	                   ") " +
+	                   "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome";
+
+	    List<CorsoConAttivitaDTO> res = new ArrayList<>();
+
+	    conn = DBManager.startConnection();
+
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+	        
+	        ps.setInt(1, idPersona);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+	            dto.setId(rs.getInt("id"));
+	            dto.setNomeCorso(rs.getString("nome_corso"));
+	            dto.setDescrizione(rs.getString("descrizione"));
+	            dto.setCapienza(rs.getInt("capienza"));
+	            dto.setNomeAttivita(rs.getString("nome_attivita"));
+	            dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+	            res.add(dto);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    DBManager.closeConnection();
+	    return res;
 	}
+
 
 	public Corso getbyId(int id) {
 		String query = "SELECT * FROM CORSO WHERE id =?";
@@ -190,7 +205,7 @@ public class CorsoDAO {
 	}
 	
 	public List<Corso> getAll_seguiti(int idPersona) {
-		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso join iscrizione where idPersona = ? order by id";
+		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? order by id";
 
 		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
@@ -231,7 +246,7 @@ public class CorsoDAO {
 		return res;
 	}
 
-	    public List<CorsoConAttivitaDTO> cercaCorsiConPostiRimasti(String keyword) {
+	    public List<CorsoConAttivitaDTO> cercaCorsiConPostiRimasti(String keyword, int idPersona) {
 	        List<CorsoConAttivitaDTO> risultati = new ArrayList<>();
 
 	        if (keyword == null || keyword.trim().isEmpty()) {
@@ -242,15 +257,18 @@ public class CorsoDAO {
 
 	        StringBuilder queryBuilder = new StringBuilder();
 	        queryBuilder.append(
-	            "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
-	            "COUNT(i.idPersona) AS iscritti, " +
-	            "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
-	            "FROM Corso c " +
-	            "LEFT JOIN Fornito f ON c.id = f.idCorso " +
-	            "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
-	            "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
-	            "WHERE "
-	        );
+	        	    "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
+	        	    "COUNT(i.idPersona) AS iscritti, " +
+	        	    "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
+	        	    "FROM Corso c " +
+	        	    "LEFT JOIN Fornito f ON c.id = f.idCorso " +
+	        	    "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
+	        	    "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
+	        	    "WHERE NOT EXISTS ( " +
+	        	    "    SELECT 1 FROM Iscrizione ix " +
+	        	    "    WHERE ix.idCorso = c.id AND ix.idPersona = ? AND ix.stato = 2 " +
+	        	    ") AND "
+	        	);
 
 	        // Costruzione dinamica della WHERE con AND per ogni parola
 	        for (int i = 0; i < keywords.length; i++) {
@@ -271,8 +289,14 @@ public class CorsoDAO {
 	        try {
 	            conn = DBManager.startConnection();
 	            ps = conn.prepareStatement(query);
+	            
+	            
 
 	            int paramIndex = 1;
+	            
+	            ps.setInt(paramIndex++, idPersona);
+	            
+	            
 	            for (String kw : keywords) {
 	                String pattern = "%" + kw + "%";
 	                ps.setString(paramIndex++, pattern);

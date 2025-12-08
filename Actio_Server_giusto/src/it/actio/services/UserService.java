@@ -32,13 +32,13 @@ public class UserService {
     
     
     // Metodo esposto al client SOAP: ritorna array
-    public CorsoConAttivitaDTO[] getCorsi_conPostiRimasti() {
-        List<CorsoConAttivitaDTO> list = corsoDAO.getPosti_Rimasti();
+    public CorsoConAttivitaDTO[] getCorsi_conPostiRimasti(int idPersona) {
+        List<CorsoConAttivitaDTO> list = corsoDAO.getPosti_Rimasti(idPersona);
         return list.toArray(new CorsoConAttivitaDTO[0]);
     }
     
-    public CorsoConAttivitaDTO[] cercaCorsi_conPostiRimasti(String keywords) {
-        List<CorsoConAttivitaDTO> list = corsoDAO.cercaCorsiConPostiRimasti(keywords);
+    public CorsoConAttivitaDTO[] cercaCorsi_conPostiRimasti(String keywords, int idPersona) {
+        List<CorsoConAttivitaDTO> list = corsoDAO.cercaCorsiConPostiRimasti(keywords, idPersona);
         return list.toArray(new CorsoConAttivitaDTO[0]);
     }
     

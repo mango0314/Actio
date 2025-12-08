@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.axis2.AxisFault;
 
 import it.actio.services.UserServiceStub;
-
+import it.actio.services.UserServiceStub.Account;
 import it.actio.services.UserServiceStub.CorsoConAttivitaDTO;
 
 /**
@@ -61,12 +61,16 @@ public class Esplora extends HttpServlet {
 		} 
 		
 		String keywords = request.getParameter("parole_chiave");
+		Account account = (Account) session.getAttribute("account");
+		
+		int idPersona = account.getIdPersona();
 		
 		if( keywords != null && !keywords.trim().isEmpty()){
 		
 	
 			UserServiceStub.CercaCorsi_conPostiRimasti req = new UserServiceStub.CercaCorsi_conPostiRimasti();
 			req.setKeywords(keywords);
+			req.setIdPersona(idPersona);
 			
 			UserServiceStub.CercaCorsi_conPostiRimastiResponse resp = stub.cercaCorsi_conPostiRimasti(req);
 			
@@ -79,6 +83,7 @@ public class Esplora extends HttpServlet {
 		else{
 		
 			UserServiceStub.GetCorsi_conPostiRimasti req = new UserServiceStub.GetCorsi_conPostiRimasti();
+			req.setIdPersona(idPersona);
 			
 			
 			UserServiceStub.GetCorsi_conPostiRimastiResponse resp = stub.getCorsi_conPostiRimasti(req);
