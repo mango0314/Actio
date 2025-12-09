@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.actio.services.UserServiceStub;
-import it.actio.services.UserServiceStub.Account;
-import it.actio.services.UserServiceStub.Corso;
+import it.actio.activity.services.ActivityServiceStub;
+import it.actio.activity.services.ActivityServiceStub.CorsoConAttivitaDTO;
+import it.actio.user.services.UserServiceStub;
+import it.actio.user.services.UserServiceStub.Account;
+import it.actio.user.services.UserServiceStub.Corso;
 
 /**
  * Servlet implementation class Index_privato
@@ -46,6 +48,23 @@ public class Index_privato extends HttpServlet {
 		} 
 		
 		Account account = (Account) session.getAttribute("account");
+		
+		if (account.getRuolo() == 0){
+			int idAttivita = account.getIdAttivita();
+			
+			ActivityServiceStub stub1 = new ActivityServiceStub();
+			ActivityServiceStub.GetCorsiForniti req1 = new ActivityServiceStub.GetCorsiForniti();
+			req1.setIdAttivita(idAttivita);
+			
+			ActivityServiceStub.GetCorsiFornitiResponse resp1 = stub1.getCorsiForniti(req1);
+			
+			CorsoConAttivitaDTO[] corsi_forniti = resp1.get_return();
+			
+			request.setAttribute("corsiForniti", corsi_forniti);
+					
+			request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
+			return;
+		}
 		int idPersona = account.getIdPersona();
 		
 		UserServiceStub stub = new UserServiceStub();

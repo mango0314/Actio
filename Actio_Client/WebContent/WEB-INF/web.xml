@@ -80,6 +80,16 @@
     <url-pattern>/privato/Logout</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>RichiediIscrizione</display-name>
+    <servlet-name>RichiediIscrizione</servlet-name>
+    <servlet-class>it.actio.servlet.privato.RichiediIscrizione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiediIscrizione</servlet-name>
+    <url-pattern>/privato/RichiediIscrizione</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>
     <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>

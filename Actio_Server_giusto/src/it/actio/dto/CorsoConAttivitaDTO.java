@@ -8,6 +8,8 @@ public class CorsoConAttivitaDTO {
     private int capienza;
     private String nomeAttivita;
     private int postiRimasti;
+    private int stato; 
+    
 	public int getId() {
 		return id;
 	}
@@ -43,6 +45,12 @@ public class CorsoConAttivitaDTO {
 	}
 	public void setPostiRimasti(int postiRimasti) {
 		this.postiRimasti = postiRimasti;
+	}
+	public int getStato() {
+		return stato;
+	}
+	public void setStato(int stato) {
+		this.stato = stato;
 	}
 	
 

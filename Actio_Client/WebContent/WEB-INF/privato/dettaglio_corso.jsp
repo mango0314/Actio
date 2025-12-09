@@ -1,8 +1,8 @@
-<%@page import="it.actio.services.UserServiceStub.CorsoConAttivitaDTO"%>
+<%@page import="it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import=" it.actio.services.UserServiceStub.Corso" %>
-<%@ page import=" it.actio.services.UserServiceStub.OrarioCorsoDTO" %>
+<%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
+<%@ page import=" it.actio.user.services.UserServiceStub.OrarioCorsoDTO" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>

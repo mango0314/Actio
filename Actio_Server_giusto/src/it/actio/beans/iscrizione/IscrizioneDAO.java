@@ -152,8 +152,8 @@ public class IscrizioneDAO {
 	
 	
 
-	public boolean salva(Iscrizione iscrizione) {
-		String query = "INSERT INTO iscrizione VALUES (?, ?, ?, ?, ?)";
+	public boolean salvaRichiestaIscrizione(int idPersona, int idCorso) {
+		String query = "INSERT INTO iscrizione (idPersona, idCorso, stato) VALUES (?, ?, ?)";
 		boolean esito = false;
 
 		PreparedStatement ps;
@@ -162,13 +162,9 @@ public class IscrizioneDAO {
 
 			ps = conn.prepareStatement(query);
 
-			ps.setInt(1, iscrizione.getIdPersona());
-			ps.setInt(2, iscrizione.getIdCorso());
-			java.sql.Date data_inizio = new java.sql.Date(iscrizione.getDataInizio().getTime()); 
-			ps.setDate(3, data_inizio);
-			java.sql.Date data_fine = new java.sql.Date(iscrizione.getDataFine().getTime()); 
-			ps.setDate(4, data_fine);
-			ps.setInt(5, iscrizione.getStato());
+			ps.setInt(1, idPersona);
+			ps.setInt(2, idCorso);
+			ps.setInt(3, 1);
 			
 
 			int tmp = ps.executeUpdate();

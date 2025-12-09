@@ -1,7 +1,7 @@
-<%@page import="it.actio.services.UserServiceStub.CorsoConAttivitaDTO"%>
+<%@page import="it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import=" it.actio.services.UserServiceStub.Corso" %>
+<%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
 
 <%@ page import="java.util.List"%>
 
@@ -49,6 +49,8 @@
 
   <!-- Main CSS File -->
   <link href="<%= request.getContextPath() %>/css/main.css" rel="stylesheet">
+  <meta name="csrf-token" content="<%= session.getAttribute("csrfToken") %>">
+  
 
   <!-- =======================================================
   * Template Name: Axis
@@ -141,6 +143,21 @@
                       </div>
                       <h3 class="project-title"><%= c.getNomeCorso() %></h3>
                       <p class="project-description"><%= c.getDescrizione() %></p>
+						<%
+							Integer stato = c.getStato();
+							boolean richiestaInCorso = (stato != null);
+							%>
+							
+							<button 
+							  type="button"
+							  class="btn btn-primary"
+							  data-action="richiesta"
+							  data-idcorso="<%= c.getId() %>"
+							  <%= richiestaInCorso ? "disabled" : "" %>>
+							  <%= richiestaInCorso ? "Richiesta in elaborazione" : "Richiedi iscrizione" %>
+							</button>
+
+					                      
                       <div class="project-meta">
                         <span class="client-name">Posti rimanenti: <%= c.getCapienza() %></span>
                         <div class="project-scope">
@@ -373,7 +390,7 @@
 
   <!-- Main JS File -->
   <script src="<%= request.getContextPath() %>/js/main.js"></script>
-
+  <script src="<%= request.getContextPath() %>/js/requestAJAX.js"></script>
 </body>
 
 </html>

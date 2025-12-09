@@ -10,10 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.axis2.AxisFault;
 
-import it.actio.services.UserServiceStub;
-
-import it.actio.services.UserServiceStub.CorsoConAttivitaDTO;
-import it.actio.services.UserServiceStub.OrarioCorsoDTO;
+import it.actio.user.services.UserServiceStub;
+import it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO;
+import it.actio.user.services.UserServiceStub.OrarioCorsoDTO;
 
 /**
  * Servlet implementation class Index_privato

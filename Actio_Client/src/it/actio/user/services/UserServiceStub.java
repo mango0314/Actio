@@ -5,7 +5,7 @@
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
-        package it.actio.services;
+        package it.actio.user.services;
 
         
 
@@ -44,7 +44,7 @@
         //creating the operations
         org.apache.axis2.description.AxisOperation __operation;
 
-        _operations = new org.apache.axis2.description.AxisOperation[7];
+        _operations = new org.apache.axis2.description.AxisOperation[8];
         
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
@@ -85,7 +85,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "getAccount"));
+            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "cercaCorsi_conPostiRimasti"));
 	    _service.addOperation(__operation);
 	    
 
@@ -97,7 +97,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "cercaCorsi_conPostiRimasti"));
+            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "getAccount"));
 	    _service.addOperation(__operation);
 	    
 
@@ -109,7 +109,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "getOrari"));
+            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "validaCredenziali"));
 	    _service.addOperation(__operation);
 	    
 
@@ -121,13 +121,25 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "validaCredenziali"));
+            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "getOrari"));
 	    _service.addOperation(__operation);
 	    
 
 	    
 	    
             _operations[6]=__operation;
+            
+        
+                   __operation = new org.apache.axis2.description.OutInAxisOperation();
+                
+
+            __operation.setName(new javax.xml.namespace.QName("http://services.actio.it", "invioRichiestaIscrizione"));
+	    _service.addOperation(__operation);
+	    
+
+	    
+	    
+            _operations[7]=__operation;
             
         
         }
@@ -208,9 +220,9 @@
 
                     
 
-                            public  it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse getCorso_conAttivita(
+                            public  it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse getCorso_conAttivita(
 
-                            it.actio.services.UserServiceStub.GetCorso_conAttivita getCorso_conAttivita0)
+                            it.actio.user.services.UserServiceStub.GetCorso_conAttivita getCorso_conAttivita0)
                         
 
                     throws java.rmi.RemoteException
@@ -261,11 +273,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse.class,
+                                             it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -329,9 +341,9 @@
                 */
                 public  void startgetCorso_conAttivita(
 
-                 it.actio.services.UserServiceStub.GetCorso_conAttivita getCorso_conAttivita0,
+                 it.actio.user.services.UserServiceStub.GetCorso_conAttivita getCorso_conAttivita0,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -375,10 +387,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetCorso_conAttivita(
-                                        (it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse)object);
+                                        (it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetCorso_conAttivita(e);
@@ -477,9 +489,9 @@
 
                     
 
-                            public  it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse getCorsi_conPostiRimasti(
+                            public  it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse getCorsi_conPostiRimasti(
 
-                            it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti getCorsi_conPostiRimasti2)
+                            it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti getCorsi_conPostiRimasti2)
                         
 
                     throws java.rmi.RemoteException
@@ -530,11 +542,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class,
+                                             it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -598,9 +610,9 @@
                 */
                 public  void startgetCorsi_conPostiRimasti(
 
-                 it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti getCorsi_conPostiRimasti2,
+                 it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti getCorsi_conPostiRimasti2,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -644,10 +656,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetCorsi_conPostiRimasti(
-                                        (it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse)object);
+                                        (it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetCorsi_conPostiRimasti(e);
@@ -746,9 +758,9 @@
 
                     
 
-                            public  it.actio.services.UserServiceStub.GetCorsiSeguitiResponse getCorsiSeguiti(
+                            public  it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse getCorsiSeguiti(
 
-                            it.actio.services.UserServiceStub.GetCorsiSeguiti getCorsiSeguiti4)
+                            it.actio.user.services.UserServiceStub.GetCorsiSeguiti getCorsiSeguiti4)
                         
 
                     throws java.rmi.RemoteException
@@ -799,11 +811,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.GetCorsiSeguitiResponse.class,
+                                             it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.GetCorsiSeguitiResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -867,9 +879,9 @@
                 */
                 public  void startgetCorsiSeguiti(
 
-                 it.actio.services.UserServiceStub.GetCorsiSeguiti getCorsiSeguiti4,
+                 it.actio.user.services.UserServiceStub.GetCorsiSeguiti getCorsiSeguiti4,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -913,10 +925,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.GetCorsiSeguitiResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetCorsiSeguiti(
-                                        (it.actio.services.UserServiceStub.GetCorsiSeguitiResponse)object);
+                                        (it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetCorsiSeguiti(e);
@@ -1008,16 +1020,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see it.actio.services.UserService#getAccount
-                     * @param getAccount6
+                     * @see it.actio.services.UserService#cercaCorsi_conPostiRimasti
+                     * @param cercaCorsi_conPostiRimasti6
                     
                      */
 
                     
 
-                            public  it.actio.services.UserServiceStub.GetAccountResponse getAccount(
+                            public  it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse cercaCorsi_conPostiRimasti(
 
-                            it.actio.services.UserServiceStub.GetAccount getAccount6)
+                            it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti cercaCorsi_conPostiRimasti6)
                         
 
                     throws java.rmi.RemoteException
@@ -1026,275 +1038,6 @@
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
                org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
-              _operationClient.getOptions().setAction("urn:getAccount");
-              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-              // create a message context
-              _messageContext = new org.apache.axis2.context.MessageContext();
-
-              
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env = null;
-                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAccount6,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getAccount")), new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getAccount"));
-                                                
-        //adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // set the message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message contxt to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        //execute the operation client
-        _operationClient.execute(true);
-
-         
-               org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(
-                                           org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
-                org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
-                
-                
-                                java.lang.Object object = fromOM(
-                                             _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.GetAccountResponse.class,
-                                              getEnvelopeNamespaces(_returnEnv));
-
-                               
-                                        return (it.actio.services.UserServiceStub.GetAccountResponse)object;
-                                   
-         }catch(org.apache.axis2.AxisFault f){
-
-            org.apache.axiom.om.OMElement faultElt = f.getDetail();
-            if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"))){
-                    //make the fault by reflection
-                    try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
-                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-                        //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
-                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                        java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
-                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                   new java.lang.Class[]{messageClass});
-                        m.invoke(ex,new java.lang.Object[]{messageObject});
-                        
-
-                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
-                    }catch(java.lang.ClassCastException e){
-                       // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.ClassNotFoundException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }catch (java.lang.NoSuchMethodException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.reflect.InvocationTargetException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }  catch (java.lang.IllegalAccessException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }   catch (java.lang.InstantiationException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }
-                }else{
-                    throw f;
-                }
-            }else{
-                throw f;
-            }
-            } finally {
-                if (_messageContext.getTransportOut() != null) {
-                      _messageContext.getTransportOut().getSender().cleanup(_messageContext);
-                }
-            }
-        }
-            
-                /**
-                * Auto generated method signature for Asynchronous Invocations
-                * 
-                * @see it.actio.services.UserService#startgetAccount
-                    * @param getAccount6
-                
-                */
-                public  void startgetAccount(
-
-                 it.actio.services.UserServiceStub.GetAccount getAccount6,
-
-                  final it.actio.services.UserServiceCallbackHandler callback)
-
-                throws java.rmi.RemoteException{
-
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
-             _operationClient.getOptions().setAction("urn:getAccount");
-             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env=null;
-              final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-                    
-                                    //Style is Doc.
-                                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAccount6,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getAccount")), new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getAccount"));
-                                                
-        // adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-
-                    
-                        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                            public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
-                            try {
-                                org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-                                
-                                        java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.GetAccountResponse.class,
-                                                                         getEnvelopeNamespaces(resultEnv));
-                                        callback.receiveResultgetAccount(
-                                        (it.actio.services.UserServiceStub.GetAccountResponse)object);
-                                        
-                            } catch (org.apache.axis2.AxisFault e) {
-                                callback.receiveErrorgetAccount(e);
-                            }
-                            }
-
-                            public void onError(java.lang.Exception error) {
-								if (error instanceof org.apache.axis2.AxisFault) {
-									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-									org.apache.axiom.om.OMElement faultElt = f.getDetail();
-									if (faultElt!=null){
-										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"))){
-											//make the fault by reflection
-											try{
-													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
-													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-													//message class
-													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
-														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
-													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-															new java.lang.Class[]{messageClass});
-													m.invoke(ex,new java.lang.Object[]{messageObject});
-													
-					
-										            callback.receiveErrorgetAccount(new java.rmi.RemoteException(ex.getMessage(), ex));
-                                            } catch(java.lang.ClassCastException e){
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (java.lang.ClassNotFoundException e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (java.lang.NoSuchMethodException e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (java.lang.reflect.InvocationTargetException e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (java.lang.IllegalAccessException e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (java.lang.InstantiationException e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            } catch (org.apache.axis2.AxisFault e) {
-                                                // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetAccount(f);
-                                            }
-									    } else {
-										    callback.receiveErrorgetAccount(f);
-									    }
-									} else {
-									    callback.receiveErrorgetAccount(f);
-									}
-								} else {
-								    callback.receiveErrorgetAccount(error);
-								}
-                            }
-
-                            public void onFault(org.apache.axis2.context.MessageContext faultContext) {
-                                org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                                onError(fault);
-                            }
-
-                            public void onComplete() {
-                                try {
-                                    _messageContext.getTransportOut().getSender().cleanup(_messageContext);
-                                } catch (org.apache.axis2.AxisFault axisFault) {
-                                    callback.receiveErrorgetAccount(axisFault);
-                                }
-                            }
-                });
-                        
-
-          org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[3].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
-           _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[3].setMessageReceiver(
-                    _callbackReceiver);
-        }
-
-           //execute the operation client
-           _operationClient.execute(false);
-
-                    }
-                
-                    /**
-                     * Auto generated method signature
-                     * 
-                     * @see it.actio.services.UserService#cercaCorsi_conPostiRimasti
-                     * @param cercaCorsi_conPostiRimasti8
-                    
-                     */
-
-                    
-
-                            public  it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse cercaCorsi_conPostiRimasti(
-
-                            it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti cercaCorsi_conPostiRimasti8)
-                        
-
-                    throws java.rmi.RemoteException
-                    
-                    {
-              org.apache.axis2.context.MessageContext _messageContext = null;
-              try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
               _operationClient.getOptions().setAction("urn:cercaCorsi_conPostiRimasti");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1313,7 +1056,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    cercaCorsi_conPostiRimasti8,
+                                                    cercaCorsi_conPostiRimasti6,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
                                                     "cercaCorsi_conPostiRimasti")), new javax.xml.namespace.QName("http://services.actio.it",
                                                     "cercaCorsi_conPostiRimasti"));
@@ -1337,11 +1080,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class,
+                                             it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1400,18 +1143,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see it.actio.services.UserService#startcercaCorsi_conPostiRimasti
-                    * @param cercaCorsi_conPostiRimasti8
+                    * @param cercaCorsi_conPostiRimasti6
                 
                 */
                 public  void startcercaCorsi_conPostiRimasti(
 
-                 it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti cercaCorsi_conPostiRimasti8,
+                 it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti cercaCorsi_conPostiRimasti6,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
              _operationClient.getOptions().setAction("urn:cercaCorsi_conPostiRimasti");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1430,7 +1173,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    cercaCorsi_conPostiRimasti8,
+                                                    cercaCorsi_conPostiRimasti6,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
                                                     "cercaCorsi_conPostiRimasti")), new javax.xml.namespace.QName("http://services.actio.it",
                                                     "cercaCorsi_conPostiRimasti"));
@@ -1451,10 +1194,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultcercaCorsi_conPostiRimasti(
-                                        (it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse)object);
+                                        (it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorcercaCorsi_conPostiRimasti(e);
@@ -1532,9 +1275,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[4].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[3].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[4].setMessageReceiver(
+          _operations[3].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -1546,16 +1289,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see it.actio.services.UserService#getOrari
-                     * @param getOrari10
+                     * @see it.actio.services.UserService#getAccount
+                     * @param getAccount8
                     
                      */
 
                     
 
-                            public  it.actio.services.UserServiceStub.GetOrariResponse getOrari(
+                            public  it.actio.user.services.UserServiceStub.GetAccountResponse getAccount(
 
-                            it.actio.services.UserServiceStub.GetOrari getOrari10)
+                            it.actio.user.services.UserServiceStub.GetAccount getAccount8)
                         
 
                     throws java.rmi.RemoteException
@@ -1563,8 +1306,8 @@
                     {
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
-              _operationClient.getOptions().setAction("urn:getOrari");
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
+              _operationClient.getOptions().setAction("urn:getAccount");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -1582,10 +1325,10 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getOrari10,
+                                                    getAccount8,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getOrari")), new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getOrari"));
+                                                    "getAccount")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getAccount"));
                                                 
         //adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -1606,25 +1349,25 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.GetOrariResponse.class,
+                                             it.actio.user.services.UserServiceStub.GetAccountResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.GetOrariResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.GetAccountResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
             org.apache.axiom.om.OMElement faultElt = f.getDetail();
             if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"))){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"))){
                     //make the fault by reflection
                     try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
                         java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
                         java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
                         java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
                         //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
                         java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
                         java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -1668,20 +1411,20 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see it.actio.services.UserService#startgetOrari
-                    * @param getOrari10
+                * @see it.actio.services.UserService#startgetAccount
+                    * @param getAccount8
                 
                 */
-                public  void startgetOrari(
+                public  void startgetAccount(
 
-                 it.actio.services.UserServiceStub.GetOrari getOrari10,
+                 it.actio.user.services.UserServiceStub.GetAccount getAccount8,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
-             _operationClient.getOptions().setAction("urn:getOrari");
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
+             _operationClient.getOptions().setAction("urn:getAccount");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -1699,10 +1442,10 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getOrari10,
+                                                    getAccount8,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getOrari")), new javax.xml.namespace.QName("http://services.actio.it",
-                                                    "getOrari"));
+                                                    "getAccount")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getAccount"));
                                                 
         // adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -1720,13 +1463,13 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.GetOrariResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.GetAccountResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
-                                        callback.receiveResultgetOrari(
-                                        (it.actio.services.UserServiceStub.GetOrariResponse)object);
+                                        callback.receiveResultgetAccount(
+                                        (it.actio.user.services.UserServiceStub.GetAccountResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
-                                callback.receiveErrorgetOrari(e);
+                                callback.receiveErrorgetAccount(e);
                             }
                             }
 
@@ -1735,15 +1478,15 @@
 									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
 									org.apache.axiom.om.OMElement faultElt = f.getDetail();
 									if (faultElt!=null){
-										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"))){
+										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"))){
 											//make the fault by reflection
 											try{
-													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
 													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
                                                     java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 													//message class
-													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getAccount"));
 														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
 													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -1751,37 +1494,37 @@
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
 					
-										            callback.receiveErrorgetOrari(new java.rmi.RemoteException(ex.getMessage(), ex));
+										            callback.receiveErrorgetAccount(new java.rmi.RemoteException(ex.getMessage(), ex));
                                             } catch(java.lang.ClassCastException e){
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (java.lang.ClassNotFoundException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (java.lang.NoSuchMethodException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (java.lang.reflect.InvocationTargetException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (java.lang.IllegalAccessException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (java.lang.InstantiationException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             } catch (org.apache.axis2.AxisFault e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrorgetOrari(f);
+                                                callback.receiveErrorgetAccount(f);
                                             }
 									    } else {
-										    callback.receiveErrorgetOrari(f);
+										    callback.receiveErrorgetAccount(f);
 									    }
 									} else {
-									    callback.receiveErrorgetOrari(f);
+									    callback.receiveErrorgetAccount(f);
 									}
 								} else {
-								    callback.receiveErrorgetOrari(error);
+								    callback.receiveErrorgetAccount(error);
 								}
                             }
 
@@ -1794,16 +1537,16 @@
                                 try {
                                     _messageContext.getTransportOut().getSender().cleanup(_messageContext);
                                 } catch (org.apache.axis2.AxisFault axisFault) {
-                                    callback.receiveErrorgetOrari(axisFault);
+                                    callback.receiveErrorgetAccount(axisFault);
                                 }
                             }
                 });
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[5].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[4].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[5].setMessageReceiver(
+          _operations[4].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -1816,15 +1559,15 @@
                      * Auto generated method signature
                      * 
                      * @see it.actio.services.UserService#validaCredenziali
-                     * @param validaCredenziali12
+                     * @param validaCredenziali10
                     
                      */
 
                     
 
-                            public  it.actio.services.UserServiceStub.ValidaCredenzialiResponse validaCredenziali(
+                            public  it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse validaCredenziali(
 
-                            it.actio.services.UserServiceStub.ValidaCredenziali validaCredenziali12)
+                            it.actio.user.services.UserServiceStub.ValidaCredenziali validaCredenziali10)
                         
 
                     throws java.rmi.RemoteException
@@ -1832,7 +1575,7 @@
                     {
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
               _operationClient.getOptions().setAction("urn:ValidaCredenziali");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1851,7 +1594,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    validaCredenziali12,
+                                                    validaCredenziali10,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
                                                     "validaCredenziali")), new javax.xml.namespace.QName("http://services.actio.it",
                                                     "validaCredenziali"));
@@ -1875,11 +1618,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             it.actio.services.UserServiceStub.ValidaCredenzialiResponse.class,
+                                             it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (it.actio.services.UserServiceStub.ValidaCredenzialiResponse)object;
+                                        return (it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1938,18 +1681,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see it.actio.services.UserService#startvalidaCredenziali
-                    * @param validaCredenziali12
+                    * @param validaCredenziali10
                 
                 */
                 public  void startvalidaCredenziali(
 
-                 it.actio.services.UserServiceStub.ValidaCredenziali validaCredenziali12,
+                 it.actio.user.services.UserServiceStub.ValidaCredenziali validaCredenziali10,
 
-                  final it.actio.services.UserServiceCallbackHandler callback)
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
              _operationClient.getOptions().setAction("urn:ValidaCredenziali");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1968,7 +1711,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    validaCredenziali12,
+                                                    validaCredenziali10,
                                                     optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
                                                     "validaCredenziali")), new javax.xml.namespace.QName("http://services.actio.it",
                                                     "validaCredenziali"));
@@ -1989,10 +1732,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         it.actio.services.UserServiceStub.ValidaCredenzialiResponse.class,
+                                                                         it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultvalidaCredenziali(
-                                        (it.actio.services.UserServiceStub.ValidaCredenzialiResponse)object);
+                                        (it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorvalidaCredenziali(e);
@@ -2070,9 +1813,547 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+        if ( _operations[5].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+           _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+          _operations[5].setMessageReceiver(
+                    _callbackReceiver);
+        }
+
+           //execute the operation client
+           _operationClient.execute(false);
+
+                    }
+                
+                    /**
+                     * Auto generated method signature
+                     * 
+                     * @see it.actio.services.UserService#getOrari
+                     * @param getOrari12
+                    
+                     */
+
+                    
+
+                            public  it.actio.user.services.UserServiceStub.GetOrariResponse getOrari(
+
+                            it.actio.user.services.UserServiceStub.GetOrari getOrari12)
+                        
+
+                    throws java.rmi.RemoteException
+                    
+                    {
+              org.apache.axis2.context.MessageContext _messageContext = null;
+              try{
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
+              _operationClient.getOptions().setAction("urn:getOrari");
+              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+              
+              
+                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
+              
+
+              // create a message context
+              _messageContext = new org.apache.axis2.context.MessageContext();
+
+              
+
+              // create SOAP envelope with that payload
+              org.apache.axiom.soap.SOAPEnvelope env = null;
+                    
+                                                    
+                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
+                                                    getOrari12,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getOrari")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getOrari"));
+                                                
+        //adding SOAP soap_headers
+         _serviceClient.addHeadersToEnvelope(env);
+        // set the message context with that soap envelope
+        _messageContext.setEnvelope(env);
+
+        // add the message contxt to the operation client
+        _operationClient.addMessageContext(_messageContext);
+
+        //execute the operation client
+        _operationClient.execute(true);
+
+         
+               org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(
+                                           org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+                org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+                
+                
+                                java.lang.Object object = fromOM(
+                                             _returnEnv.getBody().getFirstElement() ,
+                                             it.actio.user.services.UserServiceStub.GetOrariResponse.class,
+                                              getEnvelopeNamespaces(_returnEnv));
+
+                               
+                                        return (it.actio.user.services.UserServiceStub.GetOrariResponse)object;
+                                   
+         }catch(org.apache.axis2.AxisFault f){
+
+            org.apache.axiom.om.OMElement faultElt = f.getDetail();
+            if (faultElt!=null){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"))){
+                    //make the fault by reflection
+                    try{
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+                        //message class
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+                        java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
+                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+                                   new java.lang.Class[]{messageClass});
+                        m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+
+                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
+                    }catch(java.lang.ClassCastException e){
+                       // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.ClassNotFoundException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }catch (java.lang.NoSuchMethodException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }  catch (java.lang.IllegalAccessException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }   catch (java.lang.InstantiationException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }
+                }else{
+                    throw f;
+                }
+            }else{
+                throw f;
+            }
+            } finally {
+                if (_messageContext.getTransportOut() != null) {
+                      _messageContext.getTransportOut().getSender().cleanup(_messageContext);
+                }
+            }
+        }
+            
+                /**
+                * Auto generated method signature for Asynchronous Invocations
+                * 
+                * @see it.actio.services.UserService#startgetOrari
+                    * @param getOrari12
+                
+                */
+                public  void startgetOrari(
+
+                 it.actio.user.services.UserServiceStub.GetOrari getOrari12,
+
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
+
+                throws java.rmi.RemoteException{
+
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
+             _operationClient.getOptions().setAction("urn:getOrari");
+             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+              
+              
+                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
+              
+
+
+              // create SOAP envelope with that payload
+              org.apache.axiom.soap.SOAPEnvelope env=null;
+              final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+                    
+                                    //Style is Doc.
+                                    
+                                                    
+                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
+                                                    getOrari12,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getOrari")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "getOrari"));
+                                                
+        // adding SOAP soap_headers
+         _serviceClient.addHeadersToEnvelope(env);
+        // create message context with that soap envelope
+        _messageContext.setEnvelope(env);
+
+        // add the message context to the operation client
+        _operationClient.addMessageContext(_messageContext);
+
+
+                    
+                        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+                            public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
+                            try {
+                                org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+                                
+                                        java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
+                                                                         it.actio.user.services.UserServiceStub.GetOrariResponse.class,
+                                                                         getEnvelopeNamespaces(resultEnv));
+                                        callback.receiveResultgetOrari(
+                                        (it.actio.user.services.UserServiceStub.GetOrariResponse)object);
+                                        
+                            } catch (org.apache.axis2.AxisFault e) {
+                                callback.receiveErrorgetOrari(e);
+                            }
+                            }
+
+                            public void onError(java.lang.Exception error) {
+								if (error instanceof org.apache.axis2.AxisFault) {
+									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+									org.apache.axiom.om.OMElement faultElt = f.getDetail();
+									if (faultElt!=null){
+										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"))){
+											//make the fault by reflection
+											try{
+													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+													//message class
+													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getOrari"));
+														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
+													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+															new java.lang.Class[]{messageClass});
+													m.invoke(ex,new java.lang.Object[]{messageObject});
+													
+					
+										            callback.receiveErrorgetOrari(new java.rmi.RemoteException(ex.getMessage(), ex));
+                                            } catch(java.lang.ClassCastException e){
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (java.lang.ClassNotFoundException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (java.lang.NoSuchMethodException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (java.lang.reflect.InvocationTargetException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (java.lang.IllegalAccessException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (java.lang.InstantiationException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            } catch (org.apache.axis2.AxisFault e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorgetOrari(f);
+                                            }
+									    } else {
+										    callback.receiveErrorgetOrari(f);
+									    }
+									} else {
+									    callback.receiveErrorgetOrari(f);
+									}
+								} else {
+								    callback.receiveErrorgetOrari(error);
+								}
+                            }
+
+                            public void onFault(org.apache.axis2.context.MessageContext faultContext) {
+                                org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
+                                onError(fault);
+                            }
+
+                            public void onComplete() {
+                                try {
+                                    _messageContext.getTransportOut().getSender().cleanup(_messageContext);
+                                } catch (org.apache.axis2.AxisFault axisFault) {
+                                    callback.receiveErrorgetOrari(axisFault);
+                                }
+                            }
+                });
+                        
+
+          org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
         if ( _operations[6].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
           _operations[6].setMessageReceiver(
+                    _callbackReceiver);
+        }
+
+           //execute the operation client
+           _operationClient.execute(false);
+
+                    }
+                
+                    /**
+                     * Auto generated method signature
+                     * 
+                     * @see it.actio.services.UserService#invioRichiestaIscrizione
+                     * @param invioRichiestaIscrizione14
+                    
+                     */
+
+                    
+
+                            public  it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse invioRichiestaIscrizione(
+
+                            it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione invioRichiestaIscrizione14)
+                        
+
+                    throws java.rmi.RemoteException
+                    
+                    {
+              org.apache.axis2.context.MessageContext _messageContext = null;
+              try{
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[7].getName());
+              _operationClient.getOptions().setAction("urn:InvioRichiestaIscrizione");
+              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+              
+              
+                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
+              
+
+              // create a message context
+              _messageContext = new org.apache.axis2.context.MessageContext();
+
+              
+
+              // create SOAP envelope with that payload
+              org.apache.axiom.soap.SOAPEnvelope env = null;
+                    
+                                                    
+                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
+                                                    invioRichiestaIscrizione14,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "invioRichiestaIscrizione")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "invioRichiestaIscrizione"));
+                                                
+        //adding SOAP soap_headers
+         _serviceClient.addHeadersToEnvelope(env);
+        // set the message context with that soap envelope
+        _messageContext.setEnvelope(env);
+
+        // add the message contxt to the operation client
+        _operationClient.addMessageContext(_messageContext);
+
+        //execute the operation client
+        _operationClient.execute(true);
+
+         
+               org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(
+                                           org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+                org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+                
+                
+                                java.lang.Object object = fromOM(
+                                             _returnEnv.getBody().getFirstElement() ,
+                                             it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse.class,
+                                              getEnvelopeNamespaces(_returnEnv));
+
+                               
+                                        return (it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse)object;
+                                   
+         }catch(org.apache.axis2.AxisFault f){
+
+            org.apache.axiom.om.OMElement faultElt = f.getDetail();
+            if (faultElt!=null){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"))){
+                    //make the fault by reflection
+                    try{
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"));
+                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+                        //message class
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"));
+                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+                        java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
+                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+                                   new java.lang.Class[]{messageClass});
+                        m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+
+                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
+                    }catch(java.lang.ClassCastException e){
+                       // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.ClassNotFoundException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }catch (java.lang.NoSuchMethodException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }  catch (java.lang.IllegalAccessException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }   catch (java.lang.InstantiationException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }
+                }else{
+                    throw f;
+                }
+            }else{
+                throw f;
+            }
+            } finally {
+                if (_messageContext.getTransportOut() != null) {
+                      _messageContext.getTransportOut().getSender().cleanup(_messageContext);
+                }
+            }
+        }
+            
+                /**
+                * Auto generated method signature for Asynchronous Invocations
+                * 
+                * @see it.actio.services.UserService#startinvioRichiestaIscrizione
+                    * @param invioRichiestaIscrizione14
+                
+                */
+                public  void startinvioRichiestaIscrizione(
+
+                 it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione invioRichiestaIscrizione14,
+
+                  final it.actio.user.services.UserServiceCallbackHandler callback)
+
+                throws java.rmi.RemoteException{
+
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[7].getName());
+             _operationClient.getOptions().setAction("urn:InvioRichiestaIscrizione");
+             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+              
+              
+                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
+              
+
+
+              // create SOAP envelope with that payload
+              org.apache.axiom.soap.SOAPEnvelope env=null;
+              final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+                    
+                                    //Style is Doc.
+                                    
+                                                    
+                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
+                                                    invioRichiestaIscrizione14,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "invioRichiestaIscrizione")), new javax.xml.namespace.QName("http://services.actio.it",
+                                                    "invioRichiestaIscrizione"));
+                                                
+        // adding SOAP soap_headers
+         _serviceClient.addHeadersToEnvelope(env);
+        // create message context with that soap envelope
+        _messageContext.setEnvelope(env);
+
+        // add the message context to the operation client
+        _operationClient.addMessageContext(_messageContext);
+
+
+                    
+                        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+                            public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
+                            try {
+                                org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+                                
+                                        java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
+                                                                         it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse.class,
+                                                                         getEnvelopeNamespaces(resultEnv));
+                                        callback.receiveResultinvioRichiestaIscrizione(
+                                        (it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse)object);
+                                        
+                            } catch (org.apache.axis2.AxisFault e) {
+                                callback.receiveErrorinvioRichiestaIscrizione(e);
+                            }
+                            }
+
+                            public void onError(java.lang.Exception error) {
+								if (error instanceof org.apache.axis2.AxisFault) {
+									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+									org.apache.axiom.om.OMElement faultElt = f.getDetail();
+									if (faultElt!=null){
+										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"))){
+											//make the fault by reflection
+											try{
+													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"));
+													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+													//message class
+													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"InvioRichiestaIscrizione"));
+														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
+													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+															new java.lang.Class[]{messageClass});
+													m.invoke(ex,new java.lang.Object[]{messageObject});
+													
+					
+										            callback.receiveErrorinvioRichiestaIscrizione(new java.rmi.RemoteException(ex.getMessage(), ex));
+                                            } catch(java.lang.ClassCastException e){
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (java.lang.ClassNotFoundException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (java.lang.NoSuchMethodException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (java.lang.reflect.InvocationTargetException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (java.lang.IllegalAccessException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (java.lang.InstantiationException e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            } catch (org.apache.axis2.AxisFault e) {
+                                                // we cannot intantiate the class - throw the original Axis fault
+                                                callback.receiveErrorinvioRichiestaIscrizione(f);
+                                            }
+									    } else {
+										    callback.receiveErrorinvioRichiestaIscrizione(f);
+									    }
+									} else {
+									    callback.receiveErrorinvioRichiestaIscrizione(f);
+									}
+								} else {
+								    callback.receiveErrorinvioRichiestaIscrizione(error);
+								}
+                            }
+
+                            public void onFault(org.apache.axis2.context.MessageContext faultContext) {
+                                org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
+                                onError(fault);
+                            }
+
+                            public void onComplete() {
+                                try {
+                                    _messageContext.getTransportOut().getSender().cleanup(_messageContext);
+                                } catch (org.apache.axis2.AxisFault axisFault) {
+                                    callback.receiveErrorinvioRichiestaIscrizione(axisFault);
+                                }
+                            }
+                });
+                        
+
+          org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+        if ( _operations[7].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+           _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+          _operations[7].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -6346,6 +6627,51 @@
                                }
                             
 
+                        /**
+                        * field for Stato
+                        */
+
+                        
+                                    protected int localStato ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localStatoTracker = false ;
+
+                           public boolean isStatoSpecified(){
+                               return localStatoTracker;
+                           }
+
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return int
+                           */
+                           public  int getStato(){
+                               return localStato;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Stato
+                               */
+                               public void setStato(int param){
+                            
+                                       // setting primitive attribute tracker to true
+                                       localStatoTracker =
+                                       param != java.lang.Integer.MIN_VALUE;
+                                   
+                                            this.localStato=param;
+                                       
+
+                               }
+                            
+
      
      
         /**
@@ -6494,6 +6820,19 @@
                                                       
                                                } else {
                                                     xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPostiRimasti));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             } if (localStatoTracker){
+                                    namespace = "http://dto.actio.it/xsd";
+                                    writeStartElement(null, namespace, "stato", xmlWriter);
+                             
+                                               if (localStato==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("stato cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localStato));
                                                }
                                     
                                    xmlWriter.writeEndElement();
@@ -6718,6 +7057,12 @@
                                  
                                 elementList.add(
                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPostiRimasti));
+                            } if (localStatoTracker){
+                                      elementList.add(new javax.xml.namespace.QName("http://dto.actio.it/xsd",
+                                                                      "stato"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localStato));
                             }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -6953,6 +7298,32 @@
                                     else {
                                         
                                                object.setPostiRimasti(java.lang.Integer.MIN_VALUE);
+                                           
+                                    }
+                                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://dto.actio.it/xsd","stato").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"stato" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setStato(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                    else {
+                                        
+                                               object.setStato(java.lang.Integer.MIN_VALUE);
                                            
                                     }
                                   
@@ -7394,6 +7765,507 @@
                                         
                                     }
                                   
+                            while (!reader.isStartElement() && !reader.isEndElement())
+                                reader.next();
+                            
+                                if (reader.isStartElement())
+                                // A start element we are not expecting indicates a trailing invalid property
+                                throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                            
+
+
+
+            } catch (javax.xml.stream.XMLStreamException e) {
+                throw new java.lang.Exception(e);
+            }
+
+            return object;
+        }
+
+        }//end of factory class
+
+        
+
+        }
+           
+    
+        public static class InvioRichiestaIscrizione
+        implements org.apache.axis2.databinding.ADBBean{
+        
+                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
+                "http://services.actio.it",
+                "InvioRichiestaIscrizione",
+                "ns4");
+
+            
+
+                        /**
+                        * field for IdPersona
+                        */
+
+                        
+                                    protected int localIdPersona ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return int
+                           */
+                           public  int getIdPersona(){
+                               return localIdPersona;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param IdPersona
+                               */
+                               public void setIdPersona(int param){
+                            
+                                            this.localIdPersona=param;
+                                       
+
+                               }
+                            
+
+                        /**
+                        * field for IdCorso
+                        */
+
+                        
+                                    protected int localIdCorso ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return int
+                           */
+                           public  int getIdCorso(){
+                               return localIdCorso;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param IdCorso
+                               */
+                               public void setIdCorso(int param){
+                            
+                                            this.localIdCorso=param;
+                                       
+
+                               }
+                            
+
+     
+     
+        /**
+        *
+        * @param parentQName
+        * @param factory
+        * @return org.apache.axiom.om.OMElement
+        */
+       public org.apache.axiom.om.OMElement getOMElement (
+               final javax.xml.namespace.QName parentQName,
+               final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException{
+
+
+        
+               org.apache.axiom.om.OMDataSource dataSource =
+                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME);
+               return factory.createOMElement(dataSource,MY_QNAME);
+            
+        }
+
+         public void serialize(final javax.xml.namespace.QName parentQName,
+                                       javax.xml.stream.XMLStreamWriter xmlWriter)
+                                throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
+                           serialize(parentQName,xmlWriter,false);
+         }
+
+         public void serialize(final javax.xml.namespace.QName parentQName,
+                               javax.xml.stream.XMLStreamWriter xmlWriter,
+                               boolean serializeType)
+            throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
+            
+                
+
+
+                java.lang.String prefix = null;
+                java.lang.String namespace = null;
+                
+
+                    prefix = parentQName.getPrefix();
+                    namespace = parentQName.getNamespaceURI();
+                    writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+                
+                  if (serializeType){
+               
+
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://services.actio.it");
+                   if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           namespacePrefix+":InvioRichiestaIscrizione",
+                           xmlWriter);
+                   } else {
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           "InvioRichiestaIscrizione",
+                           xmlWriter);
+                   }
+
+               
+                   }
+               
+                                    namespace = "http://services.actio.it";
+                                    writeStartElement(null, namespace, "idPersona", xmlWriter);
+                             
+                                               if (localIdPersona==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("idPersona cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdPersona));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "http://services.actio.it";
+                                    writeStartElement(null, namespace, "idCorso", xmlWriter);
+                             
+                                               if (localIdCorso==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("idCorso cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdCorso));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                    xmlWriter.writeEndElement();
+               
+
+        }
+
+        private static java.lang.String generatePrefix(java.lang.String namespace) {
+            if(namespace.equals("http://services.actio.it")){
+                return "ns4";
+            }
+            return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+        }
+
+        /**
+         * Utility method to write an element start tag.
+         */
+        private void writeStartElement(java.lang.String prefix, java.lang.String namespace, java.lang.String localPart,
+                                       javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+            if (writerPrefix != null) {
+                xmlWriter.writeStartElement(namespace, localPart);
+            } else {
+                if (namespace.length() == 0) {
+                    prefix = "";
+                } else if (prefix == null) {
+                    prefix = generatePrefix(namespace);
+                }
+
+                xmlWriter.writeStartElement(prefix, localPart, namespace);
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+        }
+        
+        /**
+         * Util method to write an attribute with the ns prefix
+         */
+        private void writeAttribute(java.lang.String prefix,java.lang.String namespace,java.lang.String attName,
+                                    java.lang.String attValue,javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException{
+            if (xmlWriter.getPrefix(namespace) == null) {
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+            xmlWriter.writeAttribute(namespace,attName,attValue);
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeAttribute(java.lang.String namespace,java.lang.String attName,
+                                    java.lang.String attValue,javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException{
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName,attValue);
+            } else {
+                registerPrefix(xmlWriter, namespace);
+                xmlWriter.writeAttribute(namespace,attName,attValue);
+            }
+        }
+
+
+           /**
+             * Util method to write an attribute without the ns prefix
+             */
+            private void writeQNameAttribute(java.lang.String namespace, java.lang.String attName,
+                                             javax.xml.namespace.QName qname, javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+
+                java.lang.String attributeNamespace = qname.getNamespaceURI();
+                java.lang.String attributePrefix = xmlWriter.getPrefix(attributeNamespace);
+                if (attributePrefix == null) {
+                    attributePrefix = registerPrefix(xmlWriter, attributeNamespace);
+                }
+                java.lang.String attributeValue;
+                if (attributePrefix.trim().length() > 0) {
+                    attributeValue = attributePrefix + ":" + qname.getLocalPart();
+                } else {
+                    attributeValue = qname.getLocalPart();
+                }
+
+                if (namespace.equals("")) {
+                    xmlWriter.writeAttribute(attName, attributeValue);
+                } else {
+                    registerPrefix(xmlWriter, namespace);
+                    xmlWriter.writeAttribute(namespace, attName, attributeValue);
+                }
+            }
+        /**
+         *  method to handle Qnames
+         */
+
+        private void writeQName(javax.xml.namespace.QName qname,
+                                javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+            java.lang.String namespaceURI = qname.getNamespaceURI();
+            if (namespaceURI != null) {
+                java.lang.String prefix = xmlWriter.getPrefix(namespaceURI);
+                if (prefix == null) {
+                    prefix = generatePrefix(namespaceURI);
+                    xmlWriter.writeNamespace(prefix, namespaceURI);
+                    xmlWriter.setPrefix(prefix,namespaceURI);
+                }
+
+                if (prefix.trim().length() > 0){
+                    xmlWriter.writeCharacters(prefix + ":" + org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+                } else {
+                    // i.e this is the default namespace
+                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+                }
+
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+            }
+        }
+
+        private void writeQNames(javax.xml.namespace.QName[] qnames,
+                                 javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+
+            if (qnames != null) {
+                // we have to store this data until last moment since it is not possible to write any
+                // namespace data after writing the charactor data
+                java.lang.StringBuffer stringToWrite = new java.lang.StringBuffer();
+                java.lang.String namespaceURI = null;
+                java.lang.String prefix = null;
+
+                for (int i = 0; i < qnames.length; i++) {
+                    if (i > 0) {
+                        stringToWrite.append(" ");
+                    }
+                    namespaceURI = qnames[i].getNamespaceURI();
+                    if (namespaceURI != null) {
+                        prefix = xmlWriter.getPrefix(namespaceURI);
+                        if ((prefix == null) || (prefix.length() == 0)) {
+                            prefix = generatePrefix(namespaceURI);
+                            xmlWriter.writeNamespace(prefix, namespaceURI);
+                            xmlWriter.setPrefix(prefix,namespaceURI);
+                        }
+
+                        if (prefix.trim().length() > 0){
+                            stringToWrite.append(prefix).append(":").append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                        } else {
+                            stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                        }
+                    } else {
+                        stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                    }
+                }
+                xmlWriter.writeCharacters(stringToWrite.toString());
+            }
+
+        }
+
+
+        /**
+         * Register a namespace prefix
+         */
+        private java.lang.String registerPrefix(javax.xml.stream.XMLStreamWriter xmlWriter, java.lang.String namespace) throws javax.xml.stream.XMLStreamException {
+            java.lang.String prefix = xmlWriter.getPrefix(namespace);
+            if (prefix == null) {
+                prefix = generatePrefix(namespace);
+                javax.xml.namespace.NamespaceContext nsContext = xmlWriter.getNamespaceContext();
+                while (true) {
+                    java.lang.String uri = nsContext.getNamespaceURI(prefix);
+                    if (uri == null || uri.length() == 0) {
+                        break;
+                    }
+                    prefix = org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+                }
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+            return prefix;
+        }
+
+
+  
+        /**
+        * databinding method to get an XML representation of this object
+        *
+        */
+        public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
+                    throws org.apache.axis2.databinding.ADBException{
+
+
+        
+                 java.util.ArrayList elementList = new java.util.ArrayList();
+                 java.util.ArrayList attribList = new java.util.ArrayList();
+
+                
+                                      elementList.add(new javax.xml.namespace.QName("http://services.actio.it",
+                                                                      "idPersona"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdPersona));
+                            
+                                      elementList.add(new javax.xml.namespace.QName("http://services.actio.it",
+                                                                      "idCorso"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdCorso));
+                            
+
+                return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
+            
+            
+
+        }
+
+  
+
+     /**
+      *  Factory class that keeps the parse method
+      */
+    public static class Factory{
+
+        
+        
+
+        /**
+        * static method to create the object
+        * Precondition:  If this object is an element, the current or next start element starts this object and any intervening reader events are ignorable
+        *                If this object is not an element, it is a complex type and the reader is at the event just after the outer start element
+        * Postcondition: If this object is an element, the reader is positioned at its end element
+        *                If this object is a complex type, the reader is positioned at the end element of its outer element
+        */
+        public static InvioRichiestaIscrizione parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            InvioRichiestaIscrizione object =
+                new InvioRichiestaIscrizione();
+
+            int event;
+            java.lang.String nillableValue = null;
+            java.lang.String prefix ="";
+            java.lang.String namespaceuri ="";
+            try {
+                
+                while (!reader.isStartElement() && !reader.isEndElement())
+                    reader.next();
+
+                
+                if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","type")!=null){
+                  java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                        "type");
+                  if (fullTypeName!=null){
+                    java.lang.String nsPrefix = null;
+                    if (fullTypeName.indexOf(":") > -1){
+                        nsPrefix = fullTypeName.substring(0,fullTypeName.indexOf(":"));
+                    }
+                    nsPrefix = nsPrefix==null?"":nsPrefix;
+
+                    java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
+                    
+                            if (!"InvioRichiestaIscrizione".equals(type)){
+                                //find namespace for the prefix
+                                java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
+                                return (InvioRichiestaIscrizione)ExtensionMapper.getTypeObject(
+                                     nsUri,type,reader);
+                              }
+                        
+
+                  }
+                
+
+                }
+
+                
+
+                
+                // Note all attributes that were handled. Used to differ normal attributes
+                // from anyAttributes.
+                java.util.Vector handledAttributes = new java.util.Vector();
+                
+
+                
+                    
+                    reader.next();
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://services.actio.it","idPersona").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"idPersona" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setIdPersona(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://services.actio.it","idCorso").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"idCorso" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setIdCorso(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
@@ -11577,6 +12449,433 @@
         }
            
     
+        public static class InvioRichiestaIscrizioneResponse
+        implements org.apache.axis2.databinding.ADBBean{
+        
+                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
+                "http://services.actio.it",
+                "InvioRichiestaIscrizioneResponse",
+                "ns4");
+
+            
+
+                        /**
+                        * field for _return
+                        */
+
+                        
+                                    protected boolean local_return ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return boolean
+                           */
+                           public  boolean get_return(){
+                               return local_return;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param _return
+                               */
+                               public void set_return(boolean param){
+                            
+                                            this.local_return=param;
+                                       
+
+                               }
+                            
+
+     
+     
+        /**
+        *
+        * @param parentQName
+        * @param factory
+        * @return org.apache.axiom.om.OMElement
+        */
+       public org.apache.axiom.om.OMElement getOMElement (
+               final javax.xml.namespace.QName parentQName,
+               final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException{
+
+
+        
+               org.apache.axiom.om.OMDataSource dataSource =
+                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME);
+               return factory.createOMElement(dataSource,MY_QNAME);
+            
+        }
+
+         public void serialize(final javax.xml.namespace.QName parentQName,
+                                       javax.xml.stream.XMLStreamWriter xmlWriter)
+                                throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
+                           serialize(parentQName,xmlWriter,false);
+         }
+
+         public void serialize(final javax.xml.namespace.QName parentQName,
+                               javax.xml.stream.XMLStreamWriter xmlWriter,
+                               boolean serializeType)
+            throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
+            
+                
+
+
+                java.lang.String prefix = null;
+                java.lang.String namespace = null;
+                
+
+                    prefix = parentQName.getPrefix();
+                    namespace = parentQName.getNamespaceURI();
+                    writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+                
+                  if (serializeType){
+               
+
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://services.actio.it");
+                   if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           namespacePrefix+":InvioRichiestaIscrizioneResponse",
+                           xmlWriter);
+                   } else {
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           "InvioRichiestaIscrizioneResponse",
+                           xmlWriter);
+                   }
+
+               
+                   }
+               
+                                    namespace = "http://services.actio.it";
+                                    writeStartElement(null, namespace, "return", xmlWriter);
+                             
+                                               if (false) {
+                                           
+                                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                    xmlWriter.writeEndElement();
+               
+
+        }
+
+        private static java.lang.String generatePrefix(java.lang.String namespace) {
+            if(namespace.equals("http://services.actio.it")){
+                return "ns4";
+            }
+            return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+        }
+
+        /**
+         * Utility method to write an element start tag.
+         */
+        private void writeStartElement(java.lang.String prefix, java.lang.String namespace, java.lang.String localPart,
+                                       javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+            if (writerPrefix != null) {
+                xmlWriter.writeStartElement(namespace, localPart);
+            } else {
+                if (namespace.length() == 0) {
+                    prefix = "";
+                } else if (prefix == null) {
+                    prefix = generatePrefix(namespace);
+                }
+
+                xmlWriter.writeStartElement(prefix, localPart, namespace);
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+        }
+        
+        /**
+         * Util method to write an attribute with the ns prefix
+         */
+        private void writeAttribute(java.lang.String prefix,java.lang.String namespace,java.lang.String attName,
+                                    java.lang.String attValue,javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException{
+            if (xmlWriter.getPrefix(namespace) == null) {
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+            xmlWriter.writeAttribute(namespace,attName,attValue);
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeAttribute(java.lang.String namespace,java.lang.String attName,
+                                    java.lang.String attValue,javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException{
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName,attValue);
+            } else {
+                registerPrefix(xmlWriter, namespace);
+                xmlWriter.writeAttribute(namespace,attName,attValue);
+            }
+        }
+
+
+           /**
+             * Util method to write an attribute without the ns prefix
+             */
+            private void writeQNameAttribute(java.lang.String namespace, java.lang.String attName,
+                                             javax.xml.namespace.QName qname, javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+
+                java.lang.String attributeNamespace = qname.getNamespaceURI();
+                java.lang.String attributePrefix = xmlWriter.getPrefix(attributeNamespace);
+                if (attributePrefix == null) {
+                    attributePrefix = registerPrefix(xmlWriter, attributeNamespace);
+                }
+                java.lang.String attributeValue;
+                if (attributePrefix.trim().length() > 0) {
+                    attributeValue = attributePrefix + ":" + qname.getLocalPart();
+                } else {
+                    attributeValue = qname.getLocalPart();
+                }
+
+                if (namespace.equals("")) {
+                    xmlWriter.writeAttribute(attName, attributeValue);
+                } else {
+                    registerPrefix(xmlWriter, namespace);
+                    xmlWriter.writeAttribute(namespace, attName, attributeValue);
+                }
+            }
+        /**
+         *  method to handle Qnames
+         */
+
+        private void writeQName(javax.xml.namespace.QName qname,
+                                javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+            java.lang.String namespaceURI = qname.getNamespaceURI();
+            if (namespaceURI != null) {
+                java.lang.String prefix = xmlWriter.getPrefix(namespaceURI);
+                if (prefix == null) {
+                    prefix = generatePrefix(namespaceURI);
+                    xmlWriter.writeNamespace(prefix, namespaceURI);
+                    xmlWriter.setPrefix(prefix,namespaceURI);
+                }
+
+                if (prefix.trim().length() > 0){
+                    xmlWriter.writeCharacters(prefix + ":" + org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+                } else {
+                    // i.e this is the default namespace
+                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+                }
+
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qname));
+            }
+        }
+
+        private void writeQNames(javax.xml.namespace.QName[] qnames,
+                                 javax.xml.stream.XMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
+
+            if (qnames != null) {
+                // we have to store this data until last moment since it is not possible to write any
+                // namespace data after writing the charactor data
+                java.lang.StringBuffer stringToWrite = new java.lang.StringBuffer();
+                java.lang.String namespaceURI = null;
+                java.lang.String prefix = null;
+
+                for (int i = 0; i < qnames.length; i++) {
+                    if (i > 0) {
+                        stringToWrite.append(" ");
+                    }
+                    namespaceURI = qnames[i].getNamespaceURI();
+                    if (namespaceURI != null) {
+                        prefix = xmlWriter.getPrefix(namespaceURI);
+                        if ((prefix == null) || (prefix.length() == 0)) {
+                            prefix = generatePrefix(namespaceURI);
+                            xmlWriter.writeNamespace(prefix, namespaceURI);
+                            xmlWriter.setPrefix(prefix,namespaceURI);
+                        }
+
+                        if (prefix.trim().length() > 0){
+                            stringToWrite.append(prefix).append(":").append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                        } else {
+                            stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                        }
+                    } else {
+                        stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(qnames[i]));
+                    }
+                }
+                xmlWriter.writeCharacters(stringToWrite.toString());
+            }
+
+        }
+
+
+        /**
+         * Register a namespace prefix
+         */
+        private java.lang.String registerPrefix(javax.xml.stream.XMLStreamWriter xmlWriter, java.lang.String namespace) throws javax.xml.stream.XMLStreamException {
+            java.lang.String prefix = xmlWriter.getPrefix(namespace);
+            if (prefix == null) {
+                prefix = generatePrefix(namespace);
+                javax.xml.namespace.NamespaceContext nsContext = xmlWriter.getNamespaceContext();
+                while (true) {
+                    java.lang.String uri = nsContext.getNamespaceURI(prefix);
+                    if (uri == null || uri.length() == 0) {
+                        break;
+                    }
+                    prefix = org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+                }
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+            return prefix;
+        }
+
+
+  
+        /**
+        * databinding method to get an XML representation of this object
+        *
+        */
+        public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
+                    throws org.apache.axis2.databinding.ADBException{
+
+
+        
+                 java.util.ArrayList elementList = new java.util.ArrayList();
+                 java.util.ArrayList attribList = new java.util.ArrayList();
+
+                
+                                      elementList.add(new javax.xml.namespace.QName("http://services.actio.it",
+                                                                      "return"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
+                            
+
+                return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
+            
+            
+
+        }
+
+  
+
+     /**
+      *  Factory class that keeps the parse method
+      */
+    public static class Factory{
+
+        
+        
+
+        /**
+        * static method to create the object
+        * Precondition:  If this object is an element, the current or next start element starts this object and any intervening reader events are ignorable
+        *                If this object is not an element, it is a complex type and the reader is at the event just after the outer start element
+        * Postcondition: If this object is an element, the reader is positioned at its end element
+        *                If this object is a complex type, the reader is positioned at the end element of its outer element
+        */
+        public static InvioRichiestaIscrizioneResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            InvioRichiestaIscrizioneResponse object =
+                new InvioRichiestaIscrizioneResponse();
+
+            int event;
+            java.lang.String nillableValue = null;
+            java.lang.String prefix ="";
+            java.lang.String namespaceuri ="";
+            try {
+                
+                while (!reader.isStartElement() && !reader.isEndElement())
+                    reader.next();
+
+                
+                if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","type")!=null){
+                  java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                        "type");
+                  if (fullTypeName!=null){
+                    java.lang.String nsPrefix = null;
+                    if (fullTypeName.indexOf(":") > -1){
+                        nsPrefix = fullTypeName.substring(0,fullTypeName.indexOf(":"));
+                    }
+                    nsPrefix = nsPrefix==null?"":nsPrefix;
+
+                    java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
+                    
+                            if (!"InvioRichiestaIscrizioneResponse".equals(type)){
+                                //find namespace for the prefix
+                                java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
+                                return (InvioRichiestaIscrizioneResponse)ExtensionMapper.getTypeObject(
+                                     nsUri,type,reader);
+                              }
+                        
+
+                  }
+                
+
+                }
+
+                
+
+                
+                // Note all attributes that were handled. Used to differ normal attributes
+                // from anyAttributes.
+                java.util.Vector handledAttributes = new java.util.Vector();
+                
+
+                
+                    
+                    reader.next();
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://services.actio.it","return").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"return" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.set_return(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToBoolean(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
+                            while (!reader.isStartElement() && !reader.isEndElement())
+                                reader.next();
+                            
+                                if (reader.isStartElement())
+                                // A start element we are not expecting indicates a trailing invalid property
+                                throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                            
+
+
+
+            } catch (javax.xml.stream.XMLStreamException e) {
+                throw new java.lang.Exception(e);
+            }
+
+            return object;
+        }
+
+        }//end of factory class
+
+        
+
+        }
+           
+    
         public static class Account
         implements org.apache.axis2.databinding.ADBBean{
         /* This type was generated from the piece of schema that had
@@ -12483,12 +13782,12 @@
         }
            
     
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorso_conAttivita param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorso_conAttivita param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorso_conAttivita.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorso_conAttivita.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12497,12 +13796,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12511,12 +13810,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12525,12 +13824,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12539,12 +13838,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorsiSeguiti param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorsiSeguiti param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorsiSeguiti.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsiSeguiti.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12553,12 +13852,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetCorsiSeguitiResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetCorsiSeguitiResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12567,12 +13866,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetAccount param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetAccount.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12581,12 +13880,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetAccountResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetAccountResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12595,12 +13894,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetAccount param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetAccount.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12609,12 +13908,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetAccountResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetAccountResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12623,12 +13922,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetOrari param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.ValidaCredenziali param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetOrari.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.ValidaCredenziali.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12637,12 +13936,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.GetOrariResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.GetOrariResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12651,12 +13950,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.ValidaCredenziali param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetOrari param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.ValidaCredenziali.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetOrari.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12665,12 +13964,40 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(it.actio.services.UserServiceStub.ValidaCredenzialiResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.GetOrariResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(it.actio.services.UserServiceStub.ValidaCredenzialiResponse.MY_QNAME,
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.GetOrariResponse.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12680,14 +14007,14 @@
             }
         
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.GetCorso_conAttivita param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.GetCorso_conAttivita param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.GetCorso_conAttivita.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.GetCorso_conAttivita.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12701,14 +14028,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12722,14 +14049,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.GetCorsiSeguiti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.GetCorsiSeguiti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.GetCorsiSeguiti.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.GetCorsiSeguiti.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12743,14 +14070,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.GetAccount param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.GetAccount.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12764,14 +14091,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.GetAccount param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.GetAccount.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12785,14 +14112,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.GetOrari param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.ValidaCredenziali param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.GetOrari.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.ValidaCredenziali.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12806,14 +14133,35 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.services.UserServiceStub.ValidaCredenziali param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.GetOrari param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.services.UserServiceStub.ValidaCredenziali.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.GetOrari.MY_QNAME,factory));
+                                                            return emptyEnvelope;
+                                                        } catch(org.apache.axis2.databinding.ADBException e){
+                                                            throw org.apache.axis2.AxisFault.makeFault(e);
+                                                        }
+                                                
+
+                                        }
+                                
+                             
+                             /* methods to provide back word compatibility */
+
+                             
+                                    
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        throws org.apache.axis2.AxisFault{
+
+                                             
+                                                    try{
+
+                                                            org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -12843,100 +14191,114 @@
 
         try {
         
-                if (it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.CercaCorsi_conPostiRimasti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimasti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetAccount.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetAccount.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetAccount.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetAccount.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetAccountResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetAccountResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetAccountResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetAccountResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorsi_conPostiRimasti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimasti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorsiSeguiti.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorsiSeguiti.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorsiSeguiti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorsiSeguiti.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorsiSeguitiResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorsiSeguitiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorso_conAttivita.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorso_conAttivita.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorso_conAttivita.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorso_conAttivita.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetOrari.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetOrari.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetOrari.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetOrari.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.GetOrariResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.GetOrariResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.GetOrariResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.GetOrariResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.ValidaCredenziali.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.ValidaCredenziali.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.InvioRichiestaIscrizione.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
             
-                if (it.actio.services.UserServiceStub.ValidaCredenzialiResponse.class.equals(type)){
+                if (it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse.class.equals(type)){
                 
-                        return it.actio.services.UserServiceStub.ValidaCredenzialiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                        return it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+            
+                if (it.actio.user.services.UserServiceStub.ValidaCredenziali.class.equals(type)){
+                
+                        return it.actio.user.services.UserServiceStub.ValidaCredenziali.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+            
+                if (it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse.class.equals(type)){
+                
+                        return it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

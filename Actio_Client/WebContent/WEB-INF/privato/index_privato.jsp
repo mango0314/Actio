@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import=" it.actio.services.UserServiceStub.Corso" %>
+<%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -58,6 +58,8 @@
 </head>
 
 <body class="index-page">
+
+	<% int ruolo = (int) session.getAttribute("ruolo"); %>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">

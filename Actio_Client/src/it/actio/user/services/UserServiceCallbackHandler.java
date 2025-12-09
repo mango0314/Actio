@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
 
-    package it.actio.services;
+    package it.actio.user.services;
 
     /**
      *  UserServiceCallbackHandler Callback class, Users can extend this class and implement
@@ -49,7 +49,7 @@
             * override this method for handling normal response from getCorso_conAttivita operation
             */
            public void receiveResultgetCorso_conAttivita(
-                    it.actio.services.UserServiceStub.GetCorso_conAttivitaResponse result
+                    it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse result
                         ) {
            }
 
@@ -65,7 +65,7 @@
             * override this method for handling normal response from getCorsi_conPostiRimasti operation
             */
            public void receiveResultgetCorsi_conPostiRimasti(
-                    it.actio.services.UserServiceStub.GetCorsi_conPostiRimastiResponse result
+                    it.actio.user.services.UserServiceStub.GetCorsi_conPostiRimastiResponse result
                         ) {
            }
 
@@ -81,7 +81,7 @@
             * override this method for handling normal response from getCorsiSeguiti operation
             */
            public void receiveResultgetCorsiSeguiti(
-                    it.actio.services.UserServiceStub.GetCorsiSeguitiResponse result
+                    it.actio.user.services.UserServiceStub.GetCorsiSeguitiResponse result
                         ) {
            }
 
@@ -93,27 +93,11 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for getAccount method
-            * override this method for handling normal response from getAccount operation
-            */
-           public void receiveResultgetAccount(
-                    it.actio.services.UserServiceStub.GetAccountResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getAccount operation
-           */
-            public void receiveErrorgetAccount(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for cercaCorsi_conPostiRimasti method
             * override this method for handling normal response from cercaCorsi_conPostiRimasti operation
             */
            public void receiveResultcercaCorsi_conPostiRimasti(
-                    it.actio.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse result
+                    it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse result
                         ) {
            }
 
@@ -125,11 +109,43 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getAccount method
+            * override this method for handling normal response from getAccount operation
+            */
+           public void receiveResultgetAccount(
+                    it.actio.user.services.UserServiceStub.GetAccountResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getAccount operation
+           */
+            public void receiveErrorgetAccount(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for validaCredenziali method
+            * override this method for handling normal response from validaCredenziali operation
+            */
+           public void receiveResultvalidaCredenziali(
+                    it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from validaCredenziali operation
+           */
+            public void receiveErrorvalidaCredenziali(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getOrari method
             * override this method for handling normal response from getOrari operation
             */
            public void receiveResultgetOrari(
-                    it.actio.services.UserServiceStub.GetOrariResponse result
+                    it.actio.user.services.UserServiceStub.GetOrariResponse result
                         ) {
            }
 
@@ -141,19 +157,19 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for validaCredenziali method
-            * override this method for handling normal response from validaCredenziali operation
+            * auto generated Axis2 call back method for invioRichiestaIscrizione method
+            * override this method for handling normal response from invioRichiestaIscrizione operation
             */
-           public void receiveResultvalidaCredenziali(
-                    it.actio.services.UserServiceStub.ValidaCredenzialiResponse result
+           public void receiveResultinvioRichiestaIscrizione(
+                    it.actio.user.services.UserServiceStub.InvioRichiestaIscrizioneResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from validaCredenziali operation
+           * override this method for handling error response from invioRichiestaIscrizione operation
            */
-            public void receiveErrorvalidaCredenziali(java.lang.Exception e) {
+            public void receiveErrorinvioRichiestaIscrizione(java.lang.Exception e) {
             }
                 
 

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.axis2.AxisFault;
 
-import it.actio.services.UserServiceStub;
-import it.actio.services.UserServiceStub.Account;
+import it.actio.user.services.UserServiceStub;
+import it.actio.user.services.UserServiceStub.Account;
 
 
 /**
@@ -77,6 +77,9 @@ public class Login extends HttpServlet {
 			session.setAttribute("autenticato", true);
 			session.setAttribute("ruolo", account.getRuolo());
 			session.setAttribute("account", account);
+			String csrfToken = java.util.UUID.randomUUID().toString();
+			session.setAttribute("csrfToken", csrfToken);
+
 			response.sendRedirect(request.getContextPath() + "/privato/Index_privato");
 			return;
 			

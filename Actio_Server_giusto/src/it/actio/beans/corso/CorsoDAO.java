@@ -70,47 +70,61 @@ public class CorsoDAO {
 	
 	public List<CorsoConAttivitaDTO> getPosti_Rimasti(int idPersona) {
 
-	    String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, " +
-	                   "a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti, " +
-	                   "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
-	                   "FROM Corso c " +
-	                   "LEFT JOIN Fornito f ON c.id = f.idCorso " +
-	                   "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
-	                   "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
-	                   "WHERE NOT EXISTS ( " +
-	                   "    SELECT 1 FROM Iscrizione ix " +
-	                   "    WHERE ix.idCorso = c.id " +
-	                   "      AND ix.idPersona = ? " +
-	                   "      AND ix.stato = 2 " +
-	                   ") " +
-	                   "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome";
+	    String query =
+	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, " +
+	        "a.nome AS nome_attivita, " +
+	        "COUNT(i2.idPersona) AS iscritti, " +
+	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
+
+	        // Recupera lo stato dell’utente (NULL se non ha fatto richiesta)
+	        "ix.stato AS stato_richiesta " +
+
+	        "FROM Corso c " +
+	        "LEFT JOIN Fornito f ON c.id = f.idCorso " +
+	        "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
+	        "LEFT JOIN Iscrizione i2 ON c.id = i2.idCorso AND i2.stato = 2 " + // iscritti effettivi
+	        "LEFT JOIN Iscrizione ix ON c.id = ix.idCorso AND ix.idPersona = ? " + // stato dell’utente
+	        "WHERE NOT EXISTS ( " +
+	        "    SELECT 1 FROM Iscrizione ix2 " +
+	        "    WHERE ix2.idCorso = c.id " +
+	        "      AND ix2.idPersona = ? " +
+	        "      AND ix2.stato = 2 " +
+	        ") " +
+	        "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome, ix.stato";
 
 	    List<CorsoConAttivitaDTO> res = new ArrayList<>();
 
-	    conn = DBManager.startConnection();
+	    try (Connection conn = DBManager.startConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
 
-	    try (PreparedStatement ps = conn.prepareStatement(query)) {
-	        
-	        ps.setInt(1, idPersona);
+	        ps.setInt(1, idPersona);  // per LEFT JOIN ix
+	        ps.setInt(2, idPersona);  // per NOT EXISTS
 
 	        ResultSet rs = ps.executeQuery();
 
 	        while (rs.next()) {
 	            CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+
 	            dto.setId(rs.getInt("id"));
 	            dto.setNomeCorso(rs.getString("nome_corso"));
 	            dto.setDescrizione(rs.getString("descrizione"));
 	            dto.setCapienza(rs.getInt("capienza"));
 	            dto.setNomeAttivita(rs.getString("nome_attivita"));
 	            dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+
+	            // mappiamo stato_richiesta: può essere NULL
+	            Integer stato = (Integer) rs.getObject("stato_richiesta");
+	            dto.setStato(stato != null ? stato : 0);
+
 	            res.add(dto);
 	        }
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+		DBManager.closeConnection();
 
-	    DBManager.closeConnection();
+
 	    return res;
 	}
 
@@ -204,8 +218,49 @@ public class CorsoDAO {
 		return res;
 	}
 	
+	public List<CorsoConAttivitaDTO> getCorsiByAttivitaConPosti(int idAttivita) {
+	    List<CorsoConAttivitaDTO> corsi = new ArrayList<>();
+
+	    String query = "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
+	                   "COUNT(i.idPersona) AS iscritti, " +
+	                   "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
+	                   "FROM Corso c " +
+	                   "JOIN Fornito f ON c.id = f.idCorso " +
+	                   "JOIN Attivita a ON f.idAttivita = a.id " +
+	                   "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
+	                   "WHERE a.id = ? " +
+	                   "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome";
+
+	    try (Connection conn = DBManager.startConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+	        
+	        ps.setInt(1, idAttivita);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+	                dto.setId(rs.getInt("id"));
+	                dto.setNomeCorso(rs.getString("nome_corso"));
+	                dto.setDescrizione(rs.getString("descrizione"));
+	                dto.setCapienza(rs.getInt("capienza"));
+	                dto.setNomeAttivita(rs.getString("nome_attivita"));
+	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+	                corsi.add(dto);
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        // Meglio loggare con un logger serio in produzione
+	    }
+		DBManager.closeConnection();
+
+	    return corsi;
+	}
+
+	
 	public List<Corso> getAll_seguiti(int idPersona) {
-		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? order by id";
+		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? and i.stato = 2 order by id";
 
 		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
@@ -246,86 +301,87 @@ public class CorsoDAO {
 		return res;
 	}
 
-	    public List<CorsoConAttivitaDTO> cercaCorsiConPostiRimasti(String keyword, int idPersona) {
-	        List<CorsoConAttivitaDTO> risultati = new ArrayList<>();
+	public List<CorsoConAttivitaDTO> cercaCorsiConPostiRimasti(String keyword, int idPersona) {
+	    List<CorsoConAttivitaDTO> risultati = new ArrayList<>();
 
-	        if (keyword == null || keyword.trim().isEmpty()) {
-	            return risultati; // ritorna lista vuota se keyword nulla o vuota
+	    if (keyword == null || keyword.trim().isEmpty()) {
+	        return risultati;
+	    }
+
+	    String[] keywords = keyword.trim().split("\\s+");
+
+	    StringBuilder queryBuilder = new StringBuilder();
+	    queryBuilder.append(
+	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, " +
+	        "a.nome AS nome_attivita, " +
+	        "COUNT(i2.idPersona) AS iscritti, " +
+	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
+
+	        // QUI AGGIUNGI LO STATO DELL'UTENTE (NULL se nessuna iscrizione)
+	        "ix.stato AS stato_richiesta " +
+
+	        "FROM Corso c " +
+	        "LEFT JOIN Fornito f ON c.id = f.idCorso " +
+	        "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
+	        "LEFT JOIN Iscrizione i2 ON c.id = i2.idCorso AND i2.stato = 2 " + // conteggio iscritti approvati
+	        "LEFT JOIN Iscrizione ix ON c.id = ix.idCorso AND ix.idPersona = ? " + // stato dell’utente
+	        "WHERE NOT EXISTS ( " +
+	        "    SELECT 1 FROM Iscrizione ix2 " +
+	        "    WHERE ix2.idCorso = c.id AND ix2.idPersona = ? AND ix2.stato = 2 " +
+	        ") AND "
+	    );
+
+	    for (int i = 0; i < keywords.length; i++) {
+	        if (i > 0) queryBuilder.append(" AND ");
+	        queryBuilder.append("(c.nome LIKE ? OR a.nome LIKE ?)");
+	    }
+
+	    queryBuilder.append(" GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome, ix.stato");
+
+	    String query = queryBuilder.toString();
+
+	    try (
+	        Connection conn = DBManager.startConnection();
+	        PreparedStatement ps = conn.prepareStatement(query)
+	    ) {
+
+	        int index = 1;
+	        ps.setInt(index++, idPersona); // per la LEFT JOIN ix
+	        ps.setInt(index++, idPersona); // per la NOT EXISTS
+
+	        for (String kw : keywords) {
+	            String pattern = "%" + kw + "%";
+	            ps.setString(index++, pattern);
+	            ps.setString(index++, pattern);
 	        }
 
-	        String[] keywords = keyword.trim().split("\\s+");
-
-	        StringBuilder queryBuilder = new StringBuilder();
-	        queryBuilder.append(
-	        	    "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
-	        	    "COUNT(i.idPersona) AS iscritti, " +
-	        	    "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
-	        	    "FROM Corso c " +
-	        	    "LEFT JOIN Fornito f ON c.id = f.idCorso " +
-	        	    "LEFT JOIN Attivita a ON f.idAttivita = a.id " +
-	        	    "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
-	        	    "WHERE NOT EXISTS ( " +
-	        	    "    SELECT 1 FROM Iscrizione ix " +
-	        	    "    WHERE ix.idCorso = c.id AND ix.idPersona = ? AND ix.stato = 2 " +
-	        	    ") AND "
-	        	);
-
-	        // Costruzione dinamica della WHERE con AND per ogni parola
-	        for (int i = 0; i < keywords.length; i++) {
-	            if (i > 0) {
-	                queryBuilder.append(" AND ");
-	            }
-	            queryBuilder.append("(c.nome LIKE ? OR a.nome LIKE ?)");
-	        }
-
-	        queryBuilder.append(" GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome");
-
-	        String query = queryBuilder.toString();
-
-	        Connection conn = null;
-	        PreparedStatement ps = null;
-	        ResultSet rs = null;
-
-	        try {
-	            conn = DBManager.startConnection();
-	            ps = conn.prepareStatement(query);
-	            
-	            
-
-	            int paramIndex = 1;
-	            
-	            ps.setInt(paramIndex++, idPersona);
-	            
-	            
-	            for (String kw : keywords) {
-	                String pattern = "%" + kw + "%";
-	                ps.setString(paramIndex++, pattern);
-	                ps.setString(paramIndex++, pattern);
-	            }
-
-	            rs = ps.executeQuery();
-
+	        try (ResultSet rs = ps.executeQuery()) {
 	            while (rs.next()) {
-	            	CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+	                CorsoConAttivitaDTO dto = new CorsoConAttivitaDTO();
+
 	                dto.setId(rs.getInt("id"));
 	                dto.setNomeCorso(rs.getString("nome_corso"));
 	                dto.setDescrizione(rs.getString("descrizione"));
 	                dto.setCapienza(rs.getInt("capienza"));
 	                dto.setNomeAttivita(rs.getString("nome_attivita"));
 	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
+
+	                // qui imposti lo stato dell’utente (può essere NULL → no richiesta)
+	                dto.setStato(rs.getObject("stato_richiesta") == null
+	                    ? 0  // 0 = nessuna richiesta
+	                    : rs.getInt("stato_richiesta"));
+
 	                risultati.add(dto);
 	            }
-
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            // Meglio loggare o rilanciare eccezioni personalizzate
-	        } finally {
-	            DBManager.closeConnection();
 	        }
 
-	        return risultati;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
 	    }
-	
+
+	    return risultati;
+	}
+
 
 	
 	
