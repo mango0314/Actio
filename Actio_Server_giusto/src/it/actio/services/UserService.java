@@ -9,7 +9,7 @@ import it.actio.beans.iscrizione.IscrizioneDAO;
 import it.actio.beans.corso.CorsoDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.OrarioCorsoDTO;
-
+import it.actio.utils.Utility;
  
 
 import java.util.ArrayList;
@@ -76,6 +76,14 @@ public class UserService {
     
     public boolean InvioRichiestaIscrizione(int idPersona, int idCorso){
     	return iscrizioneDAO.salvaRichiestaIscrizione(idPersona, idCorso);
+    }
+    
+    public static boolean ValidaCredenziali(String email, String password){
+        if (!Utility.EMAIL_PATTERN.matcher(email).matches() ||
+            !Utility.PASSWORD_PATTERN.matcher(password).matches()) {
+            return false;
+        }
+        return true;
     }
 
 

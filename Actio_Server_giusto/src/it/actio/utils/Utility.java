@@ -1,4 +1,4 @@
-package it.actio.services;
+package it.actio.utils;
 
 import java.sql.Time;
 import java.time.format.DateTimeFormatter;
@@ -23,19 +23,13 @@ public class Utility {
         return t != null ? t.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")) : null;
     }
     
-    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+    public static final Pattern EMAIL_PATTERN = Pattern.compile(
         "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
     );
     
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile(
+    public static final Pattern PASSWORD_PATTERN = Pattern.compile(
         "^(?=.*[A-Z])(?=.*[@$!%*?&#().,;:+\\-_=]).{8,}$"
     );
 
-    public static boolean ValidaCredenziali(String email, String password){
-        if (!EMAIL_PATTERN.matcher(email).matches() ||
-            !PASSWORD_PATTERN.matcher(password).matches()) {
-            return false;
-        }
-        return true;
-    }
+    
 }
