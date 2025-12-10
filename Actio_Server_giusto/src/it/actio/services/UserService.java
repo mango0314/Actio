@@ -2,9 +2,12 @@ package it.actio.services;
 
 import it.actio.beans.account.Account;
 import it.actio.beans.account.AccountDAO;
+import it.actio.beans.attivita.Attivita;
 import it.actio.beans.corso.Corso;
 import it.actio.beans.orario_corso.Orario_corso;
 import it.actio.beans.orario_corso.Orario_corsoDAO;
+import it.actio.beans.persona.Persona;
+import it.actio.beans.persona.PersonaDAO;
 import it.actio.beans.iscrizione.IscrizioneDAO;
 import it.actio.beans.corso.CorsoDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
@@ -21,7 +24,7 @@ public class UserService {
     Orario_corsoDAO orario_corsoDAO = new Orario_corsoDAO();
     AccountDAO accountDAO = new AccountDAO();
     IscrizioneDAO iscrizioneDAO = new IscrizioneDAO();
-    
+    PersonaDAO personaDAO = new PersonaDAO();
     
     
    
@@ -84,6 +87,10 @@ public class UserService {
             return false;
         }
         return true;
+    }
+    
+    public Persona getPersona(int idPersona){
+    	return personaDAO.getbyId(idPersona);
     }
 
 

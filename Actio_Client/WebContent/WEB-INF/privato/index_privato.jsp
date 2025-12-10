@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
+<%@ page import="it.actio.user.services.UserServiceStub.Persona" %>
+<%@ page import="it.actio.activity.services.ActivityServiceStub.CorsoConAttivitaDTO" %>
+<%@ page import="it.actio.activity.services.ActivityServiceStub.Attivita" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -60,6 +63,85 @@
 <body class="index-page">
 
 	<% int ruolo = (int) session.getAttribute("ruolo"); %>
+	
+	<% if (ruolo == 0){ %>
+	
+	<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="Index_privato" class="logo d-flex align-items-center" >
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="<%= request.getContextPath() %>/img/logo_actio.png" alt="logo" >
+        <!-- <h1 class="sitename">Actio</h1> -->
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="Esplora"></a></li>
+          <li><a href="#contact">Contatti</a></li>
+          <li><a href=Logout>Logout</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <% CorsoConAttivitaDTO[] corsi_forniti = (CorsoConAttivitaDTO[]) request.getAttribute("corsiForniti");
+    	Attivita attivita = (Attivita) request.getAttribute("attivita");
+    %>
+    
+    <!-- Services Section -->
+    <section id="corsi" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Corsi</span>
+        <h2>Corsi forniti da <%= attivita.getNome() %> </h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-6 gx-5 justify-content-center">
+        
+        <% if (corsi_forniti != null && corsi_forniti.length != 0){
+       		for(CorsoConAttivitaDTO c : corsi_forniti){
+       			String DettaglioCorso = "DettaglioCorso?idCorso=" + c.getId();
+        	%>
+        
+
+          <div class="col-lg-4 col-md-6 mx-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item">
+              <div class="service-icon">
+                <i class="bi bi-person"></i>
+              </div>
+              <h3><%= c.getNomeCorso() %></h3>
+              <p>
+				<%= c.getDescrizione() %>
+			</p>
+			<p>Posti rimaneneti: <%= c.getPostiRimasti() %>/<%=c.getCapienza() %></p>
+              <a href=<%= DettaglioCorso %> class="service-link">
+                Seleziona <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div><!-- End Service Item -->
+          
+          <% 	}
+        	}
+        	%>
+
+          
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+	
+	<% } else { %>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -86,7 +168,8 @@
 
   <main class="main">
 
-    <% Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); %>
+    <% Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); 
+    	Persona persona = (Persona) request.getAttribute("persona");    %>
     
     <!-- Services Section -->
     <section id="corsi" class="services section">
@@ -94,7 +177,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Corsi</span>
-        <h2>Corsi seguiti</h2>
+        <h2>Corsi seguiti da <%=persona.getNome()%> <%=persona.getCognome()%></h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -133,6 +216,8 @@
       </div>
 
     </section><!-- /Services Section -->
+    
+    <% } %>
     
     <section id="about" class="about section">
 

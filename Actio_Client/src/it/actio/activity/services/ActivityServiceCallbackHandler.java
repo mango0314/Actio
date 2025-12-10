@@ -45,6 +45,22 @@
 
         
            /**
+            * auto generated Axis2 call back method for getAttivita method
+            * override this method for handling normal response from getAttivita operation
+            */
+           public void receiveResultgetAttivita(
+                    it.actio.activity.services.ActivityServiceStub.GetAttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getAttivita operation
+           */
+            public void receiveErrorgetAttivita(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getCorsiForniti method
             * override this method for handling normal response from getCorsiForniti operation
             */

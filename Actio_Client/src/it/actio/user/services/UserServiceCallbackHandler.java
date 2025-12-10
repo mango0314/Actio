@@ -61,6 +61,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getPersona method
+            * override this method for handling normal response from getPersona operation
+            */
+           public void receiveResultgetPersona(
+                    it.actio.user.services.UserServiceStub.GetPersonaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getPersona operation
+           */
+            public void receiveErrorgetPersona(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getCorsi_conPostiRimasti method
             * override this method for handling normal response from getCorsi_conPostiRimasti operation
             */
