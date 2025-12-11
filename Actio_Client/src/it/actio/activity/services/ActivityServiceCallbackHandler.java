@@ -76,6 +76,22 @@
             public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
             }
                 
+           /**
+            * auto generated Axis2 call back method for getIscritti_conDatafine method
+            * override this method for handling normal response from getIscritti_conDatafine operation
+            */
+           public void receiveResultgetIscritti_conDatafine(
+                    it.actio.activity.services.ActivityServiceStub.GetIscritti_conDatafineResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getIscritti_conDatafine operation
+           */
+            public void receiveErrorgetIscritti_conDatafine(java.lang.Exception e) {
+            }
+                
 
 
     }

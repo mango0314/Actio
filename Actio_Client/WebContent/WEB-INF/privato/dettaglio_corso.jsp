@@ -1,8 +1,10 @@
+<%@page import="sun.nio.cs.ext.ISCII91"%>
 <%@page import="it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
 <%@ page import=" it.actio.user.services.UserServiceStub.OrarioCorsoDTO" %>
+<%@ page import="it.actio.activity.services.ActivityServiceStub.IscrittiConDataFineDTO" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -59,6 +61,8 @@
   ======================================================== -->
 </head>
 
+<% int ruolo = (int) session.getAttribute("ruolo"); %>
+
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -100,18 +104,22 @@
               <p data-aos="fade-up" data-aos-delay="300"><%= corso_conAttivita_e_PostiRimasti.getDescrizione() %></p>
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
                 <a href=#orari class="btn-primary">Orari <i class="bi bi-arrow-down"></i></a>
-                <a href="#https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn-secondary glightbox">
-                  <i class="bi bi-play-circle"></i>
-                  Watch Demo
+               <% if(ruolo == 0){ %>
+                <a href="ModificaCorso" class="btn-secondary glightbox">
+                  
+                  Modifica
                 </a>
+                <% } %>
               </div>
               <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+              <% if(ruolo == 1){ %>
                 <div class="stat-item">
                   <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getNomeAttivita() %></div>
                   <div class="stat-label">Attività</div>
                 </div>
+                <% } %>
                 <div class="stat-item">
-                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getPostiRimasti() %></div>
+                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getPostiRimasti() %>/<%=corso_conAttivita_e_PostiRimasti.getCapienza() %></div>
                   <div class="stat-label">Posti rimasti</div>
                 </div>
                 
@@ -121,7 +129,7 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="img/img_fitness.png" alt="img pilates" class="img-fluid">
+              <img src="<%= request.getContextPath() %>/img/img_fitness.png" alt="img pilates" class="img-fluid">
               </div>
           </div>
         </div>
@@ -182,15 +190,101 @@
                         
                     </tbody>
                 </table>
+                
             </div>
-
+			
         </div>
+        <% if(ruolo == 0){ %>
+            <div class="col-12 text-center mt-3">
+                <a href="ModificaOrari" class="btn btn-primary">Modifica orari</a>
+            </div>
+        <% } %>
     </div>
 </div>
 
           
 
-    </section><!-- /About Section -->
+    </section><!-- /Orari Section -->
+    
+    <% if(ruolo == 0){
+    	IscrittiConDataFineDTO[] iscritti_conDataFIne = (IscrittiConDataFineDTO[]) request.getAttribute("iscritti_conDataFine"); 
+    	%>
+    
+    <section id="orari" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Iscritti</span>
+        <h2> Tabella delle iscrizioni </h2>
+        <p>
+			Visualizza ed elimina tutti gli iscritti al tuo corso.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
+
+            <div class="content d-flex justify-content-center">
+                <table class="table table-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cognome</th>
+                            <th scope="col">Data di nascita</th>
+                            <th scope="col">Altezza</th>
+                            <th scope="col">Peso</th>
+                            <th scope="col">Data di fine iscrizione</th>
+                            <th scope="col"> Azioni </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% if (iscritti_conDataFIne != null && iscritti_conDataFIne.length != 0){
+                    	for( IscrittiConDataFineDTO i : iscritti_conDataFIne){
+                    		
+                    		String EliminaCorso = "Elimina?idPersona=" + i.getId();
+                    	%>
+                    
+                    
+                        <tr>
+                            <th scope="row"><%= i.getNome() %></th>
+                            <td><%= i.getCognome() %></td>
+                            <td><%= i.getDataDiNascitaFormatted() %></td>
+                            <th><%=i.getAltezza() %></th>
+                            <td><%= i.getPeso() %></td>
+                            <td scope="row"><%= i.getDataFineIscrizioneFormatted() %></td>
+                            <td><a href="<%= EliminaCorso %>" class="btn btn-primary">Elimina</a></td>
+                        </tr>
+                        
+                        <%}
+                    	} else{
+                    	
+                    	%>
+                    	
+                    	<div class="col-12">
+      						<div class="alert alert-info text-center">
+        				Nessun iscritto trovato.
+			      		</div>
+			    	</div>
+			    	
+			    	<% } %>
+                        
+                    </tbody>
+                </table>
+                
+            </div>
+			
+        </div>
+        
+              
+    </div>
+</div>
+
+          
+
+    </section><!-- /Iscritti Section -->
+    
+    <% } %>
    
 
     <!-- Portfolio Section -->

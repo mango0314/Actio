@@ -78,7 +78,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="Esplora"></a></li>
+          <li><a href="Richieste">Richieste</a></li>
           <li><a href="#contact">Contatti</a></li>
           <li><a href=Logout>Logout</a></li>
         </ul>

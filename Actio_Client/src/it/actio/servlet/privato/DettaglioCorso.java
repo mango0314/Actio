@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.axis2.AxisFault;
 
+import it.actio.activity.services.ActivityServiceStub;
+import it.actio.activity.services.ActivityServiceStub.IscrittiConDataFineDTO;
 import it.actio.user.services.UserServiceStub;
 import it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO;
 import it.actio.user.services.UserServiceStub.OrarioCorsoDTO;
@@ -21,14 +23,16 @@ public class DettaglioCorso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private UserServiceStub stub;
+	private ActivityServiceStub stub2;
 	
 	@Override
 	public void init() throws ServletException {
 	    super.init();
 	    try {
 	        stub = new UserServiceStub();
+	        stub2 = new ActivityServiceStub();
 	    } catch (AxisFault e) {
-	        throw new ServletException("Errore inizializzazione UserServiceStub", e);
+	        throw new ServletException("Errore inizializzazione Stub", e);
 	    }
 	}
        
@@ -59,6 +63,8 @@ public class DettaglioCorso extends HttpServlet {
 			return;
 		} 
 		
+		int ruolo = (int) session.getAttribute("ruolo");
+		
 		String idCorsoParam =  request.getParameter("idCorso");
 		
 		int idCorso = Integer.parseInt(idCorsoParam);		
@@ -75,6 +81,16 @@ public class DettaglioCorso extends HttpServlet {
 		
 		UserServiceStub.GetOrariResponse resp1 = stub.getOrari(req1);
 		OrarioCorsoDTO[] orario_delCorso = resp1.get_return();
+		
+		if(ruolo == 0){
+			ActivityServiceStub.GetIscritti_conDatafine req2 = new ActivityServiceStub.GetIscritti_conDatafine();
+			req2.setIdCorso(idCorso);
+			
+			ActivityServiceStub.GetIscritti_conDatafineResponse resp2 = stub2.getIscritti_conDatafine(req2);
+			IscrittiConDataFineDTO[] iscritti_conDataFineIscrizione = resp2.get_return();
+			
+			request.setAttribute("iscritti_conDataFine", iscritti_conDataFineIscrizione);
+		}
 		
 		request.setAttribute("corso_conAttivita_e_PostiRimasti", corso_conAttivita_e_PostiRimasti);
 		request.setAttribute("orario_delCorso", orario_delCorso);

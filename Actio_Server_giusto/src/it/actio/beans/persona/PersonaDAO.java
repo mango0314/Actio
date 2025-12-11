@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.IscrittiConDataFineDTO;
 import it.actio.utils.DBManager;
 
 
@@ -128,6 +129,47 @@ public class PersonaDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	
+	public List<IscrittiConDataFineDTO> getIscrittiConDataFine(int idCorso) {
+
+	    List<IscrittiConDataFineDTO> list = new ArrayList<>();
+
+	    String sql = "SELECT p.id AS idPersona, p.nome, p.cognome, p.data_di_nascita, p.altezza, p.peso, i.dataFine "
+	               + "FROM iscrizione i "
+	               + "JOIN persona p ON i.idPersona = p.id "
+	               + "WHERE i.idCorso = ?";
+	    conn = DBManager.startConnection();
+	    try (
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, idCorso);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+
+	            while (rs.next()) {
+	                IscrittiConDataFineDTO dto = new IscrittiConDataFineDTO();
+
+	                dto.setId(rs.getInt("idPersona"));
+	                dto.setNome(rs.getString("nome"));
+	                dto.setCognome(rs.getString("cognome"));
+	                dto.setData_di_nascita(rs.getDate("data_di_nascita"));
+	                dto.setAltezza(rs.getInt("altezza"));
+	                dto.setPeso(rs.getDouble("peso"));
+	                dto.setDataFineIscrizione(rs.getDate("dataFine"));
+
+	                list.add(dto);
+	            }
+	        }
+
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+		DBManager.closeConnection();
+
+	    return list;
+	}
+
 	
 
 	

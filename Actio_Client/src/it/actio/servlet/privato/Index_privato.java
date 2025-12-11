@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.axis2.AxisFault;
+
 import it.actio.activity.services.ActivityServiceStub;
 import it.actio.activity.services.ActivityServiceStub.Attivita;
 import it.actio.activity.services.ActivityServiceStub.CorsoConAttivitaDTO;
@@ -21,6 +23,20 @@ import it.actio.user.services.UserServiceStub.Persona;
  */
 public class Index_privato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+private UserServiceStub stub;
+private ActivityServiceStub stub2;
+	
+	@Override
+	public void init() throws ServletException {
+	    super.init();
+	    try {
+	        stub = new UserServiceStub();
+	        stub2 = new ActivityServiceStub();
+	    } catch (AxisFault e) {
+	        throw new ServletException("Errore inizializzazione Stub", e);
+	    }
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -55,11 +71,11 @@ public class Index_privato extends HttpServlet {
 			int idAttivita = account.getIdAttivita();
 			
 			//recupero i corsi forniti
-			ActivityServiceStub stub1 = new ActivityServiceStub();
+			
 			ActivityServiceStub.GetCorsiForniti req1 = new ActivityServiceStub.GetCorsiForniti();
 			req1.setIdAttivita(idAttivita);
 			
-			ActivityServiceStub.GetCorsiFornitiResponse resp1 = stub1.getCorsiForniti(req1);
+			ActivityServiceStub.GetCorsiFornitiResponse resp1 = stub2.getCorsiForniti(req1);
 			
 			CorsoConAttivitaDTO[] corsi_forniti = resp1.get_return();
 			
@@ -80,7 +96,7 @@ public class Index_privato extends HttpServlet {
 		int idPersona = account.getIdPersona();
 		
 		//recupero i corsi seguiti
-		UserServiceStub stub = new UserServiceStub();
+		
 		UserServiceStub.GetCorsiSeguiti req = new UserServiceStub.GetCorsiSeguiti();
 		req.setIdPersona(idPersona);
 		
@@ -89,11 +105,11 @@ public class Index_privato extends HttpServlet {
 		Corso[] corsi_seguiti = resp.get_return();
 		
 		//recupero l'utente
-		UserServiceStub stub3 = new UserServiceStub();
+		
 		UserServiceStub.GetPersona req3 = new UserServiceStub.GetPersona();
 		req3.setIdPersona(idPersona);
 		
-		UserServiceStub.GetPersonaResponse resp3 = stub3.getPersona(req3);
+		UserServiceStub.GetPersonaResponse resp3 = stub.getPersona(req3);
 		
 		Persona persona = resp3.get_return();
 		
