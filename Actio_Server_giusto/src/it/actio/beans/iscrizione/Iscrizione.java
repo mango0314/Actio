@@ -3,6 +3,7 @@ package it.actio.beans.iscrizione;
 import java.util.Date;;
 
 public class Iscrizione {
+	private int id;
 	private int idPersona;
 	private int idCorso;
 	private Date dataInizio;
@@ -46,6 +47,14 @@ public class Iscrizione {
 
 	public void setStato(int stato) {
 		this.stato = stato;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

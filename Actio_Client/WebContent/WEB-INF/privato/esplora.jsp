@@ -145,7 +145,7 @@
                       <p class="project-description"><%= c.getDescrizione() %></p>
 						<%
 							Integer stato = c.getStato();
-							boolean richiestaInCorso = (stato != null);
+							boolean richiestaInCorso = (stato != null && (stato == 1 || stato == 2));
 							%>
 							
 							<button 

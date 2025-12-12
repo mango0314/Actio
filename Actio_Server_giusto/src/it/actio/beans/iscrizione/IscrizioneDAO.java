@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.Iscrizione_ConNomeCorso_NomeAttivitaDTO;
 import it.actio.utils.DBManager;
 
 
@@ -101,6 +102,7 @@ public class IscrizioneDAO {
 
 	private Iscrizione recordToIscrizione(ResultSet rs) throws SQLException {
 		Iscrizione iscrizione = new Iscrizione();
+		iscrizione.setId(rs.getInt("id"));
 		iscrizione.setIdPersona(rs.getInt("idPersona"));
 		iscrizione.setIdCorso(rs.getInt("idCorso"));
 		iscrizione.setDataInizio(rs.getDate("dataInizio"));
@@ -149,6 +151,56 @@ public class IscrizioneDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	public List<Iscrizione_ConNomeCorso_NomeAttivitaDTO> getAll_Richieste_byAttivita(int idAttivita) {
+
+	    String query =
+	            "SELECT i.id as idIscrizione, i.idPersona, i.idCorso, p.nome AS nomePersona, p.cognome AS cognomePersona, " +
+	            "c.nome AS nomeCorso, f.idAttivita, i.dataInizio, i.dataFine, i.stato " +
+	            "FROM iscrizione i " +
+	            "JOIN persona p ON i.idPersona = p.id " +
+	            "JOIN corso c ON i.idCorso = c.id " +
+	            "JOIN fornito f ON c.id = f.idCorso " +
+	            "WHERE i.stato = 1 " +
+	            "AND f.idAttivita = ? " +
+	            "ORDER BY i.idPersona";
+
+	    List<Iscrizione_ConNomeCorso_NomeAttivitaDTO> result = new ArrayList<>();
+
+	    conn = DBManager.startConnection();
+
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setInt(1, idAttivita);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                Iscrizione_ConNomeCorso_NomeAttivitaDTO dto = new Iscrizione_ConNomeCorso_NomeAttivitaDTO();
+
+	                dto.setId(rs.getInt("idIscrizione"));
+	                dto.setIdPersona(rs.getInt("idPersona"));
+	                dto.setNome_Persona(rs.getString("nomePersona"));
+	                dto.setCognome_Persona(rs.getString("cognomePersona"));
+	                dto.setIdCorso(rs.getInt("idCorso"));
+	                dto.setNome_Corso(rs.getString("nomeCorso"));
+	                dto.setIdAttivita(idAttivita);
+	                dto.setDataInizio(rs.getDate("dataInizio"));
+	                dto.setDataFine(rs.getDate("dataFine"));
+	                dto.setStato(rs.getInt("stato"));
+
+	                result.add(dto);
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    DBManager.closeConnection();
+	    return result;
+	}
+
+
 	
 	
 

@@ -5,17 +5,16 @@
 <%@ page import=" it.actio.user.services.UserServiceStub.Corso" %>
 <%@ page import=" it.actio.user.services.UserServiceStub.OrarioCorsoDTO" %>
 <%@ page import="it.actio.activity.services.ActivityServiceStub.IscrittiConDataFineDTO" %>
+<%@ page import="it.actio.activity.services.ActivityServiceStub.Iscrizione_ConNomeCorso_NomeAttivitaDTO" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
-
-<% CorsoConAttivitaDTO corso_conAttivita_e_PostiRimasti = (CorsoConAttivitaDTO) request.getAttribute("corso_conAttivita_e_PostiRimasti"); %>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Actio - <%= corso_conAttivita_e_PostiRimasti.getNomeCorso() %></title>
+  <title>Actio - Richieste</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -95,61 +94,18 @@
 
   <main class="main">
 
-    <% 
-    	OrarioCorsoDTO[] orario_Corso = (OrarioCorsoDTO[]) request.getAttribute("orario_delCorso");
+    <% Iscrizione_ConNomeCorso_NomeAttivitaDTO[] iscrizioniInSospeso = (Iscrizione_ConNomeCorso_NomeAttivitaDTO[]) request.getAttribute("iscrizioni_conNomeCorso_Attivita");
+    	
     %>
     
-    <section id="hero" class="hero section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content">
-              <h1 data-aos="fade-up" data-aos-delay="200"><%= corso_conAttivita_e_PostiRimasti.getNomeCorso() %></h1>
-              <p data-aos="fade-up" data-aos-delay="300"><%= corso_conAttivita_e_PostiRimasti.getDescrizione() %></p>
-              <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-                <a href=#orari class="btn-primary">Orari <i class="bi bi-arrow-down"></i></a>
-               <% if(ruolo == 0){ %>
-                <a href="ModificaCorso" class="btn-secondary glightbox">
-                  
-                  Modifica
-                </a>
-                <% } %>
-              </div>
-              <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
-              <% if(ruolo == 1){ %>
-                <div class="stat-item">
-                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getNomeAttivita() %></div>
-                  <div class="stat-label">Attività</div>
-                </div>
-                <% } %>
-                <div class="stat-item">
-                  <div class="stat-number"><%= corso_conAttivita_e_PostiRimasti.getPostiRimasti() %>/<%=corso_conAttivita_e_PostiRimasti.getCapienza() %></div>
-                  <div class="stat-label">Posti rimasti</div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="<%= request.getContextPath() %>/img/img_fitness.png" alt="img pilates" class="img-fluid">
-              </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Hero Section -->
     
-       <section id="orari" class="about section">
+    
+       <section id="richieste" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Orari</span>
-        <h2> Tabella orari </h2>
+        <span class="subtitle">Richieste</span>
+        <h2> Tabella di gestione richieste iscrizione ai corsi </h2>
         <p>
 			La nostra missione è semplificare la vita di chi organizza corsi e di chi li frequenta, 
 	creando un ecosistema unico dove palestre, scuole sportive, istruttori e appassionati si incontrano.</p>
@@ -163,103 +119,28 @@
                 <table class="table table-lg">
                     <thead>
                         <tr>
-                            <th scope="col">Giorno</th>
-                            <th scope="col">Ora inizio</th>
-                            <th scope="col">Ora fine</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <% if (orario_Corso != null && orario_Corso.length != 0){
-                    	for( OrarioCorsoDTO or : orario_Corso){
-                    	%>
-                    
-                    
-                        <tr>
-                            <th scope="row"><%=or.getGiornoSettimanaLabel() %></th>
-                            <td><%= or.getOrarioInizio() %></td>
-                            <td><%= or.getOrarioFine() %></td>
-                        </tr>
-                        
-                        <%}
-                    	} else{
-                    	
-                    	%>
-                    	
-                    	<div class="col-12">
-      						<div class="alert alert-info text-center">
-        				Nessun corso trovato.
-			      		</div>
-			    	</div>
-			    	
-			    	<% } %>
-                        
-                    </tbody>
-                </table>
-                
-            </div>
-			
-        </div>
-        <% if(ruolo == 0){ %>
-            <div class="col-12 text-center mt-3">
-                <a href="ModificaOrari" class="btn btn-primary">Modifica orari</a>
-            </div>
-        <% } %>
-    </div>
-</div>
-
-          
-
-    </section><!-- /Orari Section -->
-    
-    <% if(ruolo == 0){
-    	IscrittiConDataFineDTO[] iscritti_conDataFIne = (IscrittiConDataFineDTO[]) request.getAttribute("iscritti_conDataFine"); 
-    	%>
-    
-    <section id="orari" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Iscritti</span>
-        <h2> Tabella delle iscrizioni </h2>
-        <p>
-			Visualizza ed elimina tutti gli iscritti al tuo corso.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row justify-content-center">
-        <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
-
-            <div class="content d-flex justify-content-center">
-                <table class="table table-lg">
-                    <thead>
-                        <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
-                            <th scope="col">Data di nascita</th>
-                            <th scope="col">Altezza</th>
-                            <th scope="col">Peso</th>
-                            <th scope="col">Data di fine iscrizione</th>
-                            <th scope="col"> Azioni </th>
+                            <th scope="col">Corso</th>
+                            
+                            <th scope="col">Azione</th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                    <% if (iscritti_conDataFIne != null && iscritti_conDataFIne.length != 0){
-                    	for( IscrittiConDataFineDTO i : iscritti_conDataFIne){
+                    <% if (iscrizioniInSospeso != null && iscrizioniInSospeso.length != 0){
+                    	for( Iscrizione_ConNomeCorso_NomeAttivitaDTO i : iscrizioniInSospeso){
                     		
-                    		String EliminaCorso = "Elimina?idPersona=" + i.getId();
+                    		
                     	%>
                     
                     
                         <tr>
-                            <th scope="row"><%= i.getNome() %></th>
-                            <td><%= i.getCognome() %></td>
-                            <td><%= i.getDataDiNascitaFormatted() %></td>
-                            <th><%=i.getAltezza() %></th>
-                            <td><%= i.getPeso() %></td>
-                            <td scope="row"><%= i.getDataFineIscrizioneFormatted() %></td>
-                            <td><a href="<%= EliminaCorso %>" class="btn btn-primary">Elimina</a></td>
+                            <th scope="row"><%=i.getNome_Persona() %></th>
+                            <td><%= i.getCognome_Persona() %></td>
+                            <td><%= i.getNome_Corso() %></td>
+                            <td><a href="#" class="btn btn-primary">Accetta</a></td>
+                            
                         </tr>
                         
                         <%}
@@ -269,7 +150,7 @@
                     	
                     	<div class="col-12">
       						<div class="alert alert-info text-center">
-        				Nessun iscritto trovato.
+        				Nessuna richiesta trovato.
 			      		</div>
 			    	</div>
 			    	
@@ -281,16 +162,11 @@
             </div>
 			
         </div>
-        
-              
+       
     </div>
 </div>
 
-          
-
-    </section><!-- /Iscritti Section -->
-    
-    <% } %>
+        
    
 
     <!-- Portfolio Section -->

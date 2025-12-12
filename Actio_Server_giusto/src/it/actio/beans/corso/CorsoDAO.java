@@ -114,7 +114,12 @@ public class CorsoDAO {
 
 	            // mappiamo stato_richiesta: può essere NULL
 	            Integer stato = (Integer) rs.getObject("stato_richiesta");
-	            dto.setStato(stato != null ? stato : 0);
+	            if (stato == null) {
+	            	   // Non dovrebbe mai succedere, ma se succede metto -1 (nessuna richiesta)
+	            	   dto.setStato(-1);
+	            	} else {
+	            	   dto.setStato(stato);
+	            	}
 
 	            res.add(dto);
 	        }
@@ -260,7 +265,7 @@ public class CorsoDAO {
 
 	
 	public List<Corso> getAll_seguiti(int idPersona) {
-		String query = "SELECT id, nome,capienza, descrizione, dataInizio, dataFine, stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? and i.stato = 2 order by id";
+		String query = "SELECT c.id, c.nome, c.capienza, c.descrizione, i.dataInizio, i.dataFine, i.stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? and i.stato = 2 order by id";
 
 		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;

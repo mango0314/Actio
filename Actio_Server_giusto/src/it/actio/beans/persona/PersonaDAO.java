@@ -105,7 +105,7 @@ public class PersonaDAO {
 		persona.setAltezza(rs.getInt("altezza"));
 		persona.setPeso(rs.getDouble("peso"));
 		persona.setCertificatolink(rs.getString("certificatolink"));
-		persona.setFoto(rs.getString("logo"));
+		persona.setFoto(rs.getString("foto"));
 		
 		return persona;
 	}

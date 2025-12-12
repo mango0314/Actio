@@ -80,7 +80,7 @@ private ActivityServiceStub stub2;
 			CorsoConAttivitaDTO[] corsi_forniti = resp1.get_return();
 			
 			//recupero l'attivita
-			ActivityServiceStub stub2 = new ActivityServiceStub();
+			
 			ActivityServiceStub.GetAttivita req2 = new ActivityServiceStub.GetAttivita();
 			req2.setIdAttivita(idAttivita);
 			
@@ -92,7 +92,7 @@ private ActivityServiceStub stub2;
 					
 			request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
 			return;
-		}
+		} else{
 		int idPersona = account.getIdPersona();
 		
 		//recupero i corsi seguiti
@@ -116,6 +116,7 @@ private ActivityServiceStub stub2;
 		request.setAttribute("corsiSeguiti", corsi_seguiti);
 		request.setAttribute("persona", persona);	
 		request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
+		}
 	}
 
 }

@@ -4,6 +4,7 @@
 <%@ page import="it.actio.user.services.UserServiceStub.Persona" %>
 <%@ page import="it.actio.activity.services.ActivityServiceStub.CorsoConAttivitaDTO" %>
 <%@ page import="it.actio.activity.services.ActivityServiceStub.Attivita" %>
+<%@ page import="it.actio.user.services.UserServiceStub.Account" %>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -62,9 +63,17 @@
 
 <body class="index-page">
 
-	<% int ruolo = (int) session.getAttribute("ruolo"); %>
+	<% int ruolo = (int) session.getAttribute("ruolo");
+		Account account = (Account) session.getAttribute("account");
+		CorsoConAttivitaDTO[] corsi_forniti = (CorsoConAttivitaDTO[]) request.getAttribute("corsiForniti");
+    	Attivita attivita = (Attivita) request.getAttribute("attivita");
+    	Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); 
+    	Persona persona = (Persona) request.getAttribute("persona"); 
+		%>
 	
-	<% if (ruolo == 0){ %>
+	<% if (ruolo == 0){
+		String Profilo_attivita = "Profilo?idAttivita=" + account.getIdAttivita();
+		%>
 	
 	<header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -80,6 +89,7 @@
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="Richieste">Richieste</a></li>
           <li><a href="#contact">Contatti</a></li>
+          <li><a href="<%=Profilo_attivita%>"><i class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a></li>
           <li><a href=Logout>Logout</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -90,8 +100,7 @@
 
   <main class="main">
 
-    <% CorsoConAttivitaDTO[] corsi_forniti = (CorsoConAttivitaDTO[]) request.getAttribute("corsiForniti");
-    	Attivita attivita = (Attivita) request.getAttribute("attivita");
+    <% 
     %>
     
     <!-- Services Section -->
@@ -138,10 +147,16 @@
         </div>
 
       </div>
+      <div class="col-12 text-center mt-3">
+                <a href="AggiungiCorso" class="btn btn-primary">Crea</a>
+            </div>
 
     </section><!-- /Services Section -->
 	
-	<% } else { %>
+	<% } else { 
+		String Profilo_user = "Profilo?idPersona=" + account.getIdPersona();
+	
+	%>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -158,6 +173,7 @@
           <li><a href="#corsi">Corsi</a></li>
           <li><a href="Esplora">Esplora</a></li>
           <li><a href="#contact">Contatti</a></li>
+          <li><a href="<%=Profilo_user%>"><i class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a></li>
           <li><a href=Logout>Logout</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -168,8 +184,7 @@
 
   <main class="main">
 
-    <% Corso[] corsi_seguiti = (Corso[]) request.getAttribute("corsiSeguiti"); 
-    	Persona persona = (Persona) request.getAttribute("persona");    %>
+
     
     <!-- Services Section -->
     <section id="corsi" class="services section">
@@ -177,7 +192,9 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Corsi</span>
+        <% if(persona!= null){ %>
         <h2>Corsi seguiti da <%=persona.getNome()%> <%=persona.getCognome()%></h2>
+        <%} %>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">

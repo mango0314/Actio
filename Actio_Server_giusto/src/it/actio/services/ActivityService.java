@@ -6,15 +6,18 @@ import it.actio.beans.attivita.Attivita;
 import it.actio.beans.attivita.AttivitaDAO;
 import it.actio.beans.corso.Corso;
 import it.actio.beans.corso.CorsoDAO;
+import it.actio.beans.iscrizione.IscrizioneDAO;
 import it.actio.beans.persona.PersonaDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.IscrittiConDataFineDTO;
+import it.actio.dto.Iscrizione_ConNomeCorso_NomeAttivitaDTO;
 
 public class ActivityService {
 	
     CorsoDAO corsoDAO = new CorsoDAO();
     AttivitaDAO attivitaDAO = new AttivitaDAO();
     PersonaDAO personaDAO = new PersonaDAO();
+    IscrizioneDAO iscrizioneDAO = new IscrizioneDAO();
 
 	public CorsoConAttivitaDTO[] getCorsiForniti(int idAttivita) {
         List<CorsoConAttivitaDTO> list = corsoDAO.getCorsiByAttivitaConPosti(idAttivita);
@@ -28,6 +31,11 @@ public class ActivityService {
 	public IscrittiConDataFineDTO[] getIscritti_conDatafine(int idCorso){
 		List<IscrittiConDataFineDTO> list = personaDAO.getIscrittiConDataFine(idCorso);
 		return list.toArray(new IscrittiConDataFineDTO[0]);
+	}
+	
+	public Iscrizione_ConNomeCorso_NomeAttivitaDTO[] get_Iscrizioni_ConNomePersona_Attivita(int idAttivita){
+		List<Iscrizione_ConNomeCorso_NomeAttivitaDTO> list = iscrizioneDAO.getAll_Richieste_byAttivita(idAttivita);
+		return list.toArray(new Iscrizione_ConNomeCorso_NomeAttivitaDTO[0]);
 	}
 
 }

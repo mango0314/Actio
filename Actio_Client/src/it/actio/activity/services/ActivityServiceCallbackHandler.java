@@ -61,6 +61,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for get_Iscrizioni_ConNomePersona_Attivita method
+            * override this method for handling normal response from get_Iscrizioni_ConNomePersona_Attivita operation
+            */
+           public void receiveResultget_Iscrizioni_ConNomePersona_Attivita(
+                    it.actio.activity.services.ActivityServiceStub.Get_Iscrizioni_ConNomePersona_AttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from get_Iscrizioni_ConNomePersona_Attivita operation
+           */
+            public void receiveErrorget_Iscrizioni_ConNomePersona_Attivita(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getCorsiForniti method
             * override this method for handling normal response from getCorsiForniti operation
             */
