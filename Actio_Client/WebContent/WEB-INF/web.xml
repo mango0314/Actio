@@ -99,6 +99,36 @@
     <servlet-name>Richieste</servlet-name>
     <url-pattern>/privato/Richieste</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>RichiediRegistrazione</display-name>
+    <servlet-name>RichiediRegistrazione</servlet-name>
+    <servlet-class>it.actio.servlet.RichiediRegistrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiediRegistrazione</servlet-name>
+    <url-pattern>/RichiediRegistrazione</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Registrazione</display-name>
+    <servlet-name>Registrazione</servlet-name>
+    <servlet-class>it.actio.servlet.Registrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Registrazione</servlet-name>
+    <url-pattern>/Registrazione</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccettaIscrizione</display-name>
+    <servlet-name>AccettaIscrizione</servlet-name>
+    <servlet-class>it.actio.servlet.privato.AccettaIscrizione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccettaIscrizione</servlet-name>
+    <url-pattern>/privato/AccettaIscrizione</url-pattern>
+  </servlet-mapping>
   <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.UtenteDTO;
 import it.actio.utils.DBManager;
 
 
@@ -218,8 +219,8 @@ public class AccountDAO {
 		return res;
 	}
 
-	public boolean salva(Account account) {
-		String query = "INSERT INTO ACCOUNT (id, username, password, ruolo, idPersona, idAttivita) VALUES ( ?, ?, ?, ?, ? ,?)";
+	public boolean salvaAccount(UtenteDTO utente) {
+		String query = "INSERT INTO ACCOUNT (id, email, password, ruolo, idPersona, idAttivita) VALUES ( ?, ?, ?, ?, ? ,?)";
 		System.out.println("DEBUG-DAO: Query = " + query);
 		boolean esito = false;
 
@@ -230,26 +231,26 @@ public class AccountDAO {
 
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setInt(1, account.getId());
+			ps.setInt(1, utente.getId());
 
-			ps.setString(2, account.getUsername());
-			ps.setString(3, account.getPassword());
-			ps.setInt(4, account.getRuolo());
-			if (account.getIdPersona() != null)
-				ps.setInt(4, account.getIdPersona());
+			ps.setString(2, utente.getEmail());
+			ps.setString(3, utente.getPassword());
+			ps.setInt(4, utente.getRuolo());
+			if (utente.getIdPersona() != null)
+				ps.setInt(4, utente.getIdPersona());
 			else
 				ps.setNull(4, java.sql.Types.INTEGER);
 			
-			if (account.getIdAttivita() != null)
-				ps.setInt(4, account.getIdAttivita());
+			if (utente.getIdAttivita() != null)
+				ps.setInt(4, utente.getIdAttivita());
 			else
 				ps.setNull(4, java.sql.Types.INTEGER);
 
-			System.out.println("DEBUG-DAO: ps[1] = " + account.getUsername());
-			System.out.println("DEBUG-DAO: ps[2] = " + account.getPassword());
-			System.out.println("DEBUG-DAO: ps[3] = " + account.getRuolo());
-			System.out.println("DEBUG-DAO: ps[4] = " + account.getIdPersona());
-			System.out.println("DEBUG-DAO: ps[4] = " + account.getIdAttivita());
+			System.out.println("DEBUG-DAO: ps[1] = " + utente.getEmail());
+			System.out.println("DEBUG-DAO: ps[2] = " + utente.getPassword());
+			System.out.println("DEBUG-DAO: ps[3] = " + utente.getRuolo());
+			System.out.println("DEBUG-DAO: ps[4] = " + utente.getIdPersona());
+			System.out.println("DEBUG-DAO: ps[4] = " + utente.getIdAttivita());
 
 			int tmp = ps.executeUpdate();
 

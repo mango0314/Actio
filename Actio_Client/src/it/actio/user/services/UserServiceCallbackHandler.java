@@ -61,6 +61,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for registrazioneUtente method
+            * override this method for handling normal response from registrazioneUtente operation
+            */
+           public void receiveResultregistrazioneUtente(
+                    it.actio.user.services.UserServiceStub.RegistrazioneUtenteResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from registrazioneUtente operation
+           */
+            public void receiveErrorregistrazioneUtente(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getPersona method
             * override this method for handling normal response from getPersona operation
             */
@@ -109,22 +125,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for cercaCorsi_conPostiRimasti method
-            * override this method for handling normal response from cercaCorsi_conPostiRimasti operation
-            */
-           public void receiveResultcercaCorsi_conPostiRimasti(
-                    it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from cercaCorsi_conPostiRimasti operation
-           */
-            public void receiveErrorcercaCorsi_conPostiRimasti(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for getAccount method
             * override this method for handling normal response from getAccount operation
             */
@@ -141,19 +141,19 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for validaCredenziali method
-            * override this method for handling normal response from validaCredenziali operation
+            * auto generated Axis2 call back method for cercaCorsi_conPostiRimasti method
+            * override this method for handling normal response from cercaCorsi_conPostiRimasti operation
             */
-           public void receiveResultvalidaCredenziali(
-                    it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse result
+           public void receiveResultcercaCorsi_conPostiRimasti(
+                    it.actio.user.services.UserServiceStub.CercaCorsi_conPostiRimastiResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from validaCredenziali operation
+           * override this method for handling error response from cercaCorsi_conPostiRimasti operation
            */
-            public void receiveErrorvalidaCredenziali(java.lang.Exception e) {
+            public void receiveErrorcercaCorsi_conPostiRimasti(java.lang.Exception e) {
             }
                 
            /**
@@ -170,6 +170,22 @@
            * override this method for handling error response from getOrari operation
            */
             public void receiveErrorgetOrari(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for validaCredenziali method
+            * override this method for handling normal response from validaCredenziali operation
+            */
+           public void receiveResultvalidaCredenziali(
+                    it.actio.user.services.UserServiceStub.ValidaCredenzialiResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from validaCredenziali operation
+           */
+            public void receiveErrorvalidaCredenziali(java.lang.Exception e) {
             }
                 
            /**

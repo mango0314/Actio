@@ -90,7 +90,7 @@
             </ul>
           </li>
           <li><a href="#contact">Contatti</a></li>
-          <li><a href=Index_privato>Accedi</a></li>
+          <li><a href=RichiediLogin>Accedi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -100,64 +100,144 @@
 
   <main class="main">
 
-
+    <!-- Hero Section -->
+ 
 
     <!-- Contact Section -->
     <section id="contact" class="contact section light-background">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Login</span>
-        <h2>Accedi alla tua area personale</h2>
+        <span class="subtitle">Contatti</span>
+        <h2>Compila il form</h2>
+        <p>E' possibile contattarci attraverso i recapiti o il form sotto riportati. Vi risponderemo il prima possibile.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
-        <div class="row gy-4 justify-content-center">
-          
+		  <div class="row gy-4 justify-content-center">
+		    <div class="col-12 col-md-10 col-lg-7">
 
-          <div class="col-lg-7">
             <div class="form-wrapper">
-              
+              <div class="form-header">
+                <h3>Form</h3>
+              </div>
 
-              <form action="Login" method="post" >
+              <form action="Registrazione" method="post" class="php-email-form" enctype="multipart/form-data">
 
-                <div class="row">
-                  
-                  <div class="col-12">
+                <div class="row mb-4">
+				  <div class="col-12 d-flex justify-content-center gap-5">
+				    <div class="form-check">
+				      <input class="form-check-input" type="radio" name="tipoAccount" id="radioUtente" value="1" required>
+				      <label class="form-check-label" for="radioUtente">Utente</label>
+				    </div>
+				
+				    <div class="form-check">
+				      <input class="form-check-input" type="radio" name="tipoAccount" id="radioAttivita" value="0">
+				      <label class="form-check-label" for="radioAttivita">Attività</label>
+				    </div>
+				  </div>
+				</div>
+				
+				<div class="col-md-6">
                     <div class="form-group">
                       <label>Email </label>
-					<input type="email" name="email" required pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" 
-					 autocomplete="email" autocorrect="off" autocapitalize="none">
+                      <input type="email" name="email" required="">
                     </div>
                   </div>
-                  <div class="col-12">
+                  
+                  <div class="col-md-6">
                     <div class="form-group">
-                      <label>Password</label>
-                      <input type="password" name="password" required 
-                      minlength="8"
-					  autocomplete="current-password"
-					  pattern="^(?=.*[A-Z])(?=.*[@$!%*?&#().,;:+\-_=])[A-Za-z\d@$!%*?&#().,;:+\-_=]{8,}$"
-					  title="La password deve avere almeno 8 caratteri, una lettera maiuscola e un carattere speciale.">
+                      <label>Password </label>
+                      <input type="password" name="password" required="">
                     </div>
                   </div>
-                </div>
+				
+				<div id="campiUtente" class="mt-4 d-none">
+					  <div class="row">
+					    <div class="col-md-6">
+					      <div class="form-group">
+					        <label>Nome</label>
+					        <input type="text" name="nomeUtente" class="form-control">
+					      </div>
+					    </div>
+					
+					    <div class="col-md-6">
+					      <div class="form-group">
+					        <label>Cognome</label>
+					        <input type="text" name="cognomeUtente" class="form-control">
+					      </div>
+					    </div>
+					    
+					    <div class="col-md-6">
+					      <div class="form-group">
+					        <label>Data di nascita</label>
+					        <input type="date" name="data_di_nascita_Utente" class="form-control">
+					      </div>
+					    </div>
+					    
+					    <div class="col-md-6">
+						  <input type="number" class="form-control" name="altezzaUtente"
+						         min="100" max="250" step="1" inputmode="numeric"
+						         aria-label="Altezza in centimetri">
+						  <span class="input-group-text">cm</span>
+						</div>
+						
+						<div class="col-md-6">
+						  <input type="number" class="form-control" name="pesoUtente"
+						         min="40" max="300" step="0.1" inputmode="decimal"
+						         aria-label="Peso in chilogrammi">
+						  <span class="input-group-text">kg</span>
+						</div>
 
-                
+						<div class="mb-3">
+							  <label for="fotoProfilo" class="form-label">Carica la tua foto profilo</label>
+							  <input class="form-control" type="file" id="fotoProfilo" name="fotoProfilo" accept="image/png, image/jpeg">
+							</div>
+					  </div>
+					</div>
+					
+					<div id="campiAttivita" class="mt-4 d-none">
+					  <div class="col-md-6">
+					      <div class="form-group">
+					        <label>Nome Attività</label>
+					        <input type="text" name="nomeAttivita" class="form-control">
+					      </div>
+					    </div>
+					    
+					    <div class="col-md-6">
+					      <div class="form-group">
+					        <label>Città</label>
+					        <input type="text" name="cittaAttivita" class="form-control">
+					      </div>
+					    </div>
+					    
+					    <select class="form-select" name="tipoAttivita" aria-label="Tipo di attività sportiva">
+						  
+						  <option value="0">Palestra</option>
+						  <option value="1">Scuola di ballo</option>
+						  <option value="2">Associazione sportiva</option>
+						</select>
+					  
+					  
+					
+					  <div class="mb-3">
+							  <label for="logoAttivita" class="form-label">Carica il logo dell'azienda</label>
+							  <input class="form-control" type="file" id="logoAttivita" name="logoAttivita" accept="image/png, image/jpeg">
+							</div>
+					</div>
+									
+	
+				
+
+               
 
                 <button type="submit" class="submit-btn">
-                  <span>Accedi</span>
+                  <span>Invia</span>
                   <i class="bi bi-arrow-right"></i>
                 </button>
 
               </form>
-              
-              
 
             </div>
-            
-            <p>Non hai ancora un account?</p>
-              <a href=RichiediRegistrazione>
-              <button class="submit-btn"> Registrati </button>
-              </a>
 
           </div>
 
@@ -250,6 +330,7 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
+  <script src="js/form_registrazione.js"></script>
 
 </body>
 

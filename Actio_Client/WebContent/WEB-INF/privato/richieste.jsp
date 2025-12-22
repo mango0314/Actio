@@ -119,6 +119,7 @@
                 <table class="table table-lg">
                     <thead>
                         <tr>
+                        	
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Corso</th>
@@ -136,12 +137,24 @@
                     
                     
                         <tr>
-                            <th scope="row"><%=i.getNome_Persona() %></th>
-                            <td><%= i.getCognome_Persona() %></td>
-                            <td><%= i.getNome_Corso() %></td>
-                            <td><a href="#" class="btn btn-primary">Accetta</a></td>
-                            
-                        </tr>
+					    <th scope="row"><%= i.getNome_Persona() %></th>
+					    <td><%= i.getCognome_Persona() %></td>
+					    <td><%= i.getNome_Corso() %></td>
+					    <td>
+					        <form action="<%= request.getContextPath() %>/privato/AccettaIscrizione"
+					              method="post"
+					              style="display:inline">
+					
+					            <input type="hidden" name="idIscrizione" value="<%= i.getId() %>">
+					            <input type="hidden" name="csrfToken" value="<%= session.getAttribute("csrfToken") %>">
+					
+					            <button type="submit" class="btn btn-success btn-sm">
+					                Accetta
+					            </button>
+					        </form>
+					    </td>
+					</tr>
+
                         
                         <%}
                     	} else{

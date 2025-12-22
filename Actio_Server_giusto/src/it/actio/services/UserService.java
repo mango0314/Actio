@@ -12,6 +12,7 @@ import it.actio.beans.iscrizione.IscrizioneDAO;
 import it.actio.beans.corso.CorsoDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.OrarioCorsoDTO;
+import it.actio.dto.UtenteDTO;
 import it.actio.utils.Utility;
  
 
@@ -91,6 +92,15 @@ public class UserService {
     
     public Persona getPersona(int idPersona){
     	return personaDAO.getbyId(idPersona);
+    }
+    
+    public boolean RegistrazioneUtente(UtenteDTO utente){
+    	boolean risultato = false;
+    	
+    	
+    	
+    	
+    	return risultato;
     }
 
 

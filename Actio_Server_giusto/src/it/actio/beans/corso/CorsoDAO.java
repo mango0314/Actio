@@ -37,6 +37,35 @@ public class CorsoDAO {
 		return res;
 	}
 	
+	public int getCapienzaByIscrizione(int idIscrizione) {
+
+	    String query =
+	        "SELECT c.capienza " +
+	        "FROM corso c " +
+	        "JOIN iscrizione i ON c.id = i.idCorso " +
+	        "WHERE i.id = ?";
+
+	    int capienza = 0;
+
+	    try (Connection conn = DBManager.startConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setInt(1, idIscrizione);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                capienza = rs.getInt("capienza");
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    DBManager.closeConnection();
+	    return capienza;
+	}
+
+	
 	public CorsoConAttivitaDTO getCorso_conAttivita(int idCorso) {
 		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
 				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
@@ -67,6 +96,36 @@ public class CorsoDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	public int getNumeroPostiRimasti(int idCorso) {
+
+	    String query =
+	        "SELECT c.capienza - COUNT(i.idPersona) AS posti_rimasti " +
+	        "FROM corso c " +
+	        "LEFT JOIN iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
+	        "WHERE c.id = ? " +
+	        "GROUP BY c.capienza";
+
+	    int postiRimasti = 0;
+
+	    try (Connection conn = DBManager.startConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setInt(1, idCorso);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                postiRimasti = rs.getInt("posti_rimasti");
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    DBManager.closeConnection();
+	    return postiRimasti;
+	}
+
 	
 	public List<CorsoConAttivitaDTO> getPosti_Rimasti(int idPersona) {
 

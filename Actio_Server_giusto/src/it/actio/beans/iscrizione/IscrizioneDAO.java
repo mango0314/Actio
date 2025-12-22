@@ -35,6 +35,27 @@ public class IscrizioneDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	public Iscrizione get(int idIscrizione) {
+		String query = "SELECT * FROM iscrizione WHERE id=?";
+
+		Iscrizione res = null;
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1,  idIscrizione);
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				res = recordToIscrizione(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
 
 
 
@@ -230,6 +251,9 @@ public class IscrizioneDAO {
 		DBManager.closeConnection();
 		return esito;
 	}
+	
+	
+
 
 	public boolean elimina(Iscrizione iscrizione) {
 		String query = "DELETE FROM iscrizione WHERE idPersona = ? and idCorso = ?";
@@ -267,6 +291,31 @@ public class IscrizioneDAO {
 			ps.setInt(3, i.getStato());
 			ps.setInt(4, i.getIdPersona());
 			ps.setInt(5, i.getIdCorso());
+
+
+			int tmp = ps.executeUpdate();
+			if (tmp == 1)
+				esito = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return esito;
+	}
+	
+	public boolean AccettaIscrizione(int idIscrizione) {
+		String query = "UPDATE iscrizione " +
+		        "SET stato = 2, " +
+		        "    dataInizio = CURRENT_DATE, " +
+		        "    dataFine = DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR) " +
+		        "WHERE id = ? AND stato = 1";
+		boolean esito = false;
+
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idIscrizione);
 
 
 			int tmp = ps.executeUpdate();
