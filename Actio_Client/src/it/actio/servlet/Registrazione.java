@@ -5,6 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 import org.apache.axis2.AxisFault;
 import it.actio.activity.services.ActivityServiceStub;
@@ -66,6 +68,8 @@ public class Registrazione extends HttpServlet {
             return;
         }
         
+        boolean registrato = false;
+        
         try {
             tipo = Integer.parseInt(tipoAccount);
         } catch (Exception e) {
@@ -93,6 +97,16 @@ public class Registrazione extends HttpServlet {
 
                 if (datiMancanti) {
                     response.sendRedirect(request.getContextPath() + "/Index?errore=DATI+MANCANTI");
+                    return;
+                }
+                
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date dataNascitaDate;
+                try {
+                    dataNascitaDate = sdf.parse(dataNascita.trim());
+                } catch (ParseException e) {
+                    response.sendRedirect(request.getContextPath() + "/Index?errore=DATA_NASCITA_NON_VALIDA");
                     return;
                 }
                 
@@ -161,16 +175,16 @@ public class Registrazione extends HttpServlet {
                         return;
                     }
 
-                    // 4) controllo ìrealeî (consigliato): provo a leggerla come immagine
+                    // 4) controllo ‚Äúreale‚Äù (consigliato): provo a leggerla come immagine
                     try (java.io.InputStream in = fotoPart.getInputStream()) {
                         java.awt.image.BufferedImage img = javax.imageio.ImageIO.read(in);
-                        if (img == null) { // non Ë un'immagine valida
+                        if (img == null) { // non √® un'immagine valida
                             response.sendRedirect(request.getContextPath() + "/Index?errore=FILE_NON_E_IMMAGINE");
                             return;
                         }
                     }
 
-                    // 5) salva su disco con nome univoco (come stai gi‡ facendo)
+                    // 5) salva su disco con nome univoco (come stai gi√† facendo)
                     String estensione = lower.substring(lower.lastIndexOf('.')); // ".jpg" / ".png"
                     String nomeUnico = java.util.UUID.randomUUID().toString() + estensione;
 
@@ -196,21 +210,40 @@ public class Registrazione extends HttpServlet {
                 }
                 
                 UtenteDTO utenteDTO = new UtenteDTO();
+                utenteDTO.setEmail(email.trim());
+                utenteDTO.setPassword(password);
+                utenteDTO.setRuolo(1);
+                utenteDTO.setNome(nome.trim());
+                utenteDTO.setCognome(cognome.trim());
+                utenteDTO.setData_di_nascita(dataNascitaDate);
+                utenteDTO.setAltezza(altezza);
+                utenteDTO.setPeso(peso);
+                utenteDTO.setFotoPath(pathFoto); 
                 
+                UserServiceStub.RegistrazioneUtente req1 = new UserServiceStub.RegistrazioneUtente();
+                req1.setUtente(utenteDTO);
                 
-                
-                // ... altri campi utente
-                // Chiama userStub per registrare l'utente
+                UserServiceStub.RegistrazioneUtenteResponse resp1 = stub.registrazioneUtente(req1);
+                registrato = resp1.get_return();
+               
             } else if (tipo == 0) {
-                // Registrazione Attivit‡
+                // Registrazione Attivit√†
                 String nomeAttivita = request.getParameter("nomeAttivita");
                 String citta = request.getParameter("cittaAttivita");
-                // ... altri campi attivit‡
-                // Chiama activityStub per registrare l'attivit‡
+                // ... altri campi attivit√†
+                // Chiama activityStub per registrare l'attivit√†
             } else {
                 response.sendRedirect("404.html");
                 return;
             }
+            
+            if (registrato) {
+                response.sendRedirect(request.getContextPath() + "/Index?success=REGISTRATO");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/Index?errore=REGISTRAZIONE_FALLITA");
+            }
+            return;
+
 
            
     }

@@ -4,28 +4,12 @@ import java.util.Date;
 
 public class UtenteDTO {
 
-	public UtenteDTO(int id, String email, String password, int ruolo, Integer idPersona, Integer idAttivita,
-			String nome, String cognome, Date data_di_nascita, int altezza, double peso, String fotoPath) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.ruolo = ruolo;
-		this.idPersona = idPersona;
-		this.idAttivita = idAttivita;
-		this.nome = nome;
-		this.cognome = cognome;
-		this.data_di_nascita = data_di_nascita;
-		this.altezza = altezza;
-		this.peso = peso;
-		FotoPath = fotoPath;
-	}
+
 	private int id;
 	private String email;
 	private String password;
 	private int ruolo;
 	private Integer idPersona;
-	private Integer idAttivita;
 	private String nome;
 	private String cognome;
 	private Date data_di_nascita;
@@ -100,10 +84,5 @@ public class UtenteDTO {
 	public void setIdPersona(Integer idPersona) {
 		this.idPersona = idPersona;
 	}
-	public Integer getIdAttivita() {
-		return idAttivita;
-	}
-	public void setIdAttivita(Integer idAttivita) {
-		this.idAttivita = idAttivita;
-	}
+	
 }

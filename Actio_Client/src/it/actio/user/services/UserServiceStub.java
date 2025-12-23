@@ -7600,48 +7600,6 @@
                             
 
                         /**
-                        * field for IdAttivita
-                        */
-
-                        
-                                    protected int localIdAttivita ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localIdAttivitaTracker = false ;
-
-                           public boolean isIdAttivitaSpecified(){
-                               return localIdAttivitaTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return int
-                           */
-                           public  int getIdAttivita(){
-                               return localIdAttivita;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param IdAttivita
-                               */
-                               public void setIdAttivita(int param){
-                            localIdAttivitaTracker = true;
-                                   
-                                            this.localIdAttivita=param;
-                                       
-
-                               }
-                            
-
-                        /**
                         * field for IdPersona
                         */
 
@@ -8013,19 +7971,6 @@
                                                }
                                     
                                    xmlWriter.writeEndElement();
-                             } if (localIdAttivitaTracker){
-                                    namespace = "http://dto.actio.it/xsd";
-                                    writeStartElement(null, namespace, "idAttivita", xmlWriter);
-                             
-                                               if (localIdAttivita==java.lang.Integer.MIN_VALUE) {
-                                           
-                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                      
-                                               } else {
-                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdAttivita));
-                                               }
-                                    
-                                   xmlWriter.writeEndElement();
                              } if (localIdPersonaTracker){
                                     namespace = "http://dto.actio.it/xsd";
                                     writeStartElement(null, namespace, "idPersona", xmlWriter);
@@ -8322,12 +8267,6 @@
                                  
                                 elementList.add(
                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localId));
-                            } if (localIdAttivitaTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://dto.actio.it/xsd",
-                                                                      "idAttivita"));
-                                 
-                                elementList.add(
-                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIdAttivita));
                             } if (localIdPersonaTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://dto.actio.it/xsd",
                                                                       "idPersona"));
@@ -8595,38 +8534,6 @@
                                     else {
                                         
                                                object.setId(java.lang.Integer.MIN_VALUE);
-                                           
-                                    }
-                                
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://dto.actio.it/xsd","idAttivita").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setIdAttivita(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                                   object.setIdAttivita(java.lang.Integer.MIN_VALUE);
-                                               
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                               object.setIdAttivita(java.lang.Integer.MIN_VALUE);
                                            
                                     }
                                 

@@ -121,7 +121,7 @@
                 <h3>Form</h3>
               </div>
 
-              <form action="Registrazione" method="post" class="php-email-form" enctype="multipart/form-data">
+              <form action="Registrazione" method="post"  enctype="multipart/form-data">
 
                 <div class="row mb-4">
 				  <div class="col-12 d-flex justify-content-center gap-5">
@@ -175,17 +175,23 @@
 					    </div>
 					    
 					    <div class="col-md-6">
+					    <div class="form-group">
+					    <label>Altezza</label>
 						  <input type="number" class="form-control" name="altezzaUtente"
 						         min="100" max="250" step="1" inputmode="numeric"
 						         aria-label="Altezza in centimetri">
 						  <span class="input-group-text">cm</span>
+						  </div>
 						</div>
 						
 						<div class="col-md-6">
+						<div class="form-group">
+						<label>Peso</label>
 						  <input type="number" class="form-control" name="pesoUtente"
 						         min="40" max="300" step="0.1" inputmode="decimal"
 						         aria-label="Peso in chilogrammi">
 						  <span class="input-group-text">kg</span>
+						  </div>
 						</div>
 
 						<div class="mb-3">
@@ -320,7 +326,7 @@
 
   <!-- Vendor JS Files -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
+ <!--   <script src="vendor/php-email-form/validate.js"></script> -->
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="vendor/purecounter/purecounter_vanilla.js"></script>

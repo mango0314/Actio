@@ -13,9 +13,10 @@ import it.actio.beans.corso.CorsoDAO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.OrarioCorsoDTO;
 import it.actio.dto.UtenteDTO;
+import it.actio.utils.DBManager;
 import it.actio.utils.Utility;
- 
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,14 +95,41 @@ public class UserService {
     	return personaDAO.getbyId(idPersona);
     }
     
-    public boolean RegistrazioneUtente(UtenteDTO utente){
-    	boolean risultato = false;
-    	
-    	
-    	
-    	
-    	return risultato;
+    public boolean RegistrazioneUtente(UtenteDTO utente) {
+        Connection conn = null;
+        try {
+            if (accountDAO.EsistebyEmail_Ruolo(utente.getEmail(), utente.getRuolo())) {
+                return false;
+            }
+
+            conn = DBManager.startConnection();
+            conn.setAutoCommit(false); // transazione [web:155]
+
+            Integer idPersona = personaDAO.salvaPersonaERitornaId(conn, utente);
+            if (idPersona == null) {
+                conn.rollback();
+                return false;
+            }
+
+            utente.setIdPersona(idPersona);
+
+            boolean okAccount = accountDAO.salvaAccountUtente(conn, utente);
+            if (!okAccount) {
+                conn.rollback();
+                return false;
+            }
+
+            conn.commit();
+            return true;
+
+        } catch (Exception e) {
+            try { if (conn != null) conn.rollback(); } catch (Exception ignored) {}
+            return false;
+        } finally {
+            DBManager.closeConnection();
+        }
     }
+
 
 
 

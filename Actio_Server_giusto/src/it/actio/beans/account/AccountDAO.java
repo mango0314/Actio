@@ -16,15 +16,18 @@ public class AccountDAO {
 
 	private static Connection conn = null;
 
-	public Account get(Account account) {
-		String query = "SELECT * FROM ACCOUNT WHERE username =?";
+	
+	
+	public Account getbyEmail(String email, int ruolo) {
+		String query = "SELECT * FROM ACCOUNT WHERE email =? and ruolo=?";
 
 		Account res = null;
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, account.getUsername());
+			ps.setString(1, account.getEmail());
+			ps.setInt(2, account.getRuolo());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				res = recordToAccount(rs);
@@ -77,15 +80,16 @@ public class AccountDAO {
 		return res;
 	}
 
-	public boolean getEsiste(Account account) {
-		String query = "SELECT * FROM ACCOUNT WHERE username =?";
+	public boolean EsistebyEmail_Ruolo(String email, int ruolo) {
+		String query = "SELECT * FROM ACCOUNT WHERE email =? and ruolo = ?";
 		boolean esito = false;
 
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, account.getUsername());
+			ps.setString(1, email);
+			ps.setInt(2, ruolo);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -218,54 +222,43 @@ public class AccountDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	public List<Account> getAll_Utente() {
+		String query = "SELECT * FROM ACCOUNT where ruolo = 1 order by id";
 
-	public boolean salvaAccount(UtenteDTO utente) {
-		String query = "INSERT INTO ACCOUNT (id, email, password, ruolo, idPersona, idAttivita) VALUES ( ?, ?, ?, ?, ? ,?)";
-		System.out.println("DEBUG-DAO: Query = " + query);
-		boolean esito = false;
-
+		List<Account> res = new ArrayList<Account>();
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
-//			ps = conn.prepareStatement(query);
-
-			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			
-			ps.setInt(1, utente.getId());
-
-			ps.setString(2, utente.getEmail());
-			ps.setString(3, utente.getPassword());
-			ps.setInt(4, utente.getRuolo());
-			if (utente.getIdPersona() != null)
-				ps.setInt(4, utente.getIdPersona());
-			else
-				ps.setNull(4, java.sql.Types.INTEGER);
-			
-			if (utente.getIdAttivita() != null)
-				ps.setInt(4, utente.getIdAttivita());
-			else
-				ps.setNull(4, java.sql.Types.INTEGER);
-
-			System.out.println("DEBUG-DAO: ps[1] = " + utente.getEmail());
-			System.out.println("DEBUG-DAO: ps[2] = " + utente.getPassword());
-			System.out.println("DEBUG-DAO: ps[3] = " + utente.getRuolo());
-			System.out.println("DEBUG-DAO: ps[4] = " + utente.getIdPersona());
-			System.out.println("DEBUG-DAO: ps[4] = " + utente.getIdAttivita());
-
-			int tmp = ps.executeUpdate();
-
-			if (tmp == 1)
-				esito = true;
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			// System.out.println("Chiave inserita "+rs.getInt(1));
-
+			ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Account account = recordToAccount(rs);
+				res.add(account);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		DBManager.closeConnection();
-		return esito;
+		return res;
 	}
+	
+	public boolean salvaAccountUtente(Connection conn, UtenteDTO utente) throws SQLException {
+	    String query = "INSERT INTO ACCOUNT (id, email, password, ruolo, idPersona) VALUES (?, ?, ?, ?, ?)";
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setNull(1, java.sql.Types.INTEGER);
+	        ps.setString(2, utente.getEmail());
+	        ps.setString(3, utente.getPassword());
+	        ps.setInt(4, utente.getRuolo());
+	        ps.setInt(5, utente.getIdPersona()); // qui NON deve essere null
+
+	        return ps.executeUpdate() == 1;
+	    }
+	}
+
+	
+
 
 	public boolean elimina(Account account) {
 		String query = "DELETE FROM Account WHERE id = ?";

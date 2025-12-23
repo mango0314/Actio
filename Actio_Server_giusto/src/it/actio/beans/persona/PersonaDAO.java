@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.actio.dto.IscrittiConDataFineDTO;
+import it.actio.dto.UtenteDTO;
 import it.actio.utils.DBManager;
 
 
@@ -196,40 +197,36 @@ public class PersonaDAO {
 		return res;
 	}
 
-	public boolean salva(Persona persona) {
-		String query = "INSERT INTO PERSONA VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-		boolean esito = false;
+	public Integer salvaPersonaERitornaId(Connection conn, UtenteDTO utente) throws SQLException {
 
-		PreparedStatement ps;
-		conn = DBManager.startConnection();
-		try {
-//			ps = conn.prepareStatement(query);
+	    String query = "INSERT INTO PERSONA (id, nome, cognome, data_di_nascita, altezza, peso, foto) " +
+	                   "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+	    try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-			ps.setInt(1, persona.getId());
-			ps.setString(2, persona.getNome());
-			ps.setString(3, persona.getCognome());
-			java.sql.Date data = new java.sql.Date(persona.getData_di_nascita().getTime());
-			ps.setDate(4, data);
-			ps.setInt(5, persona.getAltezza());
-			ps.setDouble(6, persona.getPeso());
-			ps.setString(7, persona.getCertificatolink());
-			ps.setString(8, persona.getFoto());
+	        ps.setNull(1, java.sql.Types.INTEGER); // id AUTO_INCREMENT
+	        ps.setString(2, utente.getNome());
+	        ps.setString(3, utente.getCognome());
+	        ps.setDate(4, new java.sql.Date(utente.getData_di_nascita().getTime()));
+	        ps.setInt(5, utente.getAltezza());
+	        ps.setDouble(6, utente.getPeso());
+	        ps.setString(7, utente.getFotoPath()); // parametro 7 (placeholder 7)[web:136]
 
-			int tmp = ps.executeUpdate();
-			if (tmp == 1)
-				esito = true;
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			// System.out.println("Chiave inserita "+rs.getInt(1));
+	        int tmp = ps.executeUpdate();
+	        if (tmp != 1) {
+	            return null;
+	        }
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		DBManager.closeConnection();
-		return esito;
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (!rs.next()) {
+	                return null;
+	            }
+	            return rs.getInt(1); // PK generata[web:141][web:143]
+	        }
+	    }
 	}
+
+
 
 	public boolean elimina(Persona persona) {
 		String query = "DELETE FROM Persona WHERE id = ?";
