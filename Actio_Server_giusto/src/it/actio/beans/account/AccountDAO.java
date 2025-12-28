@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.AttivitaDTO;
 import it.actio.dto.UtenteDTO;
 import it.actio.utils.DBManager;
 
@@ -101,6 +102,18 @@ public class AccountDAO {
 		DBManager.closeConnection();
 		return esito;
 	}
+	
+	public boolean EsistebyEmail_Ruolo_Conn(Connection conn, String email, int ruolo) throws SQLException {
+	    String query = "SELECT 1 FROM ACCOUNT WHERE email = ? AND ruolo = ?";
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+	        ps.setString(1, email);
+	        ps.setInt(2, ruolo);
+	        try (ResultSet rs = ps.executeQuery()) {
+	            return rs.next();
+	        }
+	    }
+	}
+
 
 	public boolean getEsistebypassword(Account account) {
 		String query = "SELECT * FROM ACCOUNT WHERE username =? and BINARY password=?";
@@ -245,17 +258,50 @@ public class AccountDAO {
 	
 	public boolean salvaAccountUtente(Connection conn, UtenteDTO utente) throws SQLException {
 	    String query = "INSERT INTO ACCOUNT (id, email, password, ruolo, idPersona) VALUES (?, ?, ?, ?, ?)";
-	    try (PreparedStatement ps = conn.prepareStatement(query)) {
-
-	        ps.setNull(1, java.sql.Types.INTEGER);
+	    boolean res = false;
+	    try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+	        ps.setNull(1, java.sql.Types.INTEGER);           // AUTO_INCREMENT
 	        ps.setString(2, utente.getEmail());
 	        ps.setString(3, utente.getPassword());
 	        ps.setInt(4, utente.getRuolo());
-	        ps.setInt(5, utente.getIdPersona()); // qui NON deve essere null
+	        ps.setInt(5, utente.getIdPersona());             // FK da PERSONA
 
-	        return ps.executeUpdate() == 1;
+	        int tmp = ps.executeUpdate();
+	        if (tmp != 1) return false;
+
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (rs.next()) {
+	            	res = true;
+	                return res;  // ← ID ACCOUNT generato!
+	            }
+	            return res;
+	        }
 	    }
 	}
+	
+	public boolean salvaAccountAttivita(Connection conn, AttivitaDTO attivita) throws SQLException {
+	    String query = "INSERT INTO ACCOUNT (id, email, password, ruolo, idAttivita) VALUES (?, ?, ?, ?, ?)";
+	    boolean res = false;
+	    try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+	        ps.setNull(1, java.sql.Types.INTEGER);           // AUTO_INCREMENT
+	        ps.setString(2, attivita.getEmail());
+	        ps.setString(3, attivita.getPassword());
+	        ps.setInt(4, attivita.getRuolo());
+	        ps.setInt(5, attivita.getIdAttivita());             // FK da PERSONA
+
+	        int tmp = ps.executeUpdate();
+	        if (tmp != 1) return false;
+
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (rs.next()) {
+	            	res = true;
+	                return res;  // ← ID ACCOUNT generato!
+	            }
+	            return res;
+	        }
+	    }
+	}
+
 
 	
 

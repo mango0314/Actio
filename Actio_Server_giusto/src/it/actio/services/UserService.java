@@ -96,39 +96,69 @@ public class UserService {
     }
     
     public boolean RegistrazioneUtente(UtenteDTO utente) {
+        System.out.println("=== WS DEBUG START ===");
+        System.out.println("Email: " + utente.getEmail());
+        System.out.println("Nome: " + utente.getNome());
+        System.out.println("Cognome: " + utente.getCognome());
+        System.out.println("Ruolo: " + utente.getRuolo());
+        System.out.println("Foto: " + utente.getFotoPath());
+        
         Connection conn = null;
         try {
-            if (accountDAO.EsistebyEmail_Ruolo(utente.getEmail(), utente.getRuolo())) {
+            // 1. Check email
+            System.out.println("1. Check email esistente...");
+            boolean emailEsiste = accountDAO.EsistebyEmail_Ruolo(utente.getEmail(), utente.getRuolo());
+            System.out.println("   → EsistebyEmail_Ruolo: " + emailEsiste);
+            if (emailEsiste) {
+                System.out.println("=== EMAIL GIA ESISTENTE ===");
                 return false;
             }
 
+            // 2. Inizia transazione
             conn = DBManager.startConnection();
-            conn.setAutoCommit(false); // transazione [web:155]
+            System.out.println("2. Connection OK: " + conn);
+            conn.setAutoCommit(false);
 
+            // 3. Salva PERSONA
+            System.out.println("3. Salva PERSONA...");
             Integer idPersona = personaDAO.salvaPersonaERitornaId(conn, utente);
+            System.out.println("   → idPersona generato: " + idPersona);
             if (idPersona == null) {
-                conn.rollback();
+                System.out.println("=== PERSONA SALVATAGGIO FALLITO ===");
+                if (conn != null) conn.rollback();
                 return false;
             }
 
+            // 4. Set idPersona su utente
             utente.setIdPersona(idPersona);
+            System.out.println("4. Set idPersona=" + idPersona + " su utente");
 
+            // 5. Salva ACCOUNT
+            System.out.println("5. Salva ACCOUNT...");
             boolean okAccount = accountDAO.salvaAccountUtente(conn, utente);
+            System.out.println("   → salvaAccountUtente: " + okAccount);
             if (!okAccount) {
+                System.out.println("=== ACCOUNT SALVATAGGIO FALLITO ===");
                 conn.rollback();
                 return false;
             }
 
+            // 6. Commit
             conn.commit();
+            System.out.println("=== REGISTRAZIONE OK! ===");
             return true;
 
         } catch (Exception e) {
+            System.out.println("=== WS EXCEPTION: " + e.getMessage());
+            e.printStackTrace();
             try { if (conn != null) conn.rollback(); } catch (Exception ignored) {}
             return false;
         } finally {
             DBManager.closeConnection();
+            System.out.println("=== WS DEBUG END ===");
         }
     }
+
 
 
 

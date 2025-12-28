@@ -61,6 +61,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for registrazioneAttivita method
+            * override this method for handling normal response from registrazioneAttivita operation
+            */
+           public void receiveResultregistrazioneAttivita(
+                    it.actio.activity.services.ActivityServiceStub.RegistrazioneAttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from registrazioneAttivita operation
+           */
+            public void receiveErrorregistrazioneAttivita(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getAttivita method
             * override this method for handling normal response from getAttivita operation
             */

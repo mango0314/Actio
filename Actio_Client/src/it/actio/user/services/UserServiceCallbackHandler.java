@@ -157,22 +157,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for getOrari method
-            * override this method for handling normal response from getOrari operation
-            */
-           public void receiveResultgetOrari(
-                    it.actio.user.services.UserServiceStub.GetOrariResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getOrari operation
-           */
-            public void receiveErrorgetOrari(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for validaCredenziali method
             * override this method for handling normal response from validaCredenziali operation
             */
@@ -186,6 +170,22 @@
            * override this method for handling error response from validaCredenziali operation
            */
             public void receiveErrorvalidaCredenziali(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getOrari method
+            * override this method for handling normal response from getOrari operation
+            */
+           public void receiveResultgetOrari(
+                    it.actio.user.services.UserServiceStub.GetOrariResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getOrari operation
+           */
+            public void receiveErrorgetOrari(java.lang.Exception e) {
             }
                 
            /**

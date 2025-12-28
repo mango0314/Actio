@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.AttivitaDTO;
+import it.actio.dto.UtenteDTO;
 import it.actio.utils.DBManager;
 
 
@@ -197,6 +199,33 @@ public class AttivitaDAO {
 		}
 		DBManager.closeConnection();
 		return esito;
+	}
+	
+	public Integer salvaAttivitaERitornaId(Connection conn, AttivitaDTO attivita) throws SQLException {
+
+	    String query = "INSERT INTO Attivita (id, nome, logo, tipo, citta) " +
+	                   "VALUES (?, ?, ?, ?, ?)";
+
+	    try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+	        ps.setNull(1, java.sql.Types.INTEGER); // id AUTO_INCREMENT
+	        ps.setString(2, attivita.getNomeAttivita());
+	        ps.setString(3, attivita.getFotoPath());
+	        ps.setInt(4, attivita.getTipo());
+	        ps.setString(5, attivita.getCitta()); 
+
+	        int tmp = ps.executeUpdate();
+	        if (tmp != 1) {
+	            return null;
+	        }
+
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (!rs.next()) {
+	                return null;
+	            }
+	            return rs.getInt(1); 
+	        }
+	    }
 	}
 
 	public boolean elimina(Attivita attivita) {
