@@ -93,6 +93,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getCorso method
+            * override this method for handling normal response from getCorso operation
+            */
+           public void receiveResultgetCorso(
+                    it.actio.activity.services.ActivityServiceStub.GetCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getCorso operation
+           */
+            public void receiveErrorgetCorso(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getCorsiForniti method
             * override this method for handling normal response from getCorsiForniti operation
             */

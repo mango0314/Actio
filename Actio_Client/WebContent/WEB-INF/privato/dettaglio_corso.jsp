@@ -111,7 +111,7 @@
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
                 <a href=#orari class="btn-primary">Orari <i class="bi bi-arrow-down"></i></a>
                <% if(ruolo == 0){ %>
-                <a href="ModificaCorso" class="btn-secondary glightbox">
+                <a href="RichiediModificaCorso?idCorso=<%=corso_conAttivita_e_PostiRimasti.getId() %>" class="btn-secondary glightbox">
                   
                   Modifica
                 </a>

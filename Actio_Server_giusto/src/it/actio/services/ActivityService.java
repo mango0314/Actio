@@ -119,6 +119,68 @@ public class ActivityService {
             System.out.println("=== WS DEBUG END ===");
         }
     }
+	
+	public Corso getCorso(int idCorso){
+		return corsoDAO.getbyId(idCorso);
+	}
+	
+	
+	public boolean aggiungiCorso(Corso corso){
+		Connection conn = null;
+        try {
+            // 1. Check email
+            System.out.println("1. Check email esistente...");
+            boolean corsoEsiste = corsoDAO.EsistebyEmail_Ruolo(attivita.getEmail(), attivita.getRuolo());
+            System.out.println("   → EsistebyEmail_Ruolo: " + emailEsiste);
+            if (emailEsiste) {
+                System.out.println("=== EMAIL GIA ESISTENTE ===");
+                return false;
+            }
+
+            // 2. Inizia transazione
+            conn = DBManager.startConnection();
+            System.out.println("2. Connection OK: " + conn);
+            conn.setAutoCommit(false);
+
+            // 3. Salva PERSONA
+            System.out.println("3. Salva ATTIVITA...");
+            Integer idAttivita = attivitaDAO.salvaAttivitaERitornaId(conn, attivita);
+            System.out.println("   → idAttivita generato: " + idAttivita);
+            if (idAttivita == null) {
+                System.out.println("=== ATTIVITA SALVATAGGIO FALLITO ===");
+                if (conn != null) conn.rollback();
+                return false;
+            }
+
+            // 4. Set idPersona su utente
+            attivita.setIdAttivita(idAttivita);
+            System.out.println("4. Set idAttivita=" + idAttivita + " su attivita");
+
+            // 5. Salva ACCOUNT
+            System.out.println("5. Salva ACCOUNT...");
+            boolean okAccount = accountDAO.salvaAccountAttivita(conn, attivita);
+            System.out.println("   → salvaAccountAttivita: " + okAccount);
+            if (!okAccount) {
+                System.out.println("=== ACCOUNT SALVATAGGIO FALLITO ===");
+                conn.rollback();
+                return false;
+            }
+
+            // 6. Commit
+            conn.commit();
+            System.out.println("=== REGISTRAZIONE OK! ===");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("=== WS EXCEPTION: " + e.getMessage());
+            e.printStackTrace();
+            try { if (conn != null) conn.rollback(); } catch (Exception ignored) {}
+            return false;
+        } finally {
+            DBManager.closeConnection();
+            System.out.println("=== WS DEBUG END ===");
+        }
+	}
 
 
 }

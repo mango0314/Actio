@@ -89,7 +89,7 @@ private ActivityServiceStub stub2;
 			
 			request.setAttribute("corsiForniti", corsi_forniti);
 			request.setAttribute("attivita", attivita);
-					
+			session.setAttribute("idAttivita", idAttivita);		
 			request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
 			return;
 		} else{
@@ -114,7 +114,8 @@ private ActivityServiceStub stub2;
 		Persona persona = resp3.get_return();
 		
 		request.setAttribute("corsiSeguiti", corsi_seguiti);
-		request.setAttribute("persona", persona);	
+		request.setAttribute("persona", persona);
+		session.setAttribute("idPersona", idPersona);
 		request.getRequestDispatcher("/WEB-INF/privato/index_privato.jsp").forward(request, response);
 		}
 	}

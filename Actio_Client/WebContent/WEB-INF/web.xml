@@ -130,6 +130,26 @@
     <url-pattern>/privato/AccettaIscrizione</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>RichiediModificaCorso</display-name>
+    <servlet-name>RichiediModificaCorso</servlet-name>
+    <servlet-class>it.actio.servlet.privato.RichiediModificaCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiediModificaCorso</servlet-name>
+    <url-pattern>/privato/RichiediModificaCorso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RichiediAggiungiCorso</display-name>
+    <servlet-name>RichiediAggiungiCorso</servlet-name>
+    <servlet-class>it.actio.servlet.privato.RichiediAggiungiCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiediAggiungiCorso</servlet-name>
+    <url-pattern>/privato/RichiediAggiungiCorso</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>
     <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>

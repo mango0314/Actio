@@ -148,7 +148,7 @@
 
       </div>
       <div class="col-12 text-center mt-3">
-                <a href="AggiungiCorso" class="btn btn-primary">Crea</a>
+                <a href="RichiediAggiungiCorso" class="btn btn-primary">Crea</a>
             </div>
 
     </section><!-- /Services Section -->
