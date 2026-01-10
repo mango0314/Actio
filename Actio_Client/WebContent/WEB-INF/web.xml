@@ -149,6 +149,16 @@
     <servlet-name>RichiediAggiungiCorso</servlet-name>
     <url-pattern>/privato/RichiediAggiungiCorso</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>AggiungiCorso</display-name>
+    <servlet-name>AggiungiCorso</servlet-name>
+    <servlet-class>it.actio.servlet.privato.AggiungiCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiungiCorso</servlet-name>
+    <url-pattern>/privato/AggiungiCorso</url-pattern>
+  </servlet-mapping>
   <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>

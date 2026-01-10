@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.actio.beans.corso.Corso;
+import it.actio.dto.AttivitaDTO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.utils.DBManager;
 
@@ -212,6 +213,29 @@ public class CorsoDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+
+	public boolean EsisteCorso_byAttivita(String nomeCorso, int idAttivita) {
+		String query = "SELECT * FROM CORSO c join fornito f on f.idCorso = c.id WHERE c.nome = ? and idAttivita = ?";
+
+		boolean res = false;
+		PreparedStatement ps;
+		conn = DBManager.startConnection();
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, nomeCorso);
+			ps.setInt(2, idAttivita);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				res = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBManager.closeConnection();
+		return res;
+	}
+
 
 	public List<String> getNomi() {
 		String query = "SELECT nome FROM CORSO";
@@ -448,7 +472,32 @@ public class CorsoDAO {
 
 
 	
-	
+	public Integer salvaCorsoERitornaId(Connection conn, Corso corso) throws SQLException {
+
+	    String query = "INSERT INTO Corso (id, nome, foto, capienza, descrizione) " +
+	                   "VALUES (?, ?, ?, ?, ?)";
+
+	    try (PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+	        ps.setNull(1, java.sql.Types.INTEGER); // id AUTO_INCREMENT
+	        ps.setString(2, corso.getNome());
+	        ps.setString(3, corso.getFoto());
+	        ps.setInt(4, corso.getCapienza());
+	        ps.setString(5, corso.getDescrizione()); 
+
+	        int tmp = ps.executeUpdate();
+	        if (tmp != 1) {
+	            return null;
+	        }
+
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (!rs.next()) {
+	                return null;
+	            }
+	            return rs.getInt(1); 
+	        }
+	    }
+	}
 
 
 	public boolean salva(Corso corso) {

@@ -124,22 +124,13 @@ public class AggiungiCorso extends HttpServlet {
         super.init();
      
         try {
-            stub = new UserServiceStub();
-            stub1 = new ActivityServiceStub();
+            stub = new ActivityServiceStub();
         } catch (AxisFault e) {
             throw new ServletException("Errore inizializzazione stub", e);
         }
     }
     
-    private int extractInt(String xml, String tag) {
-        return Integer.parseInt(
-            xml.replaceAll(".*<" + tag + ">(.*?)</" + tag + ">.*", "$1")
-        );
-    }
-
-    private String extractString(String xml, String tag) {
-        return xml.replaceAll(".*<" + tag + ">(.*?)</" + tag + ">.*", "$1");
-    }
+    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
@@ -155,27 +146,13 @@ public class AggiungiCorso extends HttpServlet {
 			return;
 		}
 		
-		String xml = request.getReader().lines().reduce("", (a,b) -> a + b);
-        System.out.println("[DEBUG] XML ricevuto: " + xml);
-
-        int idCorso = -1;
-        String csrfTokenReq = null;
-
-        try {
-            idCorso = extractInt(xml, "idCorso");
-            csrfTokenReq = extractString(xml, "csrfToken");
-            System.out.println("[DEBUG] idCorso estratto: " + idCorso);
-            System.out.println("[DEBUG] csrfToken ricevuto: " + csrfTokenReq);
-        } catch (Exception e) {
-            System.out.println("[ERROR] Errore nel parsing XML: " + e.getMessage());
-            response.setStatus(400);
-            response.getWriter().write("<response><ok>false</ok><error>Bad Request - parsing XML</error></response>");
-            return;
-        }
+		int idAttivita = (int) session.getAttribute("idAttivita");
+		
+	 
 
         String csrfSession = (String) session.getAttribute("csrfToken");
         System.out.println("[DEBUG] csrfToken sessione: " + csrfSession);
-        if (csrfSession == null || !csrfSession.equals(csrfTokenReq)) {
+        if (csrfSession == null) {
             System.out.println("[ERROR] CSRF token non valido.");
             response.setStatus(403);
             response.getWriter().write("<response><ok>false</ok><error>CSRF token mismatch</error></response>");
@@ -221,10 +198,11 @@ public class AggiungiCorso extends HttpServlet {
                 corso.setCapienza(capienza);
                 corso.setFoto(pathFoto);
                 
-                ActivityServiceStub.RegistrazioneAttivita req2 = new ActivityServiceStub.RegistrazioneAttivita();
-                req2.setAttivita(attivitaDTO);
+                ActivityServiceStub.AggiungiCorso req2 = new ActivityServiceStub.AggiungiCorso();
+                req2.setCorso(corso);
+                req2.setIdAttivita(idAttivita);
                 
-                ActivityServiceStub.RegistrazioneAttivitaResponse resp2 = stub1.registrazioneAttivita(req2);
+                ActivityServiceStub.AggiungiCorsoResponse resp2 = stub.aggiungiCorso(req2);
                 boolean rispostaActivityService = resp2.get_return();
                 
                 if(rispostaActivityService){

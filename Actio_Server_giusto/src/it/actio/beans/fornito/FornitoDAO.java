@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.AttivitaDTO;
 import it.actio.utils.DBManager;
 
 
@@ -101,7 +103,7 @@ public class FornitoDAO {
 
 	private Fornito recordToFornito(ResultSet rs) throws SQLException {
 		Fornito fornito = new Fornito();
-		fornito.setIdAttivita(rs.getInt("idAttivit‡"));
+		fornito.setIdAttivita(rs.getInt("idAttivit√†"));
 		fornito.setIdCorso(rs.getInt("idCorso"));
 		return fornito;
 	}
@@ -126,6 +128,19 @@ public class FornitoDAO {
 		return res;
 	}
 
+	public boolean salvaNuovoCorso_Attivita(Connection conn, int idCorso, int idAttivita) throws SQLException {
+	    String query = "INSERT INTO Fornito (idCorso, idAttivita) VALUES (?, ?)";
+	    boolean res = false;
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+	        ps.setInt(1, idCorso);           
+	        ps.setInt(2, idAttivita);
+
+	        int tmp = ps.executeUpdate();
+			if (tmp == 1)
+				res = true;
+	    }
+	    return res;
+	}
 	
 	
 

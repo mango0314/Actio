@@ -10,6 +10,7 @@ import it.actio.beans.attivita.Attivita;
 import it.actio.beans.attivita.AttivitaDAO;
 import it.actio.beans.corso.Corso;
 import it.actio.beans.corso.CorsoDAO;
+import it.actio.beans.fornito.FornitoDAO;
 import it.actio.beans.iscrizione.Iscrizione;
 import it.actio.beans.iscrizione.IscrizioneDAO;
 import it.actio.beans.persona.PersonaDAO;
@@ -27,6 +28,7 @@ public class ActivityService {
     PersonaDAO personaDAO = new PersonaDAO();
     IscrizioneDAO iscrizioneDAO = new IscrizioneDAO();
     AccountDAO accountDAO = new AccountDAO();
+    FornitoDAO fornitoDAO = new FornitoDAO();
 
 	public CorsoConAttivitaDTO[] getCorsiForniti(int idAttivita) {
         List<CorsoConAttivitaDTO> list = corsoDAO.getCorsiByAttivitaConPosti(idAttivita);
@@ -125,15 +127,15 @@ public class ActivityService {
 	}
 	
 	
-	public boolean aggiungiCorso(Corso corso){
+	public boolean aggiungiCorso(Corso corso, int idAttivita){
 		Connection conn = null;
         try {
             // 1. Check email
             System.out.println("1. Check email esistente...");
-            boolean corsoEsiste = corsoDAO.EsistebyEmail_Ruolo(attivita.getEmail(), attivita.getRuolo());
-            System.out.println("   → EsistebyEmail_Ruolo: " + emailEsiste);
-            if (emailEsiste) {
-                System.out.println("=== EMAIL GIA ESISTENTE ===");
+            boolean corsoEsiste = corsoDAO.EsisteCorso_byAttivita(corso.getNome(), idAttivita);
+            System.out.println("   → EsisteCorso_byAttivita: " + corsoEsiste);
+            if (corsoEsiste) {
+                System.out.println("=== CORSO GIA ESISTENTE ===");
                 return false;
             }
 
@@ -143,32 +145,29 @@ public class ActivityService {
             conn.setAutoCommit(false);
 
             // 3. Salva PERSONA
-            System.out.println("3. Salva ATTIVITA...");
-            Integer idAttivita = attivitaDAO.salvaAttivitaERitornaId(conn, attivita);
-            System.out.println("   → idAttivita generato: " + idAttivita);
-            if (idAttivita == null) {
-                System.out.println("=== ATTIVITA SALVATAGGIO FALLITO ===");
+            System.out.println("3. Salva CORSO...");
+            Integer idCorso = corsoDAO.salvaCorsoERitornaId(conn, corso);
+            System.out.println("   → idCorso generato: " + idCorso);
+            if (idCorso == null) {
+                System.out.println("=== CORSO SALVATAGGIO FALLITO ===");
                 if (conn != null) conn.rollback();
                 return false;
             }
 
-            // 4. Set idPersona su utente
-            attivita.setIdAttivita(idAttivita);
-            System.out.println("4. Set idAttivita=" + idAttivita + " su attivita");
 
-            // 5. Salva ACCOUNT
-            System.out.println("5. Salva ACCOUNT...");
-            boolean okAccount = accountDAO.salvaAccountAttivita(conn, attivita);
-            System.out.println("   → salvaAccountAttivita: " + okAccount);
-            if (!okAccount) {
-                System.out.println("=== ACCOUNT SALVATAGGIO FALLITO ===");
+            // 5. Salva FORNITO
+            System.out.println("5. Salva FORNITO...");
+            boolean okFornito = fornitoDAO.salvaNuovoCorso_Attivita(conn, idCorso, idAttivita);
+            System.out.println("   → salvaNuovoCorso_Attivita: " + okFornito);
+            if (!okFornito) {
+                System.out.println("=== FORNITO SALVATAGGIO FALLITO ===");
                 conn.rollback();
                 return false;
             }
 
             // 6. Commit
             conn.commit();
-            System.out.println("=== REGISTRAZIONE OK! ===");
+            System.out.println("=== SALVATAGGIO OK! ===");
             return true;
 
         } catch (Exception e) {

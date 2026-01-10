@@ -109,22 +109,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for getCorsiForniti method
-            * override this method for handling normal response from getCorsiForniti operation
-            */
-           public void receiveResultgetCorsiForniti(
-                    it.actio.activity.services.ActivityServiceStub.GetCorsiFornitiResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getCorsiForniti operation
-           */
-            public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for get_Iscrizioni_ConNomePersona_Attivita method
             * override this method for handling normal response from get_Iscrizioni_ConNomePersona_Attivita operation
             */
@@ -141,6 +125,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getCorsiForniti method
+            * override this method for handling normal response from getCorsiForniti operation
+            */
+           public void receiveResultgetCorsiForniti(
+                    it.actio.activity.services.ActivityServiceStub.GetCorsiFornitiResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getCorsiForniti operation
+           */
+            public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getIscritti_conDatafine method
             * override this method for handling normal response from getIscritti_conDatafine operation
             */
@@ -154,6 +154,22 @@
            * override this method for handling error response from getIscritti_conDatafine operation
            */
             public void receiveErrorgetIscritti_conDatafine(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for aggiungiCorso method
+            * override this method for handling normal response from aggiungiCorso operation
+            */
+           public void receiveResultaggiungiCorso(
+                    it.actio.activity.services.ActivityServiceStub.AggiungiCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from aggiungiCorso operation
+           */
+            public void receiveErroraggiungiCorso(java.lang.Exception e) {
             }
                 
 
