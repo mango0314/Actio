@@ -64,6 +64,7 @@
 <body class="index-page">
 
 	<% int ruolo = (int) session.getAttribute("ruolo");
+		String csrfToken = (String) session.getAttribute("csrfToken");
 		Account account = (Account) session.getAttribute("account");
 		CorsoConAttivitaDTO[] corsi_forniti = (CorsoConAttivitaDTO[]) request.getAttribute("corsiForniti");
     	Attivita attivita = (Attivita) request.getAttribute("attivita");
@@ -132,9 +133,18 @@
 				<%= c.getDescrizione() %>
 			</p>
 			<p>Posti rimaneneti: <%= c.getPostiRimasti() %>/<%=c.getCapienza() %></p>
-              <a href=<%= DettaglioCorso %> class="service-link">
+              <a href=<%= DettaglioCorso %> class="btn btn-secondary">
                 Seleziona <i class="bi bi-arrow-right"></i>
               </a>
+              <form action="EliminaCorso" method="POST" style="display: inline;">
+              	<input type="hidden" name="idCorso" value="<%= c.getId() %>">
+              	<input type="hidden" name="csrf_token" value="<%= csrfToken %>">
+              	<button type="submit" class="btn btn-danger btn-sm"
+              		onclick="return confirm('Eliminare corso <%= c.getNomeCorso() %>?')">
+              		Elimina
+              		</button>
+              	
+              </form>
             </div>
           </div><!-- End Service Item -->
           

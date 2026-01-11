@@ -210,9 +210,9 @@ public class AggiungiCorso extends HttpServlet {
 }
             
             if (aggiunto) {
-                response.sendRedirect(request.getContextPath() + "/Index_privato?success=REGISTRATO");
+                response.sendRedirect(request.getContextPath() + "/Index_privato?success=AGGIUNTO");
             } else {
-                response.sendRedirect(request.getContextPath() + "/Index_privato?errore=REGISTRAZIONE_FALLITA");
+                response.sendRedirect(request.getContextPath() + "/Index_privato?errore=AGGIUNTA_FALLITA");
             }
             return;
 

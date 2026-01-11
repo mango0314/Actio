@@ -35,6 +35,8 @@ public class ActivityService {
         return list.toArray(new CorsoConAttivitaDTO[0]);
     }
 	
+
+	
 	public Attivita getAttivita(int idAttivita){
     	return attivitaDAO.getbyId(idAttivita);
 		}
@@ -179,6 +181,31 @@ public class ActivityService {
             DBManager.closeConnection();
             System.out.println("=== WS DEBUG END ===");
         }
+	}
+	
+	public boolean EliminaCorso(int idCorso, int idAttivita){
+		try{
+			
+			Corso corso = corsoDAO.getbyId(idCorso);
+			if(!fornitoDAO.esiste(idAttivita, idCorso)){
+				System.out.println("CORSO NON ESISTENTE IN QUESTA ATTIVITA");
+				return false;
+			}
+		
+            
+            //eliminazione corso
+            boolean eliminazioneCorso = corsoDAO.elimina(corso);
+            if(eliminazioneCorso == false){
+            	System.out.println("ELIMINAZIONE CORSO FALLITA");
+                return false;
+            }
+            
+          
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 

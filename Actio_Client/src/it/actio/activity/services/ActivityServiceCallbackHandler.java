@@ -141,6 +141,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for eliminaCorso method
+            * override this method for handling normal response from eliminaCorso operation
+            */
+           public void receiveResulteliminaCorso(
+                    it.actio.activity.services.ActivityServiceStub.EliminaCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from eliminaCorso operation
+           */
+            public void receiveErroreliminaCorso(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getIscritti_conDatafine method
             * override this method for handling normal response from getIscritti_conDatafine operation
             */
