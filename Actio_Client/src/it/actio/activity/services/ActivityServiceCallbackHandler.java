@@ -45,22 +45,6 @@
 
         
            /**
-            * auto generated Axis2 call back method for accettaIscrizione method
-            * override this method for handling normal response from accettaIscrizione operation
-            */
-           public void receiveResultaccettaIscrizione(
-                    it.actio.activity.services.ActivityServiceStub.AccettaIscrizioneResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from accettaIscrizione operation
-           */
-            public void receiveErroraccettaIscrizione(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for registrazioneAttivita method
             * override this method for handling normal response from registrazioneAttivita operation
             */
@@ -74,6 +58,22 @@
            * override this method for handling error response from registrazioneAttivita operation
            */
             public void receiveErrorregistrazioneAttivita(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for accettaIscrizione method
+            * override this method for handling normal response from accettaIscrizione operation
+            */
+           public void receiveResultaccettaIscrizione(
+                    it.actio.activity.services.ActivityServiceStub.AccettaIscrizioneResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from accettaIscrizione operation
+           */
+            public void receiveErroraccettaIscrizione(java.lang.Exception e) {
             }
                 
            /**
@@ -109,22 +109,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for getCorsiForniti method
-            * override this method for handling normal response from getCorsiForniti operation
-            */
-           public void receiveResultgetCorsiForniti(
-                    it.actio.activity.services.ActivityServiceStub.GetCorsiFornitiResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getCorsiForniti operation
-           */
-            public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for get_Iscrizioni_ConNomePersona_Attivita method
             * override this method for handling normal response from get_Iscrizioni_ConNomePersona_Attivita operation
             */
@@ -141,19 +125,35 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for eliminaCorso method
-            * override this method for handling normal response from eliminaCorso operation
+            * auto generated Axis2 call back method for getCorsiForniti method
+            * override this method for handling normal response from getCorsiForniti operation
             */
-           public void receiveResulteliminaCorso(
-                    it.actio.activity.services.ActivityServiceStub.EliminaCorsoResponse result
+           public void receiveResultgetCorsiForniti(
+                    it.actio.activity.services.ActivityServiceStub.GetCorsiFornitiResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from eliminaCorso operation
+           * override this method for handling error response from getCorsiForniti operation
            */
-            public void receiveErroreliminaCorso(java.lang.Exception e) {
+            public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getOrari method
+            * override this method for handling normal response from getOrari operation
+            */
+           public void receiveResultgetOrari(
+                    it.actio.activity.services.ActivityServiceStub.GetOrariResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getOrari operation
+           */
+            public void receiveErrorgetOrari(java.lang.Exception e) {
             }
                 
            /**
@@ -170,6 +170,22 @@
            * override this method for handling error response from getIscritti_conDatafine operation
            */
             public void receiveErrorgetIscritti_conDatafine(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for eliminaCorso method
+            * override this method for handling normal response from eliminaCorso operation
+            */
+           public void receiveResulteliminaCorso(
+                    it.actio.activity.services.ActivityServiceStub.EliminaCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from eliminaCorso operation
+           */
+            public void receiveErroreliminaCorso(java.lang.Exception e) {
             }
                 
            /**

@@ -1,6 +1,7 @@
 package it.actio.services;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.login.AccountException;
@@ -13,13 +14,17 @@ import it.actio.beans.corso.CorsoDAO;
 import it.actio.beans.fornito.FornitoDAO;
 import it.actio.beans.iscrizione.Iscrizione;
 import it.actio.beans.iscrizione.IscrizioneDAO;
+import it.actio.beans.orario_corso.Orario_corso;
+import it.actio.beans.orario_corso.Orario_corsoDAO;
 import it.actio.beans.persona.PersonaDAO;
 import it.actio.dto.AttivitaDTO;
 import it.actio.dto.CorsoConAttivitaDTO;
 import it.actio.dto.IscrittiConDataFineDTO;
 import it.actio.dto.Iscrizione_ConNomeCorso_NomeAttivitaDTO;
+import it.actio.dto.OrarioCorsoDTO;
 import it.actio.dto.UtenteDTO;
 import it.actio.utils.DBManager;
+import it.actio.utils.Utility;
 
 public class ActivityService {
 	
@@ -29,13 +34,32 @@ public class ActivityService {
     IscrizioneDAO iscrizioneDAO = new IscrizioneDAO();
     AccountDAO accountDAO = new AccountDAO();
     FornitoDAO fornitoDAO = new FornitoDAO();
+    Orario_corsoDAO orario_corsoDAO = new Orario_corsoDAO();
 
 	public CorsoConAttivitaDTO[] getCorsiForniti(int idAttivita) {
         List<CorsoConAttivitaDTO> list = corsoDAO.getCorsiByAttivitaConPosti(idAttivita);
         return list.toArray(new CorsoConAttivitaDTO[0]);
     }
 	
-
+	public OrarioCorsoDTO[] getOrari(int idCorso){
+    	List<Orario_corso> list = orario_corsoDAO.getAllbyidCorso(idCorso);
+    	
+    	List<OrarioCorsoDTO> dtoList = new ArrayList<>();
+    	
+    	for (Orario_corso oc : list) {
+            OrarioCorsoDTO dto = new OrarioCorsoDTO();
+            dto.setId(oc.getId());
+            dto.setIdCorso(oc.getIdCorso());
+            dto.setGiornoSettimana(oc.getGiorno_settimana());
+            dto.setGiornoSettimanaLabel(Utility.mapGiorno(oc.getGiorno_settimana()));
+            dto.setOrarioInizio(Utility.formatTime(oc.getOrarioInizio()));
+            dto.setOrarioFine(Utility.formatTime(oc.getOrarioFine()));
+            dtoList.add(dto);
+        }
+    	
+    	return dtoList.toArray(new OrarioCorsoDTO[0]);
+    }
+    
 	
 	public Attivita getAttivita(int idAttivita){
     	return attivitaDAO.getbyId(idAttivita);

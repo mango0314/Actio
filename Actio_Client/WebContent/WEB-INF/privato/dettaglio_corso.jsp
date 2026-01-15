@@ -216,7 +216,7 @@
         </div>
         <% if(ruolo == 0){ %>
             <div class="col-12 text-center mt-3">
-                <a href="ModificaOrari" class="btn btn-primary">Modifica orari</a>
+                <a href="RichiediModificaOrario?idCorso=<%=corso_conAttivita_e_PostiRimasti.getId() %>" class="btn btn-primary">Modifica orari</a>
             </div>
         <% } %>
     </div>
