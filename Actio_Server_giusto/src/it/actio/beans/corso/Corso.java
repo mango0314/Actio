@@ -3,9 +3,9 @@ package it.actio.beans.corso;
 public class Corso {
 	private int id;
 	private String nome;
-	private String foto;
 	private int capienza;
 	private String descrizione;
+	private String foto;
 	public int getId() {
 		return id;
 	}
@@ -26,8 +26,8 @@ public class Corso {
 	}
 	@Override
 	public String toString() {
-		return "Corso [id=" + id + ", nome=" + nome + ", foto=" + foto + ", capienza=" + capienza + ", descrizione="
-				+ descrizione + "]";
+		return "Corso [id=" + id + ", nome=" + nome +  ", capienza=" + capienza + ", descrizione="
+				+ descrizione + ", foto=" + foto + "]";
 	}
 	public int getCapienza() {
 		return capienza;

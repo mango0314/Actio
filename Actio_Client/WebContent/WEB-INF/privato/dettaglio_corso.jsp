@@ -99,6 +99,20 @@
     	OrarioCorsoDTO[] orario_Corso = (OrarioCorsoDTO[]) request.getAttribute("orario_delCorso");
     %>
     
+    <%
+    String rawPath = corso_conAttivita_e_PostiRimasti.getFotoPath();
+    String webPath = "";
+    if(rawPath != null && !rawPath.isEmpty()) {
+        // Estrae solo il nome file dal path assoluto
+        String nomeFile = new java.io.File(rawPath).getName();
+        // Costruisce l'URL virtuale
+        webPath = "/uploads/corsi/" + nomeFile;
+    } else {
+        // Immagine di fallback se manca
+        webPath = request.getContextPath() + "/img/default-course.jpg"; 
+    }
+%>
+    
     <section id="hero" class="hero section light-background">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -111,7 +125,7 @@
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
                 <a href=#orari class="btn-primary">Orari <i class="bi bi-arrow-down"></i></a>
                <% if(ruolo == 0){ %>
-                <a href="RichiediModificaCorso?idCorso=<%=corso_conAttivita_e_PostiRimasti.getId() %>" class="btn-secondary glightbox">
+                <a href="RichiediModificaCorso?idCorso=<%=corso_conAttivita_e_PostiRimasti.getId() %>" class="btn-secondary ">
                   
                   Modifica
                 </a>
@@ -135,7 +149,7 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-              <img src="<%= request.getContextPath() %>/img/img_fitness.png" alt="img pilates" class="img-fluid">
+              <img src="<%= webPath %>" alt="img pilates" class="img-fluid">
               </div>
           </div>
         </div>
@@ -158,7 +172,9 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row justify-content-center">
         <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
-
+				<% if (orario_Corso != null && orario_Corso.length != 0){
+                    	for( OrarioCorsoDTO or : orario_Corso){
+                    	%>
             <div class="content d-flex justify-content-center">
                 <table class="table table-lg">
                     <thead>
@@ -170,9 +186,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <% if (orario_Corso != null && orario_Corso.length != 0){
-                    	for( OrarioCorsoDTO or : orario_Corso){
-                    	%>
+                    
                     
                     
                         <tr>
@@ -188,7 +202,7 @@
                     	
                     	<div class="col-12">
       						<div class="alert alert-info text-center">
-        				Nessun corso trovato.
+        				Orario ancora non disponibile.
 			      		</div>
 			    	</div>
 			    	
@@ -229,7 +243,11 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row justify-content-center">
         <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
-
+	<% if (iscritti_conDataFIne != null && iscritti_conDataFIne.length != 0){
+                    	for( IscrittiConDataFineDTO i : iscritti_conDataFIne){
+                    		
+                    		String EliminaCorso = "Elimina?idPersona=" + i.getId();
+                    	%>
             <div class="content d-flex justify-content-center">
                 <table class="table table-lg">
                     <thead>
@@ -245,11 +263,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <% if (iscritti_conDataFIne != null && iscritti_conDataFIne.length != 0){
-                    	for( IscrittiConDataFineDTO i : iscritti_conDataFIne){
-                    		
-                    		String EliminaCorso = "Elimina?idPersona=" + i.getId();
-                    	%>
+                    
                     
                     
                         <tr>

@@ -6,6 +6,7 @@ public class CorsoConAttivitaDTO {
     private String nomeCorso;
     private String descrizione;
     private int capienza;
+    private String fotoPath;
     private String nomeAttivita;
     private int postiRimasti;
     private int stato; 
@@ -51,6 +52,12 @@ public class CorsoConAttivitaDTO {
 	}
 	public void setStato(int stato) {
 		this.stato = stato;
+	}
+	public String getFotoPath() {
+		return fotoPath;
+	}
+	public void setFotoPath(String fotoPath) {
+		this.fotoPath = fotoPath;
 	}
 	
 

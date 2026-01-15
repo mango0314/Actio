@@ -138,7 +138,7 @@
     <section id="contact" class="contact section light-background">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Contatti</span>
+        <span class="subtitle">Modifica corso</span>
         <h2>Compila il form</h2>
         <p>E' possibile contattarci attraverso i recapiti o il form sotto riportati. Vi risponderemo il prima possibile.</p>
       </div><!-- End Section Title -->
@@ -157,6 +157,8 @@
 				  <input type="hidden" 
 				         name="corso_id" 
 				         value="<%= corso_id %>" />
+				         <input type="hidden" name="foto_attuale" value="<%= foto != null ? foto : "" %>" />
+				         
 						<% } %>
 				  
 				
@@ -171,14 +173,17 @@
 					    </div>
 					</div>
 					
-					<div class="form-floating mb-4">
-					    <label for="descrizione">Descrizione</label>
+					<div class="col-md-6">
+					    <div class="form-group">
+						<label>Descrizione <span class="text-danger">*</span></label>
 					    <textarea class="form-control" 
 					              id="descrizione" 
 					              name="descrizione" 
 					              style="height: 100px"
-					              placeholder="Descrizione del corso"><%= corso != null ? corso.getDescrizione() : "" %></textarea>
+					              placeholder="Descrizione del corso"><%= corso != null ? corso.getDescrizione() : "" %> </textarea>
 					</div>
+					</div>
+					
 					
 					<div class="col-md-6">
 					    <div class="form-group">
@@ -192,16 +197,30 @@
 					    </div>
 					</div>
 					
+					<% String rawPath = corso.getFoto();
+				    String webPath = "";
+				    if(rawPath != null && !rawPath.isEmpty()) {
+				        // Estrae solo il nome file dal path assoluto
+				        String nomeFile = new java.io.File(rawPath).getName();
+				        // Costruisce l'URL virtuale
+				        webPath = "/uploads/corsi/" + nomeFile;
+				    } else {
+				        // Immagine di fallback se manca
+				        webPath = request.getContextPath() + "/img/default-course.jpg"; 
+				    }
+					%>
+					
+					
 					<div class="mb-4">
 					    <label class="form-label">Foto del corso</label>
 					    
-					    <% if (corso != null && foto != null && !foto.isEmpty()) { %>
+					    <% if (corso != null && webPath != null && !webPath.isEmpty()) { %>
 					        <div class="mb-3">
-					            <img src="<%= request.getContextPath() %>/uploads/corsi/<%= foto %>" 
+					            <img src="<%= webPath %>" 
 					                 alt="Foto attuale" 
 					                 class="img-thumbnail" 
 					                 style="max-width: 200px; max-height: 200px;">
-					            <p class="text-muted small mt-1">Foto attuale: <%= foto %></p>
+					                 <p class="text-muted">Foto attuale </p>
 					        </div>
 					    <% } %>
 					    

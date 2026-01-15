@@ -68,7 +68,7 @@ public class CorsoDAO {
 
 	
 	public CorsoConAttivitaDTO getCorso_conAttivita(int idCorso) {
-		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
+		String query = "SELECT c.id, c.nome as nome_corso, c.descrizione, c.capienza,c.foto, a.nome as nome_attivita, COUNT(i.idPersona) AS iscritti,"
 				+ "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti FROM Corso c "
 				+ "LEFT JOIN Fornito f on c.id = f.idCorso "
 				+ "LEFT JOIN Attivita a on f.idAttivita = a.id "
@@ -88,6 +88,7 @@ public class CorsoDAO {
                 res.setNomeCorso(rs.getString("nome_corso"));
                 res.setDescrizione(rs.getString("descrizione"));
                 res.setCapienza(rs.getInt("capienza"));
+                res.setFotoPath(rs.getString("foto"));
                 res.setNomeAttivita(rs.getString("nome_attivita"));
                 res.setPostiRimasti(rs.getInt("posti_rimasti"));
 			}
@@ -131,7 +132,7 @@ public class CorsoDAO {
 	public List<CorsoConAttivitaDTO> getPosti_Rimasti(int idPersona) {
 
 	    String query =
-	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, " +
+	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, " +
 	        "a.nome AS nome_attivita, " +
 	        "COUNT(i2.idPersona) AS iscritti, " +
 	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
@@ -169,6 +170,7 @@ public class CorsoDAO {
 	            dto.setNomeCorso(rs.getString("nome_corso"));
 	            dto.setDescrizione(rs.getString("descrizione"));
 	            dto.setCapienza(rs.getInt("capienza"));
+	            dto.setFotoPath(rs.getString("foto"));
 	            dto.setNomeAttivita(rs.getString("nome_attivita"));
 	            dto.setPostiRimasti(rs.getInt("posti_rimasti"));
 
@@ -211,6 +213,7 @@ public class CorsoDAO {
 			e.printStackTrace();
 		}
 		DBManager.closeConnection();
+		System.out.println("il corso passato è" + res);
 		return res;
 	}
 	
@@ -283,6 +286,7 @@ public class CorsoDAO {
 		corso.setNome(rs.getString("nome"));
 		corso.setCapienza(rs.getInt("capienza"));
 		corso.setDescrizione(rs.getString("descrizione"));
+		corso.setFoto(rs.getString("foto"));
 		return corso;
 	}
 
@@ -309,7 +313,7 @@ public class CorsoDAO {
 	public List<CorsoConAttivitaDTO> getCorsiByAttivitaConPosti(int idAttivita) {
 	    List<CorsoConAttivitaDTO> corsi = new ArrayList<>();
 
-	    String query = "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, a.nome AS nome_attivita, " +
+	    String query = "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, a.nome AS nome_attivita, " +
 	                   "COUNT(i.idPersona) AS iscritti, " +
 	                   "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
 	                   "FROM Corso c " +
@@ -331,6 +335,7 @@ public class CorsoDAO {
 	                dto.setNomeCorso(rs.getString("nome_corso"));
 	                dto.setDescrizione(rs.getString("descrizione"));
 	                dto.setCapienza(rs.getInt("capienza"));
+	                dto.setFotoPath(rs.getString("foto"));
 	                dto.setNomeAttivita(rs.getString("nome_attivita"));
 	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
 	                corsi.add(dto);
@@ -348,7 +353,7 @@ public class CorsoDAO {
 
 	
 	public List<Corso> getAll_seguiti(int idPersona) {
-		String query = "SELECT c.id, c.nome, c.capienza, c.descrizione, i.dataInizio, i.dataFine, i.stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? and i.stato = 2 order by id";
+		String query = "SELECT c.id, c.nome, c.capienza, c.descrizione, c.foto, i.dataInizio, i.dataFine, i.stato FROM Corso c join iscrizione i on i.idCorso = c.id where idPersona = ? and i.stato = 2 order by id";
 
 		List<Corso> res = new ArrayList<Corso>();
 		PreparedStatement ps;
@@ -400,7 +405,7 @@ public class CorsoDAO {
 
 	    StringBuilder queryBuilder = new StringBuilder();
 	    queryBuilder.append(
-	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, " +
+	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, " +
 	        "a.nome AS nome_attivita, " +
 	        "COUNT(i2.idPersona) AS iscritti, " +
 	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
@@ -451,6 +456,7 @@ public class CorsoDAO {
 	                dto.setNomeCorso(rs.getString("nome_corso"));
 	                dto.setDescrizione(rs.getString("descrizione"));
 	                dto.setCapienza(rs.getInt("capienza"));
+	                dto.setFotoPath(rs.getString("foto"));
 	                dto.setNomeAttivita(rs.getString("nome_attivita"));
 	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
 
@@ -552,18 +558,19 @@ public class CorsoDAO {
 		return esito;
 	}
 
-	public boolean modifica(Corso a) {
-		String query = "UPDATE Corso SET nome=?, capienza=?, descrizione = ? WHERE id=?";
+	public boolean modifica(Corso c) {
+		String query = "UPDATE Corso SET nome=?, capienza=?, descrizione = ?, foto = ? WHERE id=?";
 		boolean esito = false;
 
 		PreparedStatement ps;
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, a.getNome());
-			ps.setInt(2, a.getCapienza());
-			ps.setString(3, a.getDescrizione());
-			ps.setInt(4, a.getId());
+			ps.setString(1, c.getNome());
+			ps.setInt(2, c.getCapienza());
+			ps.setString(3, c.getDescrizione());
+			ps.setString(4, c.getFoto());
+			ps.setInt(5, c.getId());
 
 
 			int tmp = ps.executeUpdate();

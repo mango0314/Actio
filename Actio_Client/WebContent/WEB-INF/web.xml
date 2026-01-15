@@ -169,6 +169,16 @@
     <servlet-name>EliminaCorso</servlet-name>
     <url-pattern>/privato/EliminaCorso</url-pattern>
   </servlet-mapping>
+     <servlet>
+    <description></description>
+    <display-name>ModificaCorso</display-name>
+    <servlet-name>ModificaCorso</servlet-name>
+    <servlet-class>it.actio.servlet.privato.ModificaCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaCorso</servlet-name>
+    <url-pattern>/privato/ModificaCorso</url-pattern>
+  </servlet-mapping>
   <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>

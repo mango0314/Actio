@@ -207,6 +207,38 @@ public class ActivityService {
 		}
 		return true;
 	}
+	
+	public boolean modificaCorso(Corso corso, int idAttivita){
+		boolean modificato = false;
+        try {
+            // 1. Check email
+            System.out.println("1. Check corso esistente...");
+            boolean corsoEsiste = corsoDAO.EsisteCorso_byAttivita(corso.getNome(), idAttivita);
+            System.out.println("   → EsisteCorso_byAttivita: " + corsoEsiste);
+            if (!corsoEsiste) {
+                System.out.println("=== CORSO INESISTENTE ===");
+                return false;
+            }
+
+
+            // 3. Salva PERSONA
+            System.out.println("3. modifica CORSO...");
+            modificato = corsoDAO.modifica(corso);
+            if (modificato == false) {
+                System.out.println("=== CORSO MODIFICA FALLITA ===");
+                return false;
+            }
+
+
+           
+
+        } catch (Exception e) {
+            System.out.println("=== WS EXCEPTION: " + e.getMessage());
+            e.printStackTrace();  
+        }
+		return modificato; 
+		
+	}
 
 
 }

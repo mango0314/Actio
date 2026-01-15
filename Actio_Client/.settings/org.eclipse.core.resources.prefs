@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//src/it/actio/servlet/Registrazione.java=UTF-8
 encoding//src/it/actio/servlet/privato/AggiungiCorso.java=UTF-8
 encoding//src/it/actio/servlet/privato/EliminaCorso.java=UTF-8
+encoding//src/it/actio/servlet/privato/ModificaCorso.java=UTF-8
