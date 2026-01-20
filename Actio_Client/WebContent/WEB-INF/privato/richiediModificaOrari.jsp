@@ -127,7 +127,7 @@
             </div>
             <div class="card-body">
                 
-                <form action=# method="POST">
+                <form action="ModificaOrari" method="POST">
                     <input type="hidden" name="corso_id" value="<%= idCorso %>">
 
                     <div class="table-responsive">
@@ -149,13 +149,13 @@
                                     <tr>
                                         <td>
                                             <select name="giorno[]" class="form-select" required>
-                                                <option value="1" <%= o.getGiornoSettimana() == 1 ? "selected" : "" %>>Lunedì</option>
-                                                <option value="2" <%= o.getGiornoSettimana() == 2 ? "selected" : "" %>>Martedì</option>
-                                                <option value="3" <%= o.getGiornoSettimana() == 3 ? "selected" : "" %>>Mercoledì</option>
-                                                <option value="4" <%= o.getGiornoSettimana() == 4 ? "selected" : "" %>>Giovedì</option>
-                                                <option value="5" <%= o.getGiornoSettimana() == 5 ? "selected" : "" %>>Venerdì</option>
-                                                <option value="6" <%= o.getGiornoSettimana() == 6 ? "selected" : "" %>>Sabato</option>
-                                                <option value="7" <%= o.getGiornoSettimana() == 7 ? "selected" : "" %>>Domenica</option>
+                                                <option value="0" <%= o.getGiornoSettimana() == 0 ? "selected" : "" %>>Lunedì</option>
+                                                <option value="1" <%= o.getGiornoSettimana() == 1 ? "selected" : "" %>>Martedì</option>
+                                                <option value="2" <%= o.getGiornoSettimana() == 2 ? "selected" : "" %>>Mercoledì</option>
+                                                <option value="3" <%= o.getGiornoSettimana() == 3 ? "selected" : "" %>>Giovedì</option>
+                                                <option value="4" <%= o.getGiornoSettimana() == 4 ? "selected" : "" %>>Venerdì</option>
+                                                <option value="5" <%= o.getGiornoSettimana() == 5 ? "selected" : "" %>>Sabato</option>
+                                                <option value="6" <%= o.getGiornoSettimana() == 6 ? "selected" : "" %>>Domenica</option>
                                             </select>
                                         </td>
                                         <td>

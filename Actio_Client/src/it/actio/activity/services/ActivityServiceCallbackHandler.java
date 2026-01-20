@@ -45,19 +45,67 @@
 
         
            /**
-            * auto generated Axis2 call back method for registrazioneAttivita method
-            * override this method for handling normal response from registrazioneAttivita operation
+            * auto generated Axis2 call back method for sostituisciOrariCorso method
+            * override this method for handling normal response from sostituisciOrariCorso operation
             */
-           public void receiveResultregistrazioneAttivita(
-                    it.actio.activity.services.ActivityServiceStub.RegistrazioneAttivitaResponse result
+           public void receiveResultsostituisciOrariCorso(
+                    it.actio.activity.services.ActivityServiceStub.SostituisciOrariCorsoResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from registrazioneAttivita operation
+           * override this method for handling error response from sostituisciOrariCorso operation
            */
-            public void receiveErrorregistrazioneAttivita(java.lang.Exception e) {
+            public void receiveErrorsostituisciOrariCorso(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for get_Iscrizioni_ConNomePersona_Attivita method
+            * override this method for handling normal response from get_Iscrizioni_ConNomePersona_Attivita operation
+            */
+           public void receiveResultget_Iscrizioni_ConNomePersona_Attivita(
+                    it.actio.activity.services.ActivityServiceStub.Get_Iscrizioni_ConNomePersona_AttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from get_Iscrizioni_ConNomePersona_Attivita operation
+           */
+            public void receiveErrorget_Iscrizioni_ConNomePersona_Attivita(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getOrari method
+            * override this method for handling normal response from getOrari operation
+            */
+           public void receiveResultgetOrari(
+                    it.actio.activity.services.ActivityServiceStub.GetOrariResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getOrari operation
+           */
+            public void receiveErrorgetOrari(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getIscritti_conDatafine method
+            * override this method for handling normal response from getIscritti_conDatafine operation
+            */
+           public void receiveResultgetIscritti_conDatafine(
+                    it.actio.activity.services.ActivityServiceStub.GetIscritti_conDatafineResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getIscritti_conDatafine operation
+           */
+            public void receiveErrorgetIscritti_conDatafine(java.lang.Exception e) {
             }
                 
            /**
@@ -74,6 +122,22 @@
            * override this method for handling error response from accettaIscrizione operation
            */
             public void receiveErroraccettaIscrizione(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for registrazioneAttivita method
+            * override this method for handling normal response from registrazioneAttivita operation
+            */
+           public void receiveResultregistrazioneAttivita(
+                    it.actio.activity.services.ActivityServiceStub.RegistrazioneAttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from registrazioneAttivita operation
+           */
+            public void receiveErrorregistrazioneAttivita(java.lang.Exception e) {
             }
                 
            /**
@@ -109,22 +173,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for get_Iscrizioni_ConNomePersona_Attivita method
-            * override this method for handling normal response from get_Iscrizioni_ConNomePersona_Attivita operation
-            */
-           public void receiveResultget_Iscrizioni_ConNomePersona_Attivita(
-                    it.actio.activity.services.ActivityServiceStub.Get_Iscrizioni_ConNomePersona_AttivitaResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from get_Iscrizioni_ConNomePersona_Attivita operation
-           */
-            public void receiveErrorget_Iscrizioni_ConNomePersona_Attivita(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for getCorsiForniti method
             * override this method for handling normal response from getCorsiForniti operation
             */
@@ -138,38 +186,6 @@
            * override this method for handling error response from getCorsiForniti operation
            */
             public void receiveErrorgetCorsiForniti(java.lang.Exception e) {
-            }
-                
-           /**
-            * auto generated Axis2 call back method for getOrari method
-            * override this method for handling normal response from getOrari operation
-            */
-           public void receiveResultgetOrari(
-                    it.actio.activity.services.ActivityServiceStub.GetOrariResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getOrari operation
-           */
-            public void receiveErrorgetOrari(java.lang.Exception e) {
-            }
-                
-           /**
-            * auto generated Axis2 call back method for getIscritti_conDatafine method
-            * override this method for handling normal response from getIscritti_conDatafine operation
-            */
-           public void receiveResultgetIscritti_conDatafine(
-                    it.actio.activity.services.ActivityServiceStub.GetIscritti_conDatafineResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getIscritti_conDatafine operation
-           */
-            public void receiveErrorgetIscritti_conDatafine(java.lang.Exception e) {
             }
                 
            /**

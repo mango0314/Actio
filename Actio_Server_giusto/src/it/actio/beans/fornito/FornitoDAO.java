@@ -58,6 +58,32 @@ public class FornitoDAO {
 		DBManager.closeConnection();
 		return res;
 	}
+	
+	public boolean esiste_Conn(Connection conn, int idAttivita, int idCorso) throws SQLException {
+	    String query = "SELECT * FROM fornito WHERE idAttivita = ? AND idCorso = ?";
+	    
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    try {
+	        ps = conn.prepareStatement(query);
+	        ps.setInt(1, idAttivita);
+	        ps.setInt(2, idCorso);
+	        rs = ps.executeQuery();
+	        
+	        return rs.next();  
+	        
+	    } finally {
+	        if (rs != null) {
+	            rs.close();  
+	        }
+	        if (ps != null) {
+	            ps.close(); 
+	        }
+	        
+	    }
+	}
+
+
 
 
 	public List<Integer> getAllAttivita() {

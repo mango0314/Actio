@@ -91,6 +91,7 @@
 
     <% CorsoConAttivitaDTO[] corsi_conPostiRimasti = (CorsoConAttivitaDTO[]) request.getAttribute("corsi_conPostiRimasti"); %>
     
+    
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -106,8 +107,8 @@
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
             <li data-filter="*" class="filter-active">All Work</li>
-            <li data-filter=".filter-design">Digital Design</li>
-            <li data-filter=".filter-development">Development</li>
+            <li data-filter=".filter-design">Palestre</li>
+            <li data-filter=".filter-development">Scuole di ballo</li>
             <li data-filter=".filter-strategy">Strategy</li>
             <li data-filter=".filter-consulting">Consulting</li>
           </ul><!-- End Portfolio Filters -->
@@ -116,6 +117,21 @@
           
           <% if (corsi_conPostiRimasti != null && corsi_conPostiRimasti.length != 0){
        		for(CorsoConAttivitaDTO c : corsi_conPostiRimasti){
+       			
+       			
+       		    String rawPath = c.getFotoPath();
+       		    String webPath = "";
+       		    if(rawPath != null && !rawPath.isEmpty()) {
+       		        // Estrae solo il nome file dal path assoluto
+       		        String nomeFile = new java.io.File(rawPath).getName();
+       		        // Costruisce l'URL virtuale
+       		        webPath = "/uploads/corsi/" + nomeFile;
+       		    } else {
+       		        // Immagine di fallback se manca
+       		        webPath = request.getContextPath() + "/img/default-course.jpg"; 
+       		    }
+       		
+       			
         	%>
 
             <div class="col-lg-12 portfolio-item isotope-item filter-design">
@@ -123,10 +139,10 @@
                 <div class="row g-4">
                   <div class="col-md-6">
                     <div class="project-visual">
-                      <img src="<%= request.getContextPath() %>/img/portfolio/portfolio-1.webp" alt="Enterprise Digital Platform" class="img-fluid" loading="lazy">
+                      <img src="<%= webPath %>" alt="Enterprise Digital Platform" class="img-fluid" loading="lazy">
                       <div class="project-overlay">
                         <div class="overlay-content">
-                          <a href="<%= request.getContextPath() %>/img/portfolio/portfolio-1.webp" class="view-project glightbox" aria-label="View project image">
+                          <a href="<%= webPath %>" class="view-project glightbox" aria-label="View project image">
                             <i class="bi bi-eye"></i>
                           </a>
                           <a href="DettaglioCorso?idCorso=<%= c.getId() %>" class="project-link" aria-label="View project details">

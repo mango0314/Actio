@@ -1,7 +1,9 @@
 package it.actio.services;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.security.auth.login.AccountException;
@@ -263,6 +265,66 @@ public class ActivityService {
 		return modificato; 
 		
 	}
+	
+	public boolean sostituisciOrariCorso(int idCorso, int idAttivita, OrarioCorsoDTO[] nuoviOrari) {
+	    Connection conn = null;
+	    
+	    System.out.println("=== INIZIO SOSTITUZIONE ORARI ===");
+	    System.out.println("idCorso: " + idCorso + ", idAttivita: " + idAttivita);
+	    System.out.println("Numero orari: " + (nuoviOrari != null ? nuoviOrari.length : 0));
+	    
+	    try {
+	        // 1. Inizia transazione
+	        conn = DBManager.startConnection();
+	        System.out.println("1. Connection OK: " + conn);
+	        conn.setAutoCommit(false);
+	        
+	        // 2. VERIFICA PROPRIETÀ
+	        System.out.println("2. Verifica proprietà corso...");
+	        if (!fornitoDAO.esiste_Conn(conn, idAttivita, idCorso)) {
+	            System.out.println("=== CORSO NON APPARTIENE ALL'ATTIVITA ===");
+	            conn.rollback();
+	            return false;
+	        }
+	        
+	        // 3. CANCELLA vecchi orari
+	        System.out.println("3. Elimina vecchi orari...");
+	        orario_corsoDAO.eliminaOrariby_Corso(conn, idCorso);
+	        System.out.println("   → Eliminazione completata");
+	        
+	        // 4. INSERISCI nuovi orari
+	        if (nuoviOrari != null && nuoviOrari.length > 0) {
+	            System.out.println("4. Inserisci " + nuoviOrari.length + " nuovi orari...");
+	            List<OrarioCorsoDTO> listaOrari = Arrays.asList(nuoviOrari);
+	            boolean okInserimento = orario_corsoDAO.inserisciOrari(conn, listaOrari, idCorso);
+	            System.out.println("   → Inserimento: " + okInserimento);
+	            
+	            if (!okInserimento) {
+	                System.out.println("=== INSERIMENTO ORARI FALLITO ===");
+	                conn.rollback();
+	                return false;
+	            }
+	        }
+	        
+	        // 5. COMMIT
+	        conn.commit();
+	        System.out.println("=== SOSTITUZIONE ORARI OK! ===");
+	        return true;
+	        
+	    } catch (Exception e) {
+	        System.out.println("=== WS EXCEPTION: " + e.getMessage());
+	        e.printStackTrace();
+	        try { 
+	            if (conn != null) conn.rollback(); 
+	        } catch (Exception ignored) {}
+	        return false;
+	        
+	    } finally {
+	        DBManager.closeConnection();  // ✅ USA QUESTO come negli altri metodi!
+	        System.out.println("=== WS DEBUG END ===");
+	    }
+	}
+
 
 
 }

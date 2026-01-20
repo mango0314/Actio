@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.actio.dto.OrarioCorsoDTO;
 import it.actio.utils.DBManager;
+import it.actio.utils.Utility;
 
 public class Orario_corsoDAO {
 
@@ -159,28 +162,24 @@ public class Orario_corsoDAO {
 		DBManager.closeConnection();
 		return esito;
 	}
-
-	public boolean elimina(Orario_corso orario_corso) {
-		String query = "DELETE FROM orario_corso WHERE id = ?";
-		boolean esito = false;
-
-		PreparedStatement ps;
-		conn = DBManager.startConnection();
-		try {
-			ps = conn.prepareStatement(query);
-			ps.setInt(1, orario_corso.getId());
-
-			int tmp = ps.executeUpdate();
-			if (tmp == 1)
-				esito = true;
-
-		} catch (SQLException e) {
-			esito = false;
-			e.printStackTrace();
-		}
-		DBManager.closeConnection();
-		return esito;
+	public boolean eliminaOrariby_Corso(Connection conn, int idCorso) throws SQLException {
+	    String query = "DELETE FROM orario_corso WHERE idCorso = ?";
+	    
+	    PreparedStatement ps = null;
+	    try {
+	        ps = conn.prepareStatement(query);
+	        ps.setInt(1, idCorso);
+	        
+	        int tmp = ps.executeUpdate();
+	        return true;  
+	        
+	    } finally {
+	        if (ps != null) {
+	            ps.close();  
+	        }
+	    }
 	}
+
 
 	public boolean modifica(Orario_corso o) {
 		String query = "UPDATE Orario_corso SET idCorso=?, giorno_settimana=?, orarioInizio=?, orarioFine=? WHERE id=?";
@@ -207,4 +206,42 @@ public class Orario_corsoDAO {
 		DBManager.closeConnection();
 		return esito;
 	}
+	
+	public boolean inserisciOrari(Connection conn, List<OrarioCorsoDTO> orari, int idCorso) throws SQLException {
+	    String query = "INSERT INTO orario_corso (idCorso, giorno_settimana, orarioInizio, orarioFine) VALUES (?, ?, ?, ?)";
+	    
+	    PreparedStatement ps = null;
+	    try {
+	        ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+	        
+	        for (OrarioCorsoDTO orario : orari) {
+	            Time orarioInizio = Time.valueOf(orario.getOrarioInizio());
+	            Time orarioFine = Time.valueOf(orario.getOrarioFine());
+	            
+	            ps.setInt(1, idCorso);
+	            ps.setInt(2, orario.getGiornoSettimana());
+	            ps.setTime(3, orarioInizio);
+	            ps.setTime(4, orarioFine);
+	            
+	            int tmp = ps.executeUpdate();
+	            
+	            if (tmp == 1) {
+	                ResultSet rs = ps.getGeneratedKeys();
+	                if (rs.next()) {
+	                    int idGenerato = rs.getInt(1);
+	                    // Opzionale: fai qualcosa con l'ID
+	                }
+	                rs.close();
+	            }
+	        }
+	        
+	        return true;  // Successo
+	        
+	    } finally {
+	        if (ps != null) {
+	            ps.close();  
+	        }
+	    }
+	}
+
 }

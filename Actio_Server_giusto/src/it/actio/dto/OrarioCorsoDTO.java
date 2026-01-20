@@ -38,8 +38,6 @@ public class OrarioCorsoDTO {
         this.giornoSettimanaLabel = giornoSettimanaLabel;
     }
 
-  
-    
 	public void setOrarioInizio(String orarioInizio) {
 		this.orarioInizio = orarioInizio;
 	}
