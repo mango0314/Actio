@@ -255,7 +255,7 @@ public class IscrizioneDAO {
 	
 
 
-	public boolean elimina(Iscrizione iscrizione) {
+	public boolean elimina(int idPersona, int idCorso) {
 		String query = "DELETE FROM iscrizione WHERE idPersona = ? and idCorso = ?";
 		boolean esito = false;
 
@@ -263,8 +263,8 @@ public class IscrizioneDAO {
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setInt(1, iscrizione.getIdPersona());
-			ps.setInt(2, iscrizione.getIdCorso());
+			ps.setInt(1, idPersona);
+			ps.setInt(2, idCorso);
 
 			int tmp = ps.executeUpdate();
 			if (tmp == 1)

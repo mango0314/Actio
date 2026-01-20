@@ -189,6 +189,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for eliminaIscrizione method
+            * override this method for handling normal response from eliminaIscrizione operation
+            */
+           public void receiveResulteliminaIscrizione(
+                    it.actio.activity.services.ActivityServiceStub.EliminaIscrizioneResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from eliminaIscrizione operation
+           */
+            public void receiveErroreliminaIscrizione(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for eliminaCorso method
             * override this method for handling normal response from eliminaCorso operation
             */
@@ -205,22 +221,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for modificaCorso method
-            * override this method for handling normal response from modificaCorso operation
-            */
-           public void receiveResultmodificaCorso(
-                    it.actio.activity.services.ActivityServiceStub.ModificaCorsoResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from modificaCorso operation
-           */
-            public void receiveErrormodificaCorso(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for aggiungiCorso method
             * override this method for handling normal response from aggiungiCorso operation
             */
@@ -234,6 +234,22 @@
            * override this method for handling error response from aggiungiCorso operation
            */
             public void receiveErroraggiungiCorso(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for modificaCorso method
+            * override this method for handling normal response from modificaCorso operation
+            */
+           public void receiveResultmodificaCorso(
+                    it.actio.activity.services.ActivityServiceStub.ModificaCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from modificaCorso operation
+           */
+            public void receiveErrormodificaCorso(java.lang.Exception e) {
             }
                 
 

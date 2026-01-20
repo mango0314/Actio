@@ -199,6 +199,16 @@
     <servlet-name>ModificaOrari</servlet-name>
     <url-pattern>/privato/ModificaOrari</url-pattern>
   </servlet-mapping>
+         <servlet>
+    <description></description>
+    <display-name>EliminaIscrizione</display-name>
+    <servlet-name>EliminaIscrizione</servlet-name>
+    <servlet-class>it.actio.servlet.privato.EliminaIscrizione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EliminaIscrizione</servlet-name>
+    <url-pattern>/privato/EliminaIscrizione</url-pattern>
+  </servlet-mapping>
   <servlet>
     <display-name>Apache-Axis Servlet</display-name>
     <servlet-name>AxisServlet</servlet-name>

@@ -133,7 +133,7 @@ public class CorsoDAO {
 
 	    String query =
 	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, " +
-	        "a.nome AS nome_attivita, " +
+	        "a.nome AS nome_attivita, a.tipo, " +
 	        "COUNT(i2.idPersona) AS iscritti, " +
 	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
 
@@ -172,6 +172,7 @@ public class CorsoDAO {
 	            dto.setCapienza(rs.getInt("capienza"));
 	            dto.setFotoPath(rs.getString("foto"));
 	            dto.setNomeAttivita(rs.getString("nome_attivita"));
+	            dto.setTipo(rs.getInt("tipo"));
 	            dto.setPostiRimasti(rs.getInt("posti_rimasti"));
 
 	            // mappiamo stato_richiesta: può essere NULL
@@ -406,7 +407,7 @@ public class CorsoDAO {
 	    StringBuilder queryBuilder = new StringBuilder();
 	    queryBuilder.append(
 	        "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, " +
-	        "a.nome AS nome_attivita, " +
+	        "a.nome AS nome_attivita, a.tipo, " +
 	        "COUNT(i2.idPersona) AS iscritti, " +
 	        "(c.capienza - COUNT(i2.idPersona)) AS posti_rimasti, " +
 
@@ -429,7 +430,7 @@ public class CorsoDAO {
 	        queryBuilder.append("(c.nome LIKE ? OR a.nome LIKE ?)");
 	    }
 
-	    queryBuilder.append(" GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome, ix.stato");
+	    queryBuilder.append(" GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome, a.tipo, ix.stato");
 
 	    String query = queryBuilder.toString();
 
@@ -458,6 +459,7 @@ public class CorsoDAO {
 	                dto.setCapienza(rs.getInt("capienza"));
 	                dto.setFotoPath(rs.getString("foto"));
 	                dto.setNomeAttivita(rs.getString("nome_attivita"));
+	                dto.setTipo(rs.getInt("tipo"));
 	                dto.setPostiRimasti(rs.getInt("posti_rimasti"));
 
 	                // qui imposti lo stato dell’utente (può essere NULL → no richiesta)

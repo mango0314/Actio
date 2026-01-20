@@ -336,7 +336,7 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
-  <script src="js_sensibile/form_registrazione.js"></script>
+  <script src="js/form_registrazione.js"></script>
 
 </body>
 

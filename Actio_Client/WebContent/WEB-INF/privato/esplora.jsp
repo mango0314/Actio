@@ -109,8 +109,8 @@
             <li data-filter="*" class="filter-active">All Work</li>
             <li data-filter=".filter-design">Palestre</li>
             <li data-filter=".filter-development">Scuole di ballo</li>
-            <li data-filter=".filter-strategy">Strategy</li>
-            <li data-filter=".filter-consulting">Consulting</li>
+            <li data-filter=".filter-strategy">Associazione sportiva</li>
+            
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-5 isotope-container" data-aos="fade-up" data-aos-delay="300">
@@ -133,8 +133,15 @@
        		
        			
         	%>
-
-            <div class="col-lg-12 portfolio-item isotope-item filter-design">
+        	
+        	<% if(c.getTipo() == 0){ %>
+            <div class="col-lg-12 portfolio-item isotope-item filter-design">            
+            <%} else if( c.getTipo() == 1){ %>
+               <div class="col-lg-12 portfolio-item isotope-item filter-development">
+            <% } else{ %>
+              <div class="col-lg-12 portfolio-item isotope-item filter-strategy">              
+             <% } %>
+                           
               <article class="portfolio-card">
                 <div class="row g-4">
                   <div class="col-md-6">

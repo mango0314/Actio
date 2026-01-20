@@ -246,7 +246,7 @@
 	<% if (iscritti_conDataFIne != null && iscritti_conDataFIne.length != 0){
                     	for( IscrittiConDataFineDTO i : iscritti_conDataFIne){
                     		
-                    		String EliminaCorso = "Elimina?idPersona=" + i.getId();
+                    		String EliminaIscrizione = "EliminaIscrizione?idPersona=" + i.getId() + "&idCorso=" + corso_conAttivita_e_PostiRimasti.getId();
                     	%>
             <div class="content d-flex justify-content-center">
                 <table class="table table-lg">
@@ -273,7 +273,22 @@
                             <th><%=i.getAltezza() %></th>
                             <td><%= i.getPeso() %></td>
                             <td scope="row"><%= i.getDataFineIscrizioneFormatted() %></td>
-                            <td><a href="<%= EliminaCorso %>" class="btn btn-primary">Elimina</a></td>
+                            <td>
+                            <form action="<%= request.getContextPath() %>/privato/EliminaIscrizione"
+					              method="post"
+					              style="display:inline">
+					
+					            <input type="hidden" name="idPersona" value="<%= i.getId() %>">
+					      		<input type="hidden" name="idCorso" value="<%=corso_conAttivita_e_PostiRimasti.getId() %>">
+					            
+					            <input type="hidden" name="csrfToken" value="<%= session.getAttribute("csrfToken") %>">
+					
+					            <button type="submit" class="btn btn-success btn-sm">
+					                Elimina
+					            </button>
+					        </form>
+
+</td>
                         </tr>
                         
                         <%}

@@ -234,6 +234,29 @@ public class ActivityService {
 		return true;
 	}
 	
+	
+	public boolean EliminaIscrizione(int idPersona, int idCorso){
+		try{
+			
+			
+		
+            
+            //eliminazione corso
+            boolean eliminazioneCorso = iscrizioneDAO.elimina(idPersona, idCorso);
+            if(eliminazioneCorso == false){
+            	System.out.println("ELIMINAZIONE Iscrizione FALLITA");
+                return false;
+            }
+            
+          
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	
 	public boolean modificaCorso(Corso corso, int idAttivita){
 		boolean modificato = false;
         try {
