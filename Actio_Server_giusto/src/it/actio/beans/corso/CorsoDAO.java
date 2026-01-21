@@ -151,7 +151,7 @@ public class CorsoDAO {
 	        "      AND ix2.idPersona = ? " +
 	        "      AND ix2.stato = 2 " +
 	        ") " +
-	        "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome, ix.stato";
+	        "GROUP BY c.id, c.nome, c.descrizione, c.capienza, c.foto, a.nome, a.tipo, ix.stato";
 
 	    List<CorsoConAttivitaDTO> res = new ArrayList<>();
 
@@ -314,7 +314,7 @@ public class CorsoDAO {
 	public List<CorsoConAttivitaDTO> getCorsiByAttivitaConPosti(int idAttivita) {
 	    List<CorsoConAttivitaDTO> corsi = new ArrayList<>();
 
-	    String query = "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, a.nome AS nome_attivita, " +
+	    String query = "SELECT c.id, c.nome AS nome_corso, c.descrizione, c.capienza, c.foto, a.nome AS nome_attivita, a.tipo, " +
 	                   "COUNT(i.idPersona) AS iscritti, " +
 	                   "(c.capienza - COUNT(i.idPersona)) AS posti_rimasti " +
 	                   "FROM Corso c " +
@@ -322,7 +322,7 @@ public class CorsoDAO {
 	                   "JOIN Attivita a ON f.idAttivita = a.id " +
 	                   "LEFT JOIN Iscrizione i ON c.id = i.idCorso AND i.stato = 2 " +
 	                   "WHERE a.id = ? " +
-	                   "GROUP BY c.id, c.nome, c.descrizione, c.capienza, a.nome";
+	                   "GROUP BY c.id, c.nome, c.descrizione, c.capienza,c.foto, a.nome, a.tipo";
 
 	    try (Connection conn = DBManager.startConnection();
 	         PreparedStatement ps = conn.prepareStatement(query)) {

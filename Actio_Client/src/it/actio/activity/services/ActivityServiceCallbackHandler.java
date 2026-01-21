@@ -109,22 +109,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for accettaIscrizione method
-            * override this method for handling normal response from accettaIscrizione operation
-            */
-           public void receiveResultaccettaIscrizione(
-                    it.actio.activity.services.ActivityServiceStub.AccettaIscrizioneResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from accettaIscrizione operation
-           */
-            public void receiveErroraccettaIscrizione(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for registrazioneAttivita method
             * override this method for handling normal response from registrazioneAttivita operation
             */
@@ -138,6 +122,22 @@
            * override this method for handling error response from registrazioneAttivita operation
            */
             public void receiveErrorregistrazioneAttivita(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for accettaIscrizione method
+            * override this method for handling normal response from accettaIscrizione operation
+            */
+           public void receiveResultaccettaIscrizione(
+                    it.actio.activity.services.ActivityServiceStub.AccettaIscrizioneResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from accettaIscrizione operation
+           */
+            public void receiveErroraccettaIscrizione(java.lang.Exception e) {
             }
                 
            /**
@@ -221,22 +221,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for aggiungiCorso method
-            * override this method for handling normal response from aggiungiCorso operation
-            */
-           public void receiveResultaggiungiCorso(
-                    it.actio.activity.services.ActivityServiceStub.AggiungiCorsoResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from aggiungiCorso operation
-           */
-            public void receiveErroraggiungiCorso(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for modificaCorso method
             * override this method for handling normal response from modificaCorso operation
             */
@@ -250,6 +234,22 @@
            * override this method for handling error response from modificaCorso operation
            */
             public void receiveErrormodificaCorso(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for aggiungiCorso method
+            * override this method for handling normal response from aggiungiCorso operation
+            */
+           public void receiveResultaggiungiCorso(
+                    it.actio.activity.services.ActivityServiceStub.AggiungiCorsoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from aggiungiCorso operation
+           */
+            public void receiveErroraggiungiCorso(java.lang.Exception e) {
             }
                 
 

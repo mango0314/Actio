@@ -63,7 +63,7 @@ public class AggiungiCorso extends HttpServlet {
         }
 
         if (immaginePart == null || immaginePart.getSize() == 0) {
-            return null; // opzionale, OK
+            return ""; // opzionale, OK
         }
 
         // 1) Dimensione
@@ -136,6 +136,10 @@ public class AggiungiCorso extends HttpServlet {
     	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
 		response.setHeader("Pragma", "no-cache"); 
 		response.setDateHeader("Expires", 0);
+		
+		 request.setCharacterEncoding("UTF-8");
+		    response.setCharacterEncoding("UTF-8");
+		    response.setContentType("text/html; charset=UTF-8");
 
 		
 			HttpSession session = request.getSession(false); 
@@ -190,7 +194,9 @@ public class AggiungiCorso extends HttpServlet {
                 
                 
                 String pathFoto = validaESalvaImmagine(request, response, "fotoCorso", UPLOAD_DIR);
-                if (pathFoto == null) return;  
+                if (pathFoto == null || pathFoto.isEmpty()) {
+                    pathFoto = null;
+                }  
 
                 Corso corso = new Corso();
                 corso.setNome(nomeCorso.trim());
@@ -210,9 +216,9 @@ public class AggiungiCorso extends HttpServlet {
 }
             
             if (aggiunto) {
-                response.sendRedirect(request.getContextPath() + "/Index_privato?success=AGGIUNTO");
+                response.sendRedirect(request.getContextPath() + "/privato/Index_privato?success=AGGIUNTO");
             } else {
-                response.sendRedirect(request.getContextPath() + "/Index_privato?errore=AGGIUNTA_FALLITA");
+                response.sendRedirect(request.getContextPath() + "/privato/Index_privato?errore=AGGIUNTA_FALLITA");
             }
             return;
 

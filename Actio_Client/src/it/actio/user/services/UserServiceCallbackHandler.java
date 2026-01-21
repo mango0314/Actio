@@ -45,22 +45,6 @@
 
         
            /**
-            * auto generated Axis2 call back method for getCorso_conAttivita method
-            * override this method for handling normal response from getCorso_conAttivita operation
-            */
-           public void receiveResultgetCorso_conAttivita(
-                    it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getCorso_conAttivita operation
-           */
-            public void receiveErrorgetCorso_conAttivita(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for registrazioneUtente method
             * override this method for handling normal response from registrazioneUtente operation
             */
@@ -74,6 +58,22 @@
            * override this method for handling error response from registrazioneUtente operation
            */
             public void receiveErrorregistrazioneUtente(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getCorso_conAttivita method
+            * override this method for handling normal response from getCorso_conAttivita operation
+            */
+           public void receiveResultgetCorso_conAttivita(
+                    it.actio.user.services.UserServiceStub.GetCorso_conAttivitaResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getCorso_conAttivita operation
+           */
+            public void receiveErrorgetCorso_conAttivita(java.lang.Exception e) {
             }
                 
            /**

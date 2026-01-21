@@ -22,8 +22,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1,   
-maxFileSize       = 1024 * 1024 * 5,  
-maxRequestSize    = 1024 * 1024 * 6  )   
+maxFileSize       = 1024 * 1024 * 10,  
+maxRequestSize    = 1024 * 1024 * 11   )   
 public class Registrazione extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserServiceStub stub;
@@ -32,7 +32,7 @@ public class Registrazione extends HttpServlet {
     private static final String UPLOAD_DIR_UTENTI   = "C:/actio_upload/utente";
     private static final String UPLOAD_DIR_ATTIVITA = "C:/actio_upload/attivita";
     
-    private static final long MAX_IMAGE_BYTES = 5L * 1024 * 1024; // 5MB
+    private static final long MAX_IMAGE_BYTES = 10 * 1024 * 1024; // 5MB
     
     private static final Set<String> CITTA_ITALIANE = new HashSet<>(Arrays.asList(
     	    // ABRUZZO (305)
@@ -248,9 +248,32 @@ public class Registrazione extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	System.out.println("===== DEBUG PARAMETRI =====");
+        
+        // Debug tutti i parametri
+        java.util.Enumeration<String> paramNames = request.getParameterNames();
+        while(paramNames.hasMoreElements()) {
+            String name = paramNames.nextElement();
+            System.out.println("Parametro: " + name + " = " + request.getParameter(name));
+        }
+        
+        // Debug tutte le parti multipart
+        try {
+            for(Part part : request.getParts()) {
+                System.out.println("Part: " + part.getName() + " | Size: " + part.getSize() + " | ContentType: " + part.getContentType());
+            }
+        } catch(Exception e) {
+            System.out.println("Errore lettura parts: " + e.getMessage());
+        }
+        
+        System.out.println("===== FINE DEBUG =====");
+        
         String tipoAccount = request.getParameter("tipoAccount");
+        System.out.println("[DEBUG] tipoAccount ricevuto: " + tipoAccount);
+        
         int tipo;
         if (tipoAccount == null) {
+            System.out.println("[ERROR] tipoAccount è null");
             response.sendRedirect("404.html");
             return;
         }
@@ -259,180 +282,229 @@ public class Registrazione extends HttpServlet {
         
         try {
             tipo = Integer.parseInt(tipoAccount);
+            System.out.println("[DEBUG] tipo parsato: " + tipo);
         } catch (Exception e) {
-            request.getRequestDispatcher("404.html").forward(request, response);
+            System.out.println("[ERROR] Parsing tipoAccount fallito: " + e.getMessage());
+            response.sendRedirect("404.html");
             return;
         }
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        System.out.println("[DEBUG] Email: " + email);
+        System.out.println("[DEBUG] Password length: " + (password != null ? password.length() : "null"));
         
         UserServiceStub.ValidaCredenziali req = new UserServiceStub.ValidaCredenziali();
         req.setEmail(email);
         req.setPassword(password);
         
+        System.out.println("[DEBUG] Chiamata validaCredenziali...");
         UserServiceStub.ValidaCredenzialiResponse resp = stub.validaCredenziali(req);
         boolean valide = resp.get_return();
+        System.out.println("[DEBUG] Credenziali valide: " + valide);
         
         if(!valide){
-        	response.sendRedirect(request.getContextPath() + "/RichiediRegistrazione?FORMATO+CREDENZIALI+ERRATO");
-        	return;
+            System.out.println("[ERROR] Credenziali non valide");
+            response.sendRedirect(request.getContextPath() + "/RichiediRegistrazione?FORMATO+CREDENZIALI+ERRATO");
+            return;
         }
        
-            if (tipo == 1) {
-                String nome = request.getParameter("nomeUtente");
-                String cognome = request.getParameter("cognomeUtente");
-                String dataNascita = request.getParameter("data_di_nascita_Utente");
-                String altezzaStr = request.getParameter("altezzaUtente");
-                String pesoStr = request.getParameter("pesoUtente");
-                
-                
+        if (tipo == 1) {
+            System.out.println("[DEBUG] === REGISTRAZIONE UTENTE ===");
             
-                boolean datiMancanti = nome == null || nome.trim().isEmpty() ||
-                        cognome == null || cognome.trim().isEmpty() ||
-                        dataNascita == null || dataNascita.trim().isEmpty() ||
-                        altezzaStr == null || altezzaStr.trim().isEmpty() ||
-                        pesoStr == null || pesoStr.trim().isEmpty();
+            String nome = request.getParameter("nomeUtente");
+            String cognome = request.getParameter("cognomeUtente");
+            String dataNascita = request.getParameter("data_di_nascita_Utente");
+            String altezzaStr = request.getParameter("altezzaUtente");
+            String pesoStr = request.getParameter("pesoUtente");
+            
+            System.out.println("[DEBUG] Nome: " + nome);
+            System.out.println("[DEBUG] Cognome: " + cognome);
+            System.out.println("[DEBUG] Data nascita: " + dataNascita);
+            System.out.println("[DEBUG] Altezza: " + altezzaStr);
+            System.out.println("[DEBUG] Peso: " + pesoStr);
+            
+            boolean datiMancanti = nome == null || nome.trim().isEmpty() ||
+                    cognome == null || cognome.trim().isEmpty() ||
+                    dataNascita == null || dataNascita.trim().isEmpty() ||
+                    altezzaStr == null || altezzaStr.trim().isEmpty() ||
+                    pesoStr == null || pesoStr.trim().isEmpty();
 
-                if (datiMancanti) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=DATI+MANCANTI");
-                    return;
-                }
-                
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date dataNascitaDate;
-                try {
-                    dataNascitaDate = sdf.parse(dataNascita.trim());
-                } catch (ParseException e) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=DATA_NASCITA_NON_VALIDA");
-                    return;
-                }
-                
-                int altezza;
-                double peso;
-                
-                try {
-                    altezza = Integer.valueOf(altezzaStr.trim());
-                } catch (NumberFormatException e) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=ALTEZZA_NON_VALIDA");
-                    return;
-                }
-                
-                try {
-                    pesoStr = pesoStr.trim().replace(',', '.');
-                    peso = Double.valueOf(pesoStr);  
-                } catch (NumberFormatException e) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=PESO_NON_VALIDO");
-                    return;
-                }
-                
-                if (altezza < 100 || altezza > 250 || peso < 40.0 || peso > 300.0) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=ALTEZZA_O_PESO_FUORI_RANGE");
-                    return;
-                }
-                
-                
-                String pathFoto = validaESalvaImmagine(request, response, "fotoProfilo", UPLOAD_DIR_UTENTI);
-                if (pathFoto == null) return;  
-
-                
-                
-                System.out.println("DEBUG Servlet: CREO UtenteDTO con email=" + email + " nome=" + nome);
-                UtenteDTO utenteDTO = new UtenteDTO();
-                utenteDTO.setEmail(email.trim());
-                utenteDTO.setPassword(password);
-                utenteDTO.setRuolo(1);
-                utenteDTO.setNome(nome.trim());
-                utenteDTO.setCognome(cognome.trim());
-                utenteDTO.setData_di_nascita(dataNascitaDate);
-                utenteDTO.setAltezza(altezza);
-                utenteDTO.setPeso(peso);
-                utenteDTO.setFotoPath(pathFoto);
-                System.out.println("DEBUG Servlet: DTO pronto, chiamo WS...");
-
-                UserServiceStub.RegistrazioneUtente req1 = new UserServiceStub.RegistrazioneUtente();
-                req1.setUtente(utenteDTO);
-
-                System.out.println("DEBUG Servlet: Request creata, INVIO a WS...");
-                UserServiceStub.RegistrazioneUtenteResponse resp1 = stub.registrazioneUtente(req1);
-                boolean rispostaUserService = resp1.get_return();
-                System.out.println("DEBUG Servlet: WS RISPOSTO con " + rispostaUserService);
-                
-                if(rispostaUserService){
-                	registrato = true;
-                }
-
-            } else if (tipo == 0) {
-                // Registrazione Attività
-                String nomeAttivita = request.getParameter("nomeAttivita");
-                String citta = request.getParameter("cittaAttivita");
-                String tipoAttivitaStr = request.getParameter("tipoAttivita");
-                
-                
-                
-                
-                boolean datiMancanti = nomeAttivita == null || nomeAttivita.trim().isEmpty() ||
-                        citta == null || citta.trim().isEmpty() ||
-                        tipoAttivitaStr == null || tipoAttivitaStr.trim().isEmpty();
-
-                if (datiMancanti) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=DATI+MANCANTI");
-                    return;
-                }
-                
-                int tipoAttivita;
-                try {
-                    tipoAttivita = Integer.valueOf(tipoAttivitaStr.trim());
-                } catch (NumberFormatException e) {
-                    response.sendRedirect(request.getContextPath() + "/Index?errore=ALTEZZA_NON_VALIDA");
-                    return;
-                }
-                
-                if (tipoAttivita < 0 || tipoAttivita > 2){
-                	response.sendRedirect(request.getContextPath() + "/Index?errore=TIPOLOGIA_ATTIVITA_NON_VALIDA");
-                    return;
-                }
-                
-                if(!verificaCittaValida(citta)){
-                	response.sendRedirect(request.getContextPath() + "/Index?errore=CITTA_NON_VALIDA");
-                	return;
-                }
-                
-                String pathLogo = validaESalvaImmagine(request, response, "logoAttivita", UPLOAD_DIR_ATTIVITA);
-                if (pathLogo == null) return;  
-
-                AttivitaDTO attivitaDTO = new AttivitaDTO();
-                attivitaDTO.setEmail(email.trim());
-                attivitaDTO.setPassword(password);
-                attivitaDTO.setNomeAttivita(nomeAttivita.trim());
-                attivitaDTO.setFotoPath(pathLogo);
-                attivitaDTO.setTipo(tipoAttivita);
-                attivitaDTO.setCitta(citta.trim());
-                
-                ActivityServiceStub.RegistrazioneAttivita req2 = new ActivityServiceStub.RegistrazioneAttivita();
-                req2.setAttivita(attivitaDTO);
-                
-                ActivityServiceStub.RegistrazioneAttivitaResponse resp2 = stub1.registrazioneAttivita(req2);
-                boolean rispostaActivityService = resp2.get_return();
-                
-                if(rispostaActivityService){
-                	registrato = true;
-                }
-                
-            } else {
-                response.sendRedirect("404.html");
+            if (datiMancanti) {
+                System.out.println("[ERROR] Dati mancanti");
+                response.sendRedirect(request.getContextPath() + "/Index?errore=DATI+MANCANTI");
                 return;
             }
             
-            if (registrato) {
-                response.sendRedirect(request.getContextPath() + "/Index?success=REGISTRATO");
-            } else {
-                response.sendRedirect(request.getContextPath() + "/Index?errore=REGISTRAZIONE_FALLITA");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date dataNascitaDate;
+            try {
+                dataNascitaDate = sdf.parse(dataNascita.trim());
+                System.out.println("[DEBUG] Data parsata: " + dataNascitaDate);
+            } catch (ParseException e) {
+                System.out.println("[ERROR] Parse data fallito: " + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/Index?errore=DATA_NASCITA_NON_VALIDA");
+                return;
             }
+            
+            int altezza;
+            double peso;
+            
+            try {
+                altezza = Integer.valueOf(altezzaStr.trim());
+                System.out.println("[DEBUG] Altezza parsata: " + altezza);
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Parse altezza fallito: " + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/Index?errore=ALTEZZA_NON_VALIDA");
+                return;
+            }
+            
+            try {
+                pesoStr = pesoStr.trim().replace(',', '.');
+                peso = Double.valueOf(pesoStr);
+                System.out.println("[DEBUG] Peso parsato: " + peso);
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Parse peso fallito: " + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/Index?errore=PESO_NON_VALIDO");
+                return;
+            }
+            
+            if (altezza < 100 || altezza > 250 || peso < 40.0 || peso > 300.0) {
+                System.out.println("[ERROR] Altezza o peso fuori range");
+                response.sendRedirect(request.getContextPath() + "/Index?errore=ALTEZZA_O_PESO_FUORI_RANGE");
+                return;
+            }
+            
+            System.out.println("[DEBUG] Validazione immagine utente...");
+            String pathFoto = validaESalvaImmagine(request, response, "fotoProfilo", UPLOAD_DIR_UTENTI);
+            System.out.println("[DEBUG] Path foto: " + pathFoto);
+            if (pathFoto == null) {
+                System.out.println("[ERROR] Foto non valida o ritorno null");
+                return;
+            }
+            
+            System.out.println("[DEBUG] Creazione UtenteDTO...");
+            UtenteDTO utenteDTO = new UtenteDTO();
+            utenteDTO.setEmail(email.trim());
+            utenteDTO.setPassword(password);
+            utenteDTO.setRuolo(1);
+            utenteDTO.setNome(nome.trim());
+            utenteDTO.setCognome(cognome.trim());
+            utenteDTO.setData_di_nascita(dataNascitaDate);
+            utenteDTO.setAltezza(altezza);
+            utenteDTO.setPeso(peso);
+            utenteDTO.setFotoPath(pathFoto);
+            System.out.println("[DEBUG] DTO creato con successo");
+
+            UserServiceStub.RegistrazioneUtente req1 = new UserServiceStub.RegistrazioneUtente();
+            req1.setUtente(utenteDTO);
+
+            System.out.println("[DEBUG] Invio richiesta registrazione utente al WS...");
+            UserServiceStub.RegistrazioneUtenteResponse resp1 = stub.registrazioneUtente(req1);
+            boolean rispostaUserService = resp1.get_return();
+            System.out.println("[DEBUG] Risposta WS: " + rispostaUserService);
+            
+            if(rispostaUserService){
+                registrato = true;
+                System.out.println("[SUCCESS] Utente registrato");
+            } else {
+                System.out.println("[ERROR] Registrazione utente fallita");
+            }
+
+        } else if (tipo == 0) {
+            System.out.println("[DEBUG] === REGISTRAZIONE ATTIVITÀ ===");
+            
+            String nomeAttivita = request.getParameter("nomeAttivita");
+            String citta = request.getParameter("cittaAttivita");
+            String tipoAttivitaStr = request.getParameter("tipoAttivita");
+            
+            System.out.println("[DEBUG] Nome attività: " + nomeAttivita);
+            System.out.println("[DEBUG] Città: " + citta);
+            System.out.println("[DEBUG] Tipo attività: " + tipoAttivitaStr);
+            
+            boolean datiMancanti = nomeAttivita == null || nomeAttivita.trim().isEmpty() ||
+                    citta == null || citta.trim().isEmpty() ||
+                    tipoAttivitaStr == null || tipoAttivitaStr.trim().isEmpty();
+
+            if (datiMancanti) {
+                System.out.println("[ERROR] Dati mancanti");
+                response.sendRedirect(request.getContextPath() + "/Index?errore=DATI+MANCANTI");
+                return;
+            }
+            
+            int tipoAttivita;
+            try {
+                tipoAttivita = Integer.valueOf(tipoAttivitaStr.trim());
+                System.out.println("[DEBUG] Tipo attività parsato: " + tipoAttivita);
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Parse tipo attività fallito: " + e.getMessage());
+                response.sendRedirect(request.getContextPath() + "/Index?errore=TIPO_ATTIVITA_NON_VALIDO");
+                return;
+            }
+            
+            if (tipoAttivita < 0 || tipoAttivita > 2){
+                System.out.println("[ERROR] Tipo attività fuori range: " + tipoAttivita);
+                response.sendRedirect(request.getContextPath() + "/Index?errore=TIPOLOGIA_ATTIVITA_NON_VALIDA");
+                return;
+            }
+            
+            System.out.println("[DEBUG] Verifica città valida: " + citta);
+            if(!verificaCittaValida(citta)){
+                System.out.println("[ERROR] Città non valida: " + citta);
+                response.sendRedirect(request.getContextPath() + "/Index?errore=CITTA_NON_VALIDA");
+                return;
+            }
+            System.out.println("[DEBUG] Città validata");
+            
+            System.out.println("[DEBUG] Validazione logo attività...");
+            String pathLogo = validaESalvaImmagine(request, response, "logoAttivita", UPLOAD_DIR_ATTIVITA);
+            System.out.println("[DEBUG] Path logo: " + pathLogo);
+            if (pathLogo == null) {
+                System.out.println("[ERROR] Logo non valido o ritorno null");
+                return;
+            }
+
+            System.out.println("[DEBUG] Creazione AttivitaDTO...");
+            AttivitaDTO attivitaDTO = new AttivitaDTO();
+            attivitaDTO.setEmail(email.trim());
+            attivitaDTO.setPassword(password);
+            attivitaDTO.setNomeAttivita(nomeAttivita.trim());
+            attivitaDTO.setFotoPath(pathLogo);
+            attivitaDTO.setTipo(tipoAttivita);
+            attivitaDTO.setCitta(citta.trim());
+            System.out.println("[DEBUG] DTO attività creato");
+            
+            ActivityServiceStub.RegistrazioneAttivita req2 = new ActivityServiceStub.RegistrazioneAttivita();
+            req2.setAttivita(attivitaDTO);
+            
+            System.out.println("[DEBUG] Invio richiesta registrazione attività al WS...");
+            ActivityServiceStub.RegistrazioneAttivitaResponse resp2 = stub1.registrazioneAttivita(req2);
+            boolean rispostaActivityService = resp2.get_return();
+            System.out.println("[DEBUG] Risposta WS: " + rispostaActivityService);
+            
+            if(rispostaActivityService){
+                registrato = true;
+                System.out.println("[SUCCESS] Attività registrata");
+            } else {
+                System.out.println("[ERROR] Registrazione attività fallita");
+            }
+            
+        } else {
+            System.out.println("[ERROR] Tipo account non riconosciuto: " + tipo);
+            response.sendRedirect("404.html");
             return;
-
-
-           
+        }
+        
+        System.out.println("[DEBUG] Stato finale registrato: " + registrato);
+        if (registrato) {
+            System.out.println("[SUCCESS] Redirect a successo");
+            response.sendRedirect(request.getContextPath() + "/Index?success=REGISTRATO");
+        } else {
+            System.out.println("[ERROR] Redirect a errore");
+            response.sendRedirect(request.getContextPath() + "/Index?errore=REGISTRAZIONE_FALLITA");
+        }
+        
+        System.out.println("===== FINE REGISTRAZIONE =====");
+        return;
     }
 }

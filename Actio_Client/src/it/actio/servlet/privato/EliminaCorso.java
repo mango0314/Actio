@@ -77,7 +77,7 @@ public class EliminaCorso extends HttpServlet {
         try {
             idCorso = Integer.valueOf(idCorsoParam.trim());
         } catch (NumberFormatException e) {
-            response.sendRedirect(request.getContextPath() + "/Index_privato?errore=CAPIENZA_NON_VALIDA");
+            response.sendRedirect(request.getContextPath() + "/privato/Index_privato?errore=CAPIENZA_NON_VALIDA");
             return;
         }
         
@@ -91,7 +91,7 @@ public class EliminaCorso extends HttpServlet {
             ActivityServiceStub.Corso corso = resp.get_return();
             
             if (corso == null) {
-                response.sendRedirect(request.getContextPath() + "/Index_privato?errore=CORSO_NON_TROVATO");
+                response.sendRedirect(request.getContextPath() + "/privato/Index_privato?errore=CORSO_NON_TROVATO");
                 return;
             }
 
@@ -118,11 +118,11 @@ public class EliminaCorso extends HttpServlet {
                             }
                         }
                     }
-                    response.sendRedirect(request.getContextPath() + "/Index_privato?success=CORSO_ELIMINATO");
+                    response.sendRedirect(request.getContextPath() + "/privato/Index_privato?success=CORSO_ELIMINATO");
                     return;
                 }
                 else{
-                    response.sendRedirect(request.getContextPath() + "/Index_privato?errore=ELIMINAZIONE_FALLITA");
+                    response.sendRedirect(request.getContextPath() + "/privato/Index_privato?errore=ELIMINAZIONE_FALLITA");
                     return;
                 }
                 

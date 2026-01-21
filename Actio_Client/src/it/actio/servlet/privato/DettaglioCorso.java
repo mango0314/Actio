@@ -48,11 +48,15 @@ public class DettaglioCorso extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stubù
+		// TODO Auto-generated method stubï¿½
 		
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
 		response.setHeader("Pragma", "no-cache"); 
 		response.setDateHeader("Expires", 0);
+		
+		 request.setCharacterEncoding("UTF-8");
+		    response.setCharacterEncoding("UTF-8");
+		    response.setContentType("text/html; charset=UTF-8");
 
 		
 			HttpSession session = request.getSession(false); 

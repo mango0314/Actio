@@ -136,6 +136,10 @@ public class ModificaCorso extends HttpServlet {
     	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
 		response.setHeader("Pragma", "no-cache"); 
 		response.setDateHeader("Expires", 0);
+		
+		 request.setCharacterEncoding("UTF-8");
+		    response.setCharacterEncoding("UTF-8");
+		    response.setContentType("text/html; charset=UTF-8");
 
 		
 			HttpSession session = request.getSession(false); 

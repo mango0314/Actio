@@ -27,8 +27,8 @@ public class AccountDAO {
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, account.getEmail());
-			ps.setInt(2, account.getRuolo());
+			ps.setString(1, email);
+			ps.setInt(2, ruolo);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				res = recordToAccount(rs);
@@ -123,7 +123,7 @@ public class AccountDAO {
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, account.getUsername());
+			ps.setString(1, account.getEmail());
 			ps.setString(2, account.getPassword());
 
 			ResultSet rs = ps.executeQuery();
@@ -314,7 +314,7 @@ public class AccountDAO {
 		conn = DBManager.startConnection();
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, account.getUsername());
+			ps.setString(1, account.getEmail());
 
 			int tmp = ps.executeUpdate();
 			if (tmp == 1)

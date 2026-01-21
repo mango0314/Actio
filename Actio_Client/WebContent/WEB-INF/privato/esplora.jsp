@@ -183,11 +183,7 @@
 					                      
                       <div class="project-meta">
                         <span class="client-name">Posti rimanenti: <%= c.getCapienza() %></span>
-                        <div class="project-scope">
-                          <span class="scope-item">UX Design</span>
-                          <span class="scope-item">Development</span>
-                          <span class="scope-item">Strategy</span>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>

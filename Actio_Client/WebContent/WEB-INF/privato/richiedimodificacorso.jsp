@@ -115,7 +115,7 @@
   	String foto = "";
   	
   	
-  	if(corso != null){
+  	if(corso != null && corso.getId() > 0){
   		action = "ModificaCorso";
   		corso_id = corso.getId();
   		nome_corso = corso.getNome();
@@ -157,7 +157,7 @@
 				  <input type="hidden" 
 				         name="corso_id" 
 				         value="<%= corso_id %>" />
-				         <input type="hidden" name="foto_attuale" value="<%= foto != null ? foto : "" %>" />
+				         <input type="hidden" name="foto_attuale" value="<%=(corso != null && corso.getFoto() != null) ? corso.getFoto() : ""  %>" />
 				         
 						<% } %>
 				  
@@ -168,7 +168,7 @@
 					        <input type="text" 
 					               name="nomeCorso" 
 					               class="form-control" 
-					               value="<%= corso != null ? corso.getNome() : "" %>" 
+					               value="<%= (corso != null && corso.getNome() != null) ? corso.getNome() : "" %>" 
 					               required>
 					    </div>
 					</div>
@@ -180,7 +180,7 @@
 					              id="descrizione" 
 					              name="descrizione" 
 					              style="height: 100px"
-					              placeholder="Descrizione del corso"><%= corso != null ? corso.getDescrizione() : "" %> </textarea>
+					              placeholder="Descrizione del corso"><%= (corso != null && corso.getDescrizione() != null) ? corso.getDescrizione() : "" %> </textarea>
 					</div>
 					</div>
 					
@@ -191,13 +191,13 @@
 					        <input type="number" 
 					               class="form-control" 
 					               name="capienza"
-					               value="<%= corso != null ? corso.getCapienza() : "" %>"
+					               value="<%= (corso != null && corso.getCapienza() > 0) ? corso.getCapienza() : "" %>"
 					               min="1" max="250" step="1" 
 					               required>
 					    </div>
 					</div>
 					
-					<% String rawPath = corso.getFoto();
+					<% String rawPath = (corso != null) ? corso.getFoto() : null;
 				    String webPath = "";
 				    if(rawPath != null && !rawPath.isEmpty()) {
 				        // Estrae solo il nome file dal path assoluto
@@ -214,7 +214,7 @@
 					<div class="mb-4">
 					    <label class="form-label">Foto del corso</label>
 					    
-					    <% if (corso != null && webPath != null && !webPath.isEmpty()) { %>
+					    <% if (corso != null && corso.getFoto() != null && !corso.getFoto().isEmpty()) { %>
 					        <div class="mb-3">
 					            <img src="<%= webPath %>" 
 					                 alt="Foto attuale" 

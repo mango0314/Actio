@@ -8,11 +8,11 @@ public class Utility {
     
     public static String mapGiorno(int giorno) {
         switch (giorno) {
-            case 0: return "Lunedì";
-            case 1: return "Martedì";
-            case 2: return "Mercoledì";
-            case 3: return "Giovedì";
-            case 4: return "Venerdì";
+            case 0: return "LunedÃ¬";
+            case 1: return "MartedÃ¬";
+            case 2: return "MercoledÃ¬";
+            case 3: return "GiovedÃ¬";
+            case 4: return "VenerdÃ¬";
             case 5: return "Sabato";
             case 6: return "Domenica";
             default: return "Sconosciuto";

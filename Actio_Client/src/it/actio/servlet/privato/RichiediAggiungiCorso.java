@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.actio.user.services.UserServiceStub.Corso;
+import it.actio.activity.services.ActivityServiceStub.Corso;
 
 /**
  * Servlet implementation class Index
@@ -31,6 +31,9 @@ public class RichiediAggiungiCorso extends HttpServlet {
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
 		response.setHeader("Pragma", "no-cache"); 
 		response.setDateHeader("Expires", 0);
+		
+		 request.setCharacterEncoding("UTF-8");
+		    response.setCharacterEncoding("UTF-8");
 
 		
 			HttpSession session = request.getSession(false); 
@@ -43,7 +46,6 @@ public class RichiediAggiungiCorso extends HttpServlet {
 		
 		
 		Corso corso = new Corso();
-		corso = null;
 		
 		request.setAttribute("corso", corso);
 		request.getRequestDispatcher( "/WEB-INF/privato/richiedimodificacorso.jsp").forward(request, response);

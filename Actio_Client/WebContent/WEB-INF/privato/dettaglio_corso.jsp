@@ -1,4 +1,4 @@
-<%@page import="sun.nio.cs.ext.ISCII91"%>
+
 <%@page import="it.actio.user.services.UserServiceStub.CorsoConAttivitaDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,7 +13,8 @@
 <head>
 
 <% CorsoConAttivitaDTO corso_conAttivita_e_PostiRimasti = (CorsoConAttivitaDTO) request.getAttribute("corso_conAttivita_e_PostiRimasti"); %>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Actio - <%= corso_conAttivita_e_PostiRimasti.getNomeCorso() %></title>
   <meta name="description" content="">
@@ -173,7 +174,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10" data-aos="fade-right" data-aos-delay="200">
 				<% if (orario_Corso != null && orario_Corso.length != 0){
-                    	for( OrarioCorsoDTO or : orario_Corso){
+                    	
                     	%>
             <div class="content d-flex justify-content-center">
                 <table class="table table-lg">
@@ -186,16 +187,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
+                    <% for( OrarioCorsoDTO or : orario_Corso){ %>
                     
                     
                         <tr>
-                            <th scope="row"><%=or.getGiornoSettimanaLabel() %></th>
+                            <td scope="row"><%=or.getGiornoSettimanaLabel() %></td>
                             <td><%= or.getOrarioInizio() %></td>
                             <td><%= or.getOrarioFine() %></td>
                         </tr>
+                        <% } %>
+                        </tbody>
                         
-                        <%}
+                </table>
+                
+            </div>
+			<%
                     	} else{
                     	
                     	%>
@@ -207,12 +213,7 @@
 			    	</div>
 			    	
 			    	<% } %>
-                        
-                    </tbody>
-                </table>
-                
-            </div>
-			
+              
         </div>
         <% if(ruolo == 0){ %>
             <div class="col-12 text-center mt-3">
@@ -283,7 +284,7 @@
 					            
 					            <input type="hidden" name="csrfToken" value="<%= session.getAttribute("csrfToken") %>">
 					
-					            <button type="submit" class="btn btn-success btn-sm">
+					            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Eliminare l'iscritto <%= i.getNome() %> <%= i.getCognome() %>?')">
 					                Elimina
 					            </button>
 					        </form>
